@@ -7,7 +7,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    datepicker:""
   },
   //事件处理函数
   bindViewTap: function() {
@@ -42,6 +43,11 @@ Page({
         }
       })
     }
+  },
+  bindSolarChange:function(e){
+    this.setData({
+      datepicker:e.detail.value
+    })
   },
   getUserInfo: function(e) {
     console.log(e)

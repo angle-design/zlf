@@ -10,4 +10,7 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+  <datepicker value="{{solar}}" bindchange="bindSolarChange">
+  <button type="default">公历{{datepicker}}</button>
+  </datepicker>
 </view>
