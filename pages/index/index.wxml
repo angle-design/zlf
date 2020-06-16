@@ -1,13 +1,51 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+	<view class="home_top" 
+	style="background:#2D69DF url({{host}}bottom_02.jpg) no-repeat center bottom">
+		<!-- 轮播图 -->
+		<swiper class='swiper_body' bindchange="swiperChange" autoplay='true' interval='5000' duration='1000' circular='true'>
+			<block wx:for="{{bnrUrl}}" wx:for-index="index">
+				<swiper-item>
+					<image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+				</swiper-item>
+			</block>
+		</swiper>
+		<view class="dots">
+			<block wx:for="{{bnrUrl}}" wx:key-index="index">
+				<view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+			</block>
+		</view>
+	</view>
+	<!-- 分类 -->
+	<view class="home_tab">
+		<view wx:for="{{list}}" wx:for-item="listItem" wx:key-index="index">
+		<image src="{{host}}{{listItem.img}}"></image>
+			<text>{{listItem.name}}</text>
+		</view>
+	</view>
+	<!-- 列表 -->
+	<view class="home_list">
+		<view class="title">
+			<text>项目院校</text>
+			<view>全部院校<image src="../../image/jian.png"></image>
+			</view>
+		</view>
+
+		<!-- 左右滑动导航 -->
+		<view class="list_tab">
+		  <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="true">
+        <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+            <view class="nav-item {{currentTab == idx ?'active':''}}"  data-current="{{idx}}" bindtap="switchNav">{{navItem.text}}</view>
+        </block>        
+    </scroll-view>
+		</view>
+
+		<!-- 学校列表 -->
+    <view class="list_body">
+      <view class="list_item" wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
+					<itemschool item="{{schoolItem}}"></itemschool>
+      
+      </view>
+    </view>
+	</view>
 </view>

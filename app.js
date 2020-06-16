@@ -34,6 +34,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    list:[],
+    host:'http://59.110.242.178/lxb-image/'
   }
 })

@@ -1,0 +1,28 @@
+.nav {
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 80rpx;
+  font-size: 16px;
+  white-space: nowrap;
+  margin-top:10rpx;
+}
+.nav-item {
+  width: 137rpx;
+  height:60rpx;
+  border:1px solid #d8d8d8;
+  border-radius:40rpx;
+  line-height:60rpx;
+  font-size:26rpx;
+  color:#9a9a9a;
+  margin-left:20rpx;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+}
+.nav-item.active{
+  background:#428af4;
+  border:1px solid #428af4;
+  color:#fff;
+}

@@ -1,0 +1,11 @@
+<view class="itemschool">
+      <image src="{{item.img}}"></image>
+        <view class="list_content">
+          <text>{{item.name}}</text>
+          <text>院校城市：{{item.place}}</text>
+          <view class="list_button">
+              <button>咨询</button>
+              <button>详情</button>
+          </view>
+          </view>
+</view>
