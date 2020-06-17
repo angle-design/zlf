@@ -63,7 +63,6 @@ Page({
   currentTab: 0,
   navScrollLeft: 0,
   host:app.globalData.host
-
   },
 
   swiperChange(e) {
