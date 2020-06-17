@@ -63,6 +63,7 @@ Page({
   currentTab: 0,
   navScrollLeft: 0,
   host:app.globalData.host
+
   },
 
   swiperChange(e) {
@@ -97,8 +98,21 @@ switchNav(event){
       this.setData({
           currentTab: cur
       })
-  }
-},
+    }
+  },
+  bindSolarChange:function(e){
+    this.setData({
+      datepicker:e.detail.value
+    })
+  },
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
 switchTab(event){
   var cur = event.detail.current;
   var singleNavWidth = this.data.windowWidth / 5;

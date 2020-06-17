@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+
 	<view class="home_top" 
 	style="background:#2D69DF url({{host}}bottom_02.jpg) no-repeat center bottom">
 		<!-- 轮播图 -->

@@ -22,8 +22,14 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+<<<<<<< HEAD
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
+=======
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"nodeModules": true
+>>>>>>> master
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
