@@ -24,7 +24,6 @@
 		},
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
-
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
