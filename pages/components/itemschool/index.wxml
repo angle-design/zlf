@@ -1,8 +1,8 @@
 <view class="itemschool">
-      <image src="{{item.img}}"></image>
+      <image src="{{item.logo}}"></image>
         <view class="list_content">
           <text>{{item.name}}</text>
-          <text>院校城市：{{item.place}}</text>
+          <text>院校城市：{{item.province}}</text>
           <view class="list_button">
               <button>咨询</button>
               <button>详情</button>
