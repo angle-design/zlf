@@ -1,4 +1,4 @@
-.tab-bar {
+.nav-tabs  {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -8,9 +8,10 @@
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
   border-top:1rpx solid #eee;
+  font-size: 12px;
 }
 
-.tab-bar-item {
+.tab-list {
   flex: 1;
   text-align: center;
   display: flex;
@@ -18,13 +19,11 @@
   align-items: center;
   flex-direction: column;
 }
-
-.tab-bar-item cover-image {
+.tab-list.active{
+  color:#4189f4;
+}
+.tab-list image{
   width:50rpx;
   height:50rpx;
   margin-bottom:8rpx;
-}
-
-.tab-bar-item cover-view {
-  font-size: 12px;
 }

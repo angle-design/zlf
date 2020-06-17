@@ -1,0 +1,164 @@
+/* pages/school/details.wxss */
+.school_details{
+  padding-bottom:100rpx;
+}
+.school_video{
+  height:330rpx;
+  position:relative;
+  z-index:1;
+}
+.school_video>image{
+  height:350rpx;
+  width:750rpx;
+}
+.school_video view{
+  width:120rpx;
+  height:120rpx;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-60rpx;
+  margin-left:-60rpx;
+  padding:15rpx;
+  box-sizing: border-box;
+}
+.school_video view image{
+  width:90rpx;
+  height:90rpx;
+}
+
+.school_content{
+  background:#fff;
+  border-radius:20rpx 20rpx 0 0;
+  position: relative;
+  z-index:2;
+}
+.school_content .school_top{
+  display: flex;
+  justify-content: space-between;
+  margin:48rpx 40rpx 10rpx 24rpx;
+  align-items: center;
+  height:112rpx;
+}
+.school_content .school_top view{
+  display: flex;
+  height:112rpx;
+  justify-content: center;
+}
+.school_content .school_top image{
+  width:36rpx;
+  height:36rpx;
+  /* padding:10rpx; */
+}
+.school_content .school_top view view{
+  display: flex;
+  flex-direction: column;
+  font-size:19px;
+}
+.school_content .school_top view view text:nth-child(2){
+  font-size:13px;
+  color:#878787;
+  margin-top:5rpx;
+}
+.school_content .school_top view image{
+  width:112rpx;
+  height:112rpx;
+  margin-right:20rpx;
+}
+.school_introduce,.school_team,.school_notice,.school_phone{
+  padding:32rpx 24rpx 30rpx;
+  font-size:14px;
+  color:#666;
+  border-bottom: 20rpx solid #f6f6f6;
+}
+.school_introduce>text,.school_team>text,.school_notice>text,.school_phone>text{
+  width:154rpx;
+  height:53rpx;
+  background:#4189f4;
+  border-radius:0 30rpx 30rpx 0;
+  color:#fff;
+  line-height:53rpx;
+  text-align:center;
+  display: block;
+}
+.school_introduce view>text,.school_team view>text{
+  display: -webkit-box;
+  -webkit-box-orient:vertical;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}
+.school_introduce view>text.text-hidden,.school_team view>text.text-hidden{
+  -webkit-line-clamp:4; 
+}
+.school_introduce view>text.text-show,.school_team view>text.text-hidden{
+ -webkit-line-clamp:0; 
+}
+.school_introduce view,.school_team view,.school_notice view,.school_phone view{
+  line-height:45rpx;
+  margin:20rpx 0 0;
+}
+.school_introduce .all,.school_team .all{
+  padding:10rpx 0 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#4189f4;
+  margin-top:0;
+}
+.school_introduce .all.active image,.school_team .all.active image{
+  transform: rotate(-180deg);
+  transition: all 0.3s;
+}
+.school_introduce .all image,.school_team .all image{
+  width:23rpx;
+  height:13rpx;
+  margin-right:10rpx;
+}
+.school_notice .notice_text>text,.school_phone .phone_text>text{
+  display: block;
+  color:#333;
+  font-weight: bold;
+}
+.school_notice view>text text,.school_phone .phone_text>text text{
+  color:#666;
+  font-weight: normal;
+}
+.school_phone{
+  border-bottom:none;
+}
+.fixed_con{
+  width:100%;
+  height:100rpx;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  bottom:0;
+  left:0;
+  background:#f6f6f6;
+  z-index: 3;
+  font-size:11px;
+}
+.fixed_con view,.fixed_con button{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fixed_con view:nth-child(1) image{
+  width:29rpx;
+  height:32rpx;
+  margin-bottom:5rpx;
+}
+.fixed_con view:nth-child(2) image{
+  width:36rpx;
+  height:36rpx;
+}
+.fixed_con button{
+  flex:2;
+  background:#ff9a2d;
+  color:#fff;
+  font-size:15px;
+  border-radius:0;
+  height:100rpx;
+}

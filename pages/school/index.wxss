@@ -1,0 +1,20 @@
+page{
+}
+
+.school{
+ padding-top:30rpx;
+  background:#2d69df;
+}
+.school_con{
+  background:#fff;
+  border-radius:20rpx 20rpx 0 0 ;
+  padding:40rpx 30rpx 0;
+  width:100%;
+  box-sizing: border-box;
+}
+.school .tit{
+  color:#9a9a9a;
+  font-size:11px;
+  margin-bottom:30rpx;
+  display: block;
+}

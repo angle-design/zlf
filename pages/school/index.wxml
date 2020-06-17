@@ -1,0 +1,9 @@
+
+<view class="school">
+	<view class="school_con">
+    <text class="tit">以下院校以名称首字母进行排序</text>
+    <view>
+        <itemschool></itemschool>
+    </view>
+	</view>
+</view>

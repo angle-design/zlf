@@ -1,0 +1,44 @@
+.casedetail{
+  padding:30rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.casedetail .case_title{
+  font-size:19px;
+  display: flex;
+}
+.casedetail .school {
+  display: flex;
+justify-content: flex-end;
+}
+.casedetail .school text{
+  background:#e7f2ff;
+  padding:3rpx 10rpx;
+  color:#4189f4;
+  border-radius:10rpx;
+  font-size:13px;
+}
+.casedetail .student_img{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:30rpx;
+}
+.casedetail .student_img image{
+  width:314rpx;
+  height:388rpx;
+  background:#f6f6f6;
+}
+.casedetail .student_img text{
+  font-size:15px;
+  margin:10rpx 0 30rpx;
+}
+.case_con{
+  font-size:14px;
+  color:#666;
+  line-height:45rpx;
+}
+.case_con text{
+  text-indent: 2rem;
+}

@@ -1,3 +1,4 @@
 {
+  "navigationBarTitleText": "全部院校",
   "usingComponents": {"itemschool": "../components/itemschool/index"}
 }

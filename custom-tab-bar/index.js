@@ -1,52 +1,43 @@
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
-
-  /**
-   * 组件的初始数据
-   */
+Page({
   data: {
-    selected: 0,
-    color: "#b6b6b8",
-    selectedColor: "#428af4",
-    list: [
+    currentTab: 0,//默认首页为选中页面
+    "backgroundColor": "#b5b6b8",
+    "selectedColor": "#4189f4",
+    items: [
       {
-        pagePath: "/pages/index/index",
-        text: "首页",
-        iconPath: "/image/home.png",
-        selectedIconPath: "/image/homecur.png"
+        "pagePath": "/pages/index/index", 
+        "iconPath": "/image/home.png",
+        "selectedIconPath": "/image/homecur.png",
+        "text": "首页"
       },
       {
-        pagePath: "/pages/logs/logs",
-        text: "院校",
-        iconPath: "/image/bo.png",
-        selectedIconPath: "/image/bocur.png"
-      }, 
+        "pagePath": "/pages/school/index",
+        "iconPath": "/image/bo.png",
+        "selectedIconPath": "/image/bocur.png",
+        "text": "院校"
+      },
       {
-        pagePath: "/pages/logs/logs",
-        text: "我的",
-        iconPath: "/image/my.png",
-        selectedIconPath: "/image/mycur.png"
+        "pagePath": "/pages/search/search",
+        "iconPath": "/image/my.png",
+        "selectedIconPath": "/image/mycur.png",
+        "text": "我的"
       }
-     
     ]
   },
- 
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-    switchTab(e) {
-      const data = e.currentTarget.dataset
-      const url = data.path
-      wx.switchTab({ url })
-      this.setData({
-        selected: data.index
+  
+  swichNav: function (e) {
+    let that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({    
+        currentTab: e.target.dataset.current
+      })
+      let url = e.currentTarget.dataset.url;  // 点击tabbar时，跳转对应的页面
+      wx.switchTab({
+        url: url,
       })
     }
-  }
+  },
+  
 })

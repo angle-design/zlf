@@ -4,52 +4,9 @@ const app = getApp()
 Page({
   data: {
     // 轮播图列表
-    "bnrUrl": [
-      //   {
-      //   "url": "/image/bg.png"
-      // }, {
-      //   "url": "/image/bg.png"
-      // }, {
-      //   "url": "/image/bg.png"
-      // }, {
-      //   "url": "/image/bg.png"
-      // }
-    ],
-    // 学校列表
-    schoollist:[
-      // {
-      //   name:"北京大学1",
-      //   img:'/image/logo.png',
-      //   place:"北京"
-      // },
-      // {
-      //   name:"北京大学2",
-      //   img:'/image/logo.png',
-      //   place:"北京"
-      // },
-      // {
-      //   name:"北京大学3",
-      //   img:'/image/logo.png',
-      //   place:"北京"
-      // },
-      // {
-      //   name:"北京大学4",
-      //   img:'/image/logo.png',
-      //   place:"北京"
-      // }
-    ],
+    "bnrUrl": [],
     // 左右滑动导航列表
-    navData:[
-      // {text: '首页'},
-      // {text: '健康'},
-      // {text: '情感'},
-      // {text: '职场'},
-      // {text: '育儿'},
-      // {text: '纠纷'},
-      // {text: '青葱'},
-      // {text: '上课'},
-      // {text: '下课'}
-  ],
+    navData:[],
   // 分类
   list:[
     {img:'lei_01.png',name:'中心介绍'},
@@ -166,5 +123,12 @@ switchNav(event){
         currentTab: cur,
         navScrollLeft: (cur - 2) * singleNavWidth
     })
+  },
+  onShow: function () {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        currentTab: 0
+      })
+    }
   },
 })

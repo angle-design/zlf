@@ -1,5 +1,9 @@
 {
   "pages": [
+    "pages/school/details",
+    "pages/studentcases/index",
+    "pages/studentcases/casedetail",
+    "pages/school/index",
     "pages/index/index"
   ],
   "window": {
@@ -17,7 +21,7 @@
       "iconPath":"/image/home.png",
       "selectedIconPath":"/image/homecur.png"
     }, {
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/school/index",
       "text": "院校",
       "iconPath":"/image/bo.png",
       "selectedIconPath":"/image/bocur.png"

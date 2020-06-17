@@ -45,7 +45,6 @@
     <view class="list_body">
       <view class="list_item" wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
 					<itemschool item="{{schoolItem}}"></itemschool>
-      
       </view>
     </view>
 	</view>

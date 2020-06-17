@@ -1,9 +1,13 @@
 /**app.wxss**/
+view{
+  color:#333;
+}
 view,text,image{
   margin:0;
   padding:0;
   list-style: none;
   border:none;
+ 
 }
 .container {
   height: 100%;

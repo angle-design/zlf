@@ -1,0 +1,65 @@
+<!-- 院校详情 -->
+<view class="school_details">
+  <!-- 院校视频 -->
+  <view class="school_video">
+    <image src="../../image/bg.png"></image>
+    <view>
+      <image wx:if="{{videoflag}}" src="{{host}}bo.png"></image>
+      <image wx:else src="{{host}}zan.png"></image>
+    </view>
+  </view>
+  <!-- 院校内容 -->
+  <view class="school_content">
+    <!-- 院校名称 -->
+      <view class="school_top">
+          <view>
+              <image src="../../image/logo.png"></image>
+              <view>
+                <text>北京大学</text>
+                <text>院校城市：北京</text>
+              </view>
+          </view>
+            <image wx:if="{{videoflag}}" src="{{host}}collect.png"></image>
+            <image wx:else src="{{host}}collectcur.png"></image>
+      </view>
+      <!-- 院校介绍 -->
+      <view class="school_introduce">
+          <text>院校介绍</text>
+          <view>
+              <text class="{{txtHidden?'text-hidden':'text-show'}}">北京外国语大学成立于1941 年，是教育部直属、“985”优势学科创新平台和首批国家“211 工程”建设的全国重点大学，是目前我国高等院校中历史悠久、教授语种最多、办学层次齐全的外国语大学。北外与世界上88个国家和地区的281 所高校和学术机构建立了合作与交流关系，承办了21所海外孔子学院。北外紧密结合国家发展需要，成为培养涉外高素质人才的重要基地，为国家培养了9万余名高质量的涉外人才。仅以外交部为例，据不完全统计，北外毕业的校友中，先后出任驻外大使的就有400多人，出任参赞的1000 多人，北外因此赢得了“共和国外交官摇篮”的美誉。</text>
+              <view class="all {{!txtHidden?'active':''}}" bindtap="txtToggle"><image src="{{host}}quanbu.png"></image>{{txtHidden?'查看全部':'收起内容'}}</view>
+          </view>
+      </view>
+      <!-- 项目介绍 -->
+        <view class="school_team">
+          <text>项目介绍</text>
+          <view>
+              <text class="{{teamHidden?'text-hidden':'text-show'}}">北京外国语大学成立于1941 年，是教育部直属、“985”优势学科创新平台和首批国家“211 工程”建设的全国重点大学，是目前我国高等院校中历史悠久、教授语种最多、办学层次齐全的外国语大学。北外与世界上88个国家和地区的281 所高校和学术机构建立了合作与交流关系，承办了21所海外孔子学院。北外紧密结合国家发展需要，成为培养涉外高素质人才的重要基地，为国家培养了9万余名高质量的涉外人才。仅以外交部为例，据不完全统计，北外毕业的校友中，先后出任驻外大使的就有400多人，出任参赞的1000 多人，北外因此赢得了“共和国外交官摇篮”的美誉。</text>
+              <view class="all {{!teamHidden?'active':''}}" bindtap="teamToggle"><image src="{{host}}quanbu.png"></image>{{teamHidden?'查看全部':'收起内容'}}</view>
+          </view>
+      </view>
+      <!-- 报名须知 -->
+      <view class="school_notice">
+        <text>报名须知</text>
+        <view class="notice_text">
+          <text>报名时间：<text>即日起至2020年9月5日</text></text>
+          <text>报名材料：<text>就看看是什么什么劳斯莱斯麦丽素麦丽素麦丽素麦丽素麦丽素麦丽素麦丽素什么什么劳斯莱斯麦丽素吃零食麦丽素麦丽素</text></text>
+        </view>
+      </view>
+      <!-- 联系方式 -->
+       <view class="school_phone">
+        <text>联系方式</text>
+        <view class="phone_text">
+          <text>热线电话：<text>即日起至2020年9月5日</text></text>
+          <text>网址：<text>http://www.baidu.com</text></text>
+          <text>报名地址：<text>金属扣啊啊上课上课打瞌睡面对生命的熟门熟路麦丽素麦丽素麦丽素麦丽素麦丽素</text></text>
+        </view>
+      </view>
+  </view>
+  <!-- 浮底 -->
+  <view class="fixed_con">
+    <view><image src="{{host}}zhuanfa.png"></image><text>转发</text></view>
+    <view><image src="{{host}}collect.png"></image><text>收藏</text></view>
+    <button>立即咨询</button>
+  </view>
+</view>
