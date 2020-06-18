@@ -1,4 +1,4 @@
-<view class="itemschool">
+<view class="itemschool" data-id="" bindtap="gotodetail">
       <image src="{{item.logo}}"></image>
         <view class="list_content">
           <text>{{item.name}}</text>

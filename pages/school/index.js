@@ -1,20 +1,23 @@
 // pages/school/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    schoollist:[],
+    page:1,
+    islogin:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -31,8 +34,29 @@ Page({
         currentTab: 1 
       })
     }
+    this.setData({
+      page:1
+    })
+    this.getinstitutionlist();
+    
   },
-
+  getinstitutionlist(){
+    app.post(app.globalData.Apipath+'/lxb-api/institution/list',{
+      areaId: "",
+      content: "",
+      countryId: "",
+      current:this.data.page,
+      pageSize: 10,
+      schoolLevelId: ""
+    })
+    .then((res)=>{
+      console.log(res);
+      this.setData({
+        page:this.data.page+1,
+        schoollist:res
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

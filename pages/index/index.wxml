@@ -7,7 +7,7 @@
 		<swiper class='swiper_body' bindchange="swiperChange" autoplay='true' interval='5000' duration='1000' circular='true'>
 			<block wx:for="{{bnrUrl}}" wx:for-index="index">
 				<swiper-item>
-					<image src='{{item.link}}' class='u-img-slide' mode='aspectFill'></image>
+					<image src='{{imgpath+item.img}}' class='u-img-slide' mode='aspectFill'></image>
 				</swiper-item>
 			</block>
 		</swiper>
@@ -19,16 +19,16 @@
 	</view>
 	<!-- 分类 -->
 	<view class="home_tab">
-		<view wx:for="{{list}}" wx:for-item="listItem" wx:key-index="index">
-		<image src="{{host}}{{listItem.img}}"></image>
+		<view wx:for="{{list}}" wx:for-item="listItem" wx:key-index="index" >
+		<image src="{{host}}{{listItem.img}}" data-url="{{listItem.url}}" data-islog="{{listItem.islog}}" bindtap="gotopage"></image>
 			<text>{{listItem.name}}</text>
 		</view>
 	</view>
 	<!-- 列表 -->
 	<view class="home_list">
 		<view class="title">
-			<text>项目院校</text>
-			<view>全部院校<image src="../../image/jian.png"></image>
+			<text >项目院校</text>
+			<view bindtap="gotoschool" >全部院校<image src="../../image/jian.png"></image>
 			</view>
 		</view>
 

@@ -1,0 +1,21 @@
+<!--pages/login/index.wxml-->
+<view class='container'>
+  <image id="headimg" src='https://xcx.static.tongbux.com/xcx/20190525/5ce9063d825db.png'></image>
+  <view class='biao'>
+    <image src='{{headimg}}'></image>
+    <text>为了您的账户安全，请绑定手机号</text>
+  </view>
+  <view class='btn'>
+    <button open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="onGotPhone">手机号一键登录</button>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">登录</button>
+  </view>
+</view>
+<view class='pup' bindtap='cancelOperation' style='z-index:10;' wx:if="{{verifyBody}}"></view>
+<!-- 验证手机号码登录 -->
+<view class='verification' style='z-index:11;' wx:if="{{verifyBody}}">
+  <text>验证手机号登录</text>
+  <view>手机号码：<input bindblur='getPhoneNumber' type='number' value="{{phone_val}}" maxlength="11" placeholder='输入有效号码'/><text bindtap="sendCode">{{send_btn_content}}{{send_btn_content=='发送验证码' ? '':'s'}}</text></view>
+  <view>验证码：<input type='number' bindblur="getVerifyCode" maxlength="6" placeholder='输入验证码'/></view>
+  <button disabled="{{!verify_btn}}" bindtap='submitBtn'>确定</button>
+</view>
+

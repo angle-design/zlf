@@ -1,12 +1,13 @@
 <!-- 学生案例详情 -->
 <view class="casedetail">
-    <text class="case_title">海培优秀校友系列|2009届新西兰怀卡托大学2+2本科留学项目</text>
-    <text class="school"><text>上海大学</text></text>
+    <text class="case_title">{{infodata.title}}</text>
+    <text class="school"><text>{{infodata.name}}</text></text>
     <view class="student_img">
-      <image src="../../image/logo.png"></image>
-      <text>莫小贝</text>
+      <image src="{{imgpath+infodata.img}}"></image>
+      <text>{{infodata.studentName}}</text>
     </view>
     <view class="case_con">
-    <text>近十年来，越来越多的中国留学生选择商科商科类专业。其高就业率吸引了诸多学生和家长们选择应用范围最广、实用性最强的商科作为未来发展的方向。在英国和澳洲商科是毕业生平均薪酬最高的专业之一。2018年政府工作报告提出经济、金融类相关专业就业前景广阔，随着经济转型升级未来五年资本市场将迎来绝佳发展机会。</text>
+    <!-- <text >{{infodata.content}}</text> -->
+    <rich-text nodes="{{infodata.content}}"></rich-text>
     </view>
   </view>

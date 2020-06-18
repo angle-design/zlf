@@ -1,0 +1,106 @@
+/* pages/login/index.wxss */
+/* pages/login/index.wxss */
+.container {
+  margin: 0 50rpx;
+}
+.container > image {
+  width: 182rpx;
+  height: 44rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 50rpx;
+}
+.biao {
+  display: flex;
+  flex-direction: column;
+  line-height: 150rpx;
+  color: #000;
+  font-size: 34rpx;
+  justify-content: center;
+  align-items: center;
+  margin-top: 160rpx;
+  font-weight: 600;
+}
+.biao image {
+  width: 140rpx;
+  height: 140rpx;
+}
+.btn {
+  position: absolute;
+  bottom: 220rpx;
+  width: 500rpx;
+  left: 125rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center ;
+  align-content: center;
+}
+.btn button {
+  width: 500rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  border-radius: 6rpx;
+  margin-bottom: 30rpx;
+  color: #0CC15F;
+  background: #fff;
+  border: 2rpx solid #0CC15F;
+}
+.btn button:nth-child(1) {
+  color: #fff;
+  background: #0CC15F;
+}
+.verification,
+.relation {
+  width: 100%;
+  height: auto;
+  padding-bottom: 80rpx;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  border-radius: 30rpx 30rpx 0 0;
+}
+.verification > text,
+.relation > text {
+  display: block;
+  text-align: center;
+  margin: 40rpx 0 60rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.verification view {
+  display: flex;
+  margin: 0 50rpx;
+  border-top: 2rpx solid #F8F8F8;
+  font-size: 30rpx;
+  height: 100rpx;
+  align-items: center;
+}
+.verification > view:nth-child(3) {
+  border-bottom: 2rpx solid #F8F8F8;
+}
+.verification view input {
+  width: 310rpx;
+}
+.verification view text {
+  width: 186rpx;
+  height: 50rpx;
+  background: #0CC15F;
+  color: #fff;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 6rpx;
+}
+.verification > button,
+.relation > button {
+  width: 324rpx;
+  height: 74rpx;
+  background: #0CC15F;
+  border-radius: 6rpx;
+  line-height: 74rpx;
+  color: #fff;
+  margin-top: 120rpx;
+}

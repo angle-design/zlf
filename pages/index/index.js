@@ -9,21 +9,23 @@ Page({
     navData:[],
   // 分类
   list:[
-    {img:'lei_01.png',name:'中心介绍'},
-    {img:'lei_02.png',name:'项目介绍'},
-    {img:'lei_03.png',name:'留学国别'},
-    {img:'lei_04.png',name:'项目层次'},
-    {img:'lei_05.png',name:'项目资讯'},
-    {img:'lei_06.png',name:'学生案例'},
-    {img:'lei_07.png',name:'咨询留服'},
-    {img:'lei_08.png',name:'浏览记录'}
+    {img:'lei_01.png',name:'中心介绍',url:'',islog:false},
+    {img:'lei_02.png',name:'项目介绍',url:'',islog:false},
+    {img:'lei_03.png',name:'留学国别',url:'',islog:false},
+    {img:'lei_04.png',name:'项目层次',url:'',islog:false},
+    {img:'lei_05.png',name:'项目资讯',url:'',islog:false},
+    {img:'lei_06.png',name:'学生案例',url:'/pages/studentcases/index',islog:true},
+    {img:'lei_07.png',name:'咨询留服',url:'',islog:false},
+    {img:'lei_08.png',name:'浏览记录',url:'',islog:false}
   ],
   swiperCurrent:0,//轮播图选中索引
   currentTab: 0,
   currentId:0,
   navScrollLeft: 0,
   page:1,
-  host:app.globalData.host
+  host:app.globalData.host,
+  islogin:false,
+  imgpath:null
   },
 
   swiperChange(e) {
@@ -44,7 +46,73 @@ Page({
       },
   })
   this.getarealist();  
-  this.gettbannerlist();  
+  this.gettbannerlist();
+  if (!app.globalData.uinfo || !wx.getStorageSync('uinfo')) {
+      this.setData({
+        islogin:false
+      })   
+  }else{
+      this.setData({
+        islogin:true
+      })
+  }
+  this.setData({
+    imgpath:app.globalData.Imgpath
+  })
+},
+gotopage(event){
+  var islogin_ = event.target.dataset.islog;
+  var url = event.target.dataset.url;
+
+  
+  if(islogin_){
+    if(this.data.islogin){
+      console.log(app.globalData.userInfo)
+      //跳转
+      wx.navigateTo({
+        url: url
+      })
+    }else{
+     
+      //授权登录
+      wx.login({
+        complete: (res) => {
+          
+          //请求登录接口
+          app.post(app.globalData.Apipath+'/lxb-api/wx/login',{
+            js_code: res.code
+          })
+          .then((result)=>{            
+              app.globalData.openid = result.token;
+              if(result.authorize==1){
+                //需要授权手机号
+                wx.navigateTo({
+                  url: '/pages/login/index'
+                })
+              }else{
+                //不需要授权手机号
+                //需要授权手机号
+                wx.navigateTo({
+                  url: url
+                })
+              }
+              
+          })
+        },
+      })
+    }
+  }else{
+    //跳转
+    wx.navigateTo({
+      url: url
+    })
+  }
+},
+gotoschool(){
+
+  wx.switchTab({
+    url: '/pages/school/index'
+  })
 },
 getarealist(){//获取首页院校地区
   app.get(app.globalData.Apipath+'/lxb-api/area/list')
@@ -64,6 +132,12 @@ gettbannerlist(){//获取首页轮播图
     this.setData({
       bnrUrl:res
     })
+  })
+},
+gotodetail:function(evnet){
+  var id = evnet.currentTarget.dataset.id
+  wx.navigateTo({
+    url:"/pages/school/details?id="+id
   })
 },
 getinstitutionlist(){

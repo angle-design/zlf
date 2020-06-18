@@ -1,10 +1,15 @@
 {
   "pages": [
-    "pages/school/details",
+    "pages/index/index",
+    "pages/login/index",
+    
     "pages/studentcases/index",
     "pages/studentcases/casedetail",
     "pages/school/index",
-    "pages/index/index"
+    "pages/school/details"
+    
+    
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

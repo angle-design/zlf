@@ -1,4 +1,5 @@
 // pages/studentcases/index.js
+const app = getApp()
 Page({
 
   /**
@@ -62,16 +63,41 @@ Page({
         'text2':'留学项目',
         "school":'上海大学'
       }
-    ]
+    ],
+    imgpath:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getlist();
+    this.setData({
+      imgpath:app.globalData.Imgpath
+    })
   },
-
+  getlist(){
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/studentcase/list',{
+      "current": 0,
+      "pageSize": 10
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      this.setData({
+        caselist :res
+      })
+      
+      console.log(res)
+    })
+  },
+  gotodetail:function(evnet){
+    var id = evnet.currentTarget.dataset.id
+    wx.navigateTo({
+      url:"/pages/studentcases/casedetail?id="+id
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

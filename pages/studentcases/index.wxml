@@ -1,12 +1,12 @@
 <!-- 学生案例 -->
 <view class="studentcases">
 <block wx:for="{{caselist}}" wx:for-index="index" wx:for-item="item">
-  <view class="caseitem">
-    <image src="{{item.images}}"></image>
+  <view class="caseitem" bindtap="gotodetail" data-id="{{item.id}}">
+    <image src="{{imgpath+item.img}}"></image>
     <view>
-      <text class="name">{{item.name}}</text>
-      <text class="text">{{item.text1}}</text>
-      <text class="school"><text>{{item.school}}</text></text>
+      <text class="name">{{item.studentName}}</text>
+      <text class="text">{{item.title}}</text>
+      <text class="school"><text>{{item.name}}</text></text>
     </view>
   </view>
   </block>
