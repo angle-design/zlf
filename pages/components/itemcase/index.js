@@ -6,17 +6,17 @@ Component({
     item: { 
       type: Object
     },
-    btnflag:{
-      type:Boolean
+    imgpath:{
+      type:String
     }
   }, 
   methods:{
     gotodetail:function(evnet){
       var id = evnet.currentTarget.dataset.id
       wx.navigateTo({
-        url:"/pages/school/details?id="+id
+        url:"/pages/studentcases/casedetail?id="+id
       })
-    }
+    },
   },
 })
 

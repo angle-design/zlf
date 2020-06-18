@@ -1,0 +1,18 @@
+<!-- 我的浏览记录 -->
+<view class="browse">
+  <!-- 学校的 -->
+  <view class="browse_school"  btnflag="{{false}}">
+    <itemschool item="{{school}}" ></itemschool>
+    <text class="browse_time">刚刚</text>
+  </view>
+   <!-- 咨询 -->
+  <view class="browse_new">
+    <view><itemnew item="{{new}}"></itemnew></view>
+    <text class="browse_time">五分钟前</text>
+  </view>
+    <!-- 案例的 -->
+  <view class="browse_case">
+   <view> <itemcase item="{{case}}"></itemcase></view>
+    <text class="browse_time">半小时前</text>
+  </view>
+</view>

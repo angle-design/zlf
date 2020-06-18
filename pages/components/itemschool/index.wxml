@@ -3,7 +3,7 @@
         <view class="list_content">
           <text>{{item.name}}</text>
           <text>院校城市：{{item.province}}</text>
-          <view class="list_button">
+          <view class="list_button" wx:if="{{btnflag}}">
               <button>咨询</button>
               <button>详情</button>
           </view>

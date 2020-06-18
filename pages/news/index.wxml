@@ -1,0 +1,14 @@
+<!-- 项目咨询 -->
+<view class="news">
+	<!-- 第一条 -->
+	<view class="new_main">
+		<image src="../../image/bg.png"></image>
+		<text>2020年留学政策发布，应届考生需具备哪些条</text>
+	</view>
+	<!-- 边框 -->
+	<view class="border_new"></view>
+<!-- 渲染列表 -->
+	<block wx:for="{{newlist}}" wx:for-item="item">
+      <view class="newone"><itemnew item="{{item}}"></itemnew></view>
+	</block>
+</view>

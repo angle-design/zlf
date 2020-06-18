@@ -17,7 +17,7 @@ Page({
         "text": "院校"
       },
       {
-        "pagePath": "/pages/search/search",
+        "pagePath": "/pages/my/index",
         "iconPath": "/image/my.png",
         "selectedIconPath": "/image/mycur.png",
         "text": "我的"

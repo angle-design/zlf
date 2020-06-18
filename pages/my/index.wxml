@@ -1,0 +1,48 @@
+<!-- 我的 -->
+<view class="my" style="background:url({{host}}bgnew.jpg) no-repeat center top;  background-size:750rpx 435rpx;">
+	<view class="my_con">
+		<view class="my_top">
+		<!-- 默认头像 -->
+			<image src="{{host}}moren.png"></image>
+			<text>风一样的男子</text>
+		</view>
+		<!-- 我的收藏 -->
+		<view class="collect" bindtap="gotocollect">
+			<view>
+				<image src="{{host}}xing.png"></image>
+				<text>我的收藏</text>
+			</view>
+			<image src="../../image/jian.png"></image>
+		</view>
+		<!-- 浏览记录 -->
+		<view class="collect look" bindtap="gotobrowse">
+			<view>
+				<image src="{{host}}dian.png"></image>
+				<text>浏览记录</text>
+			</view>
+			<image src="../../image/jian.png"></image>
+		</view>
+		<!-- 我的消息 -->
+		<view class="message">
+			<text>我的消息</text>
+			<!-- 有内容时 -->
+			<view class="message_body" wx:if="{{messagelist}}">
+				<!-- 新消息 -->
+				<block wx:for="{{messagelist}}" wx:for-item="item">
+					<view class="message_item">
+						<view class="item_school {{item.isnew?'':'history'}}">
+							<view><text>{{item.school}}</text>
+              <!-- 小红点 -->
+								<image  wx:if="{{item.isnew}}" src="{{host}}diandian.png"></image>
+							</view>
+							<text>{{item.time}}</text>
+						</view>
+						<text class="item_con">{{item.content}}</text>
+					</view>
+				</block>
+			</view>
+			<!-- 无内容 -->
+			<view wx:else class="nomessage">暂无消息</view>
+		</view>
+	</view>
+</view>

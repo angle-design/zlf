@@ -1,15 +1,16 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/my/collect",
+    "pages/my/browse",
+    "pages/my/index",
+    "pages/news/index",
+    "pages/news/details",
     "pages/login/index",
-    
     "pages/studentcases/index",
     "pages/studentcases/casedetail",
     "pages/school/index",
     "pages/school/details"
-    
-    
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,7 +32,7 @@
       "iconPath":"/image/bo.png",
       "selectedIconPath":"/image/bocur.png"
     },{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/my/index",
       "text": "我的",
       "iconPath":"/image/my.png",
       "selectedIconPath":"/image/mycur.png"

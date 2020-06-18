@@ -1,0 +1,8 @@
+	<!-- 带图片的 -->
+		<view class="new_item {{!item.img?'new_noimg_item':''}}" bindtap="gotodetail">
+			<image wx:if="{{item.img}}" src="{{item.img}}"></image>
+			<view class="new_con">
+				<text>{{item.title}}</text>
+				<text>{{item.text}}</text>
+			</view>
+		</view>

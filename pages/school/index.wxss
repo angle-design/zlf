@@ -18,3 +18,6 @@ page{
   margin-bottom:30rpx;
   display: block;
 }
+.school_con>view{
+  margin-bottom:30rpx;
+}

@@ -1,0 +1,21 @@
+.new_detail{
+  padding:30rpx;
+}
+.new_detail>text{
+  font-size:19px;
+  display: block;
+  line-height:55rpx;
+  padding-bottom:30rpx;
+  border-bottom:1px dashed #d2d2d2;
+  margin-bottom:30rpx;
+}
+.new_con{
+  color:#666;
+  text-indent: 2rem;
+  line-height:45rpx;
+}
+.new_con image{
+  margin:20rpx 0;
+  width:100%;
+  display: block;
+}

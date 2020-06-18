@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "浏览记录",
+  "usingComponents": {
+    "itemschool": "../components/itemschool/index",
+    "itemcase": "../components/itemcase/index",
+    "itemnew": "../components/itemnew/index"
+  }
+}

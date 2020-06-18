@@ -1,41 +1,20 @@
-// pages/studentcases/index.js
-const app = getApp()
+// pages/news/details.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    caselist:[],
-    imgpath:null
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getlist();
-    this.setData({
-      imgpath:app.globalData.Imgpath
-    })
+
   },
-  getlist(){
-    app.post(app.globalData.Apipath+'/lxb-api/minapp/studentcase/list',{
-      "current": 0,
-      "pageSize": 10
-    },{
-      'content-type': 'application/json',
-      'token':app.globalData.openid
-    })
-    .then((res)=>{
-      this.setData({
-        caselist :res
-      })
-      
-      console.log(res)
-    })
-  },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

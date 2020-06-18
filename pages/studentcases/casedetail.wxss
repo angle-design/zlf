@@ -23,7 +23,9 @@ justify-content: flex-end;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top:30rpx;
+  margin-top:14rpx;
+  padding-top:50rpx;
+  border-top:1px dashed #d2d2d2;
 }
 .casedetail .student_img image{
   width:314rpx;

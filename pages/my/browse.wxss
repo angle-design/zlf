@@ -1,0 +1,35 @@
+page{
+  background:#f8f8f8;
+}
+.browse{
+  padding:50rpx 0 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.browse>view{
+  margin-bottom:35rpx;
+}
+.browse_time{
+  color:#B2B2B2;
+  display: block;
+  font-size:13px;
+  text-align: right;
+  margin-top:10rpx;
+}
+.browse_new>view,.browse_case>view{
+  width:690rpx;
+  height:190rpx;
+  background:#fff;
+  box-shadow:0rpx 0rpx 20rpx rgba(177,177,177,0.19);
+  display: flex;
+  align-items: center;
+  padding:0 20rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+}
+.browse_case>view{
+  height:225rpx;
+}
+

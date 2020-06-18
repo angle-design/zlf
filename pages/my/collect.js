@@ -1,41 +1,24 @@
-// pages/studentcases/index.js
-const app = getApp()
+// pages/my/collect.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    caselist:[],
-    imgpath:null
+    school:{
+      "logo":'http://pkunews.pku.edu.cn/images/web-v-logo1.png',
+      "name":'清华大学',
+      "province":'北京'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getlist();
-    this.setData({
-      imgpath:app.globalData.Imgpath
-    })
+
   },
-  getlist(){
-    app.post(app.globalData.Apipath+'/lxb-api/minapp/studentcase/list',{
-      "current": 0,
-      "pageSize": 10
-    },{
-      'content-type': 'application/json',
-      'token':app.globalData.openid
-    })
-    .then((res)=>{
-      this.setData({
-        caselist :res
-      })
-      
-      console.log(res)
-    })
-  },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,0 +1,118 @@
+page{
+  width:100%;
+  height:100%;
+  overflow: hidden;
+}
+.my {
+  width: 100%;
+  padding-top: 240rpx;
+}
+
+.my_con {
+  background: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+  position: relative;
+  padding:220rpx 0 120rpx;
+}
+
+.my_top {
+  position: absolute;
+  top: 180rpx;
+  position: fixed;
+  flex-direction: column;
+  width: 750rpx;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.my_top image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: block;
+  margin-bottom: 5rpx;
+}
+.collect{
+  width:670rpx;
+  height:116rpx;
+  background:#F1F6FF;
+  border-radius:20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:0 26rpx;
+  box-sizing: border-box;
+  margin:0 auto 30rpx;
+  font-size:15px;
+}
+.look{
+  background:#FFF4E8;
+}
+.collect view{
+  display: flex;
+  align-items: center;
+}
+.collect view image{
+  width:44rpx;
+  height:44rpx;
+  margin-right:29rpx
+}
+.collect>image{
+  width:13rpx;
+  height:23rpx;
+}
+.message{
+  width:670rpx;
+  padding:20rpx 0 0;
+  margin:0 auto;
+}
+.message>text{
+ margin:20rpx 0 10rpx;
+  font-size:15px;
+}
+.message_item{
+  padding:35rpx 0;
+  border-bottom:1px solid #EDEDED;
+  color:#999;
+  font-size:13px;
+}
+.message_item:last-child{
+  border-bottom:none;
+}
+.item_school{
+  display: flex;
+  justify-content: space-between;
+  height:54rpx;
+}
+.item_school view{
+  height:54rpx;
+  display: flex;
+}
+.item_school view image{
+  width:15rpx;
+  height:15rpx;
+}
+.item_school view  text{
+  font-weight: bold;
+  font-size:15px;
+}
+.item_school>text{
+  color:#999;
+}
+.item_con{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.item_school.history view  text{
+  color:#999;
+}
+.nomessage{
+  color:#b2b2b2;
+  margin-top:160rpx;
+  text-align: center;
+  width:100%;
+}

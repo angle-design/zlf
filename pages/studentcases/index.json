@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "学生案例"
+  "navigationBarTitleText": "学生案例",
+  "usingComponents": {"itemcase": "../components/itemcase/index"}
 }

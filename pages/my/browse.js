@@ -1,41 +1,36 @@
-// pages/studentcases/index.js
-const app = getApp()
+// pages/my/browse.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    caselist:[],
-    imgpath:null
+    new: {
+      "id":1,
+      "img":"../../../image/bg.png",
+      "title":'2020年留学政策发布1',
+      "text":"2020年留学2020年留学政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布"
+    },
+    case:{
+      "img":'http://59.110.242.178//lxb-api/file/showImg/M6kiQGsB_20200618.jpeg',
+      "studentName":"莫小贝",
+      "title":"睡觉啊开始啦卡爱卡啦啦啦",
+      "name":"清华大学"
+    },
+    school:{
+      "logo":'http://pkunews.pku.edu.cn/images/web-v-logo1.png',
+      "name":'清华大学',
+      "province":'北京'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getlist();
-    this.setData({
-      imgpath:app.globalData.Imgpath
-    })
+
   },
-  getlist(){
-    app.post(app.globalData.Apipath+'/lxb-api/minapp/studentcase/list',{
-      "current": 0,
-      "pageSize": 10
-    },{
-      'content-type': 'application/json',
-      'token':app.globalData.openid
-    })
-    .then((res)=>{
-      this.setData({
-        caselist :res
-      })
-      
-      console.log(res)
-    })
-  },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

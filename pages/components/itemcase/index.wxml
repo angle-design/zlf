@@ -1,0 +1,8 @@
+<view class="caseitem" bindtap="gotodetail" data-id="{{item.id}}">
+    <image src="{{imgpath+item.img}}"></image>
+    <view>
+      <text class="name">{{item.studentName}}</text>
+      <text class="text">{{item.title}}</text>
+      <text class="school"><text>{{item.name}}</text></text>
+    </view>
+  </view>

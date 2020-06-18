@@ -1,0 +1,41 @@
+.news {
+  padding: 30rpx;
+}
+
+.new_main {
+  margin-bottom: 40rpx;
+}
+
+.new_main,
+.new_main image {
+  width: 690rpx;
+  height: 420rpx;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.new_main text {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  background: rgba(65, 137, 244, 0.9);
+  font-size: 16px;
+  color: #fff;
+  line-height: 90rpx;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.border_new {
+  height: 1px;
+  background: #e2e2e2;
+}
+.newone{
+  margin-top:40rpx;
+}

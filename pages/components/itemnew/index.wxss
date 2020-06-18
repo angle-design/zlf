@@ -1,0 +1,39 @@
+.new_item {
+  display: flex;
+  align-items: center;
+  line-height: 35rpx;
+}
+
+.new_item image {
+  width: 212rpx;
+  height: 130rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+
+.new_item .new_con {
+  width:424rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.new_item .new_con text:nth-child(1) {
+  font-size: 16px;
+  line-height: 55rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.new_item .new_con text:nth-child(2) {
+  font-size: 13px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.new_noimg_item .new_con{
+  width:100%;
+}

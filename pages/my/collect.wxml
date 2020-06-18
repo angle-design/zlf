@@ -1,0 +1,7 @@
+<!-- 我的收藏 -->
+<view class="collect">
+  <!-- 循环 -->
+  <block>
+    <itemschool item="{{school}}" btnflag="{{false}}"></itemschool>
+  </block>
+</view>
