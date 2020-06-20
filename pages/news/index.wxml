@@ -1,14 +1,14 @@
 <!-- 项目咨询 -->
 <view class="news">
 	<!-- 第一条 -->
-	<view class="new_main">
-		<image src="../../image/bg.png"></image>
-		<text>2020年留学政策发布，应届考生需具备哪些条</text>
+	<view class="new_main" bindtap="gotodetail" data-id="{{newtoplist.id}}">
+		<image src="{{imgpath+newtoplist.img}}"></image>
+		<text>{{newtoplist.title}}</text>
 	</view>
 	<!-- 边框 -->
 	<view class="border_new"></view>
 <!-- 渲染列表 -->
 	<block wx:for="{{newlist}}" wx:for-item="item">
-      <view class="newone"><itemnew item="{{item}}"></itemnew></view>
+      <view class="newone"><itemnew item="{{item}}" imgpath="{{imgpath}}"></itemnew></view>
 	</block>
 </view>

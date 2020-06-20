@@ -13,7 +13,7 @@ Page({
     {img:'lei_02.png',name:'项目介绍',url:'',islog:false},
     {img:'lei_03.png',name:'留学国别',url:'',islog:false},
     {img:'lei_04.png',name:'项目层次',url:'',islog:false},
-    {img:'lei_05.png',name:'项目资讯',url:'/pages/news/index',islog:false},
+    {img:'lei_05.png',name:'项目资讯',url:'/pages/news/index',islog:true},
     {img:'lei_06.png',name:'学生案例',url:'/pages/studentcases/index',islog:true},
     {img:'lei_07.png',name:'咨询留服',url:'',islog:false},
     {img:'lei_08.png',name:'浏览记录',url:'',islog:false}

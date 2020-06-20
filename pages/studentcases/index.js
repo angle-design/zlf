@@ -31,8 +31,6 @@ Page({
       this.setData({
         caselist :res
       })
-      
-      console.log(res)
     })
   },
   

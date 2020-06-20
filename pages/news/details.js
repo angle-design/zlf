@@ -1,20 +1,46 @@
 // pages/news/details.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id:null,
+    imgpath:null,
+    infodata:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(!app.globalData.openid){
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }
+    this.setData({
+      id:options.id,
+      imgpath:app.globalData.Imgpath
+    })
+    this.getinfo();
   },
-
+  getinfo:function(){
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/information/details/'+this.data.id,{
+      
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      this.setData({
+        infodata :res
+      })
+      
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

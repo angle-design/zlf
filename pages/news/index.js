@@ -1,44 +1,58 @@
 // pages/news/index.js
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     newlist:[
-      {
-        "id":1,
-        "img":"../../../image/bg.png",
-        "title":'2020年留学政策发布1',
-        "text":"2020年留学2020年留学政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布"
-      },
-      {
-        "id":2,
-        "img":"",
-        "title":'2020年留学政策发布2',
-        "text":"2020年留学2020年留学政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布"
-      },
-      {
-        "id":3,
-        "img":"../../../image/bg.png",
-        "title":'2020年留学政策发布3',
-        "text":"2020年留学2020年留学政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布"
-      },
-      {
-        "id":4,
-        "img":"",
-        "title":'2020年留学政策发布4',
-        "text":"2020年留学2020年留学政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布政策发布2020年留学政策发布2020年留学政策发布2020年留学政策发布"
-      }
-    ]
+    ],
+    newtoplist:[],
+    imgpath:null,
+    page:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(!app.globalData.openid){
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }
+    this.getlist();
+    this.setData({
+      imgpath:app.globalData.Imgpath
+    })
 
   },
-
+  getlist:function(){
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/information/list',{
+      "current": this.data.page,
+      "pageSize": 10
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      if(this.data.page==1){
+        this.setData({
+          newtoplist:res[0],
+          newlist :res.slice(1)
+        })
+      }else{
+        //追加
+      }
+      
+    })
+  },
+  gotodetail:function(evnet){
+    var id = evnet.currentTarget.dataset.id
+    wx.navigateTo({
+      url:"/pages/news/details?id="+id
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

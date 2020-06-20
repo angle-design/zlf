@@ -5,6 +5,9 @@ Component({
   properties: {
     item: { 
       type: Object
+    },
+    imgpath:{
+      type:String
     }
   }, 
   methods:{
