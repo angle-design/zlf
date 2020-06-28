@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
   data: {
     currentTab: 0,//默认首页为选中页面
@@ -8,19 +9,22 @@ Page({
         "pagePath": "/pages/index/index", 
         "iconPath": "/image/home.png",
         "selectedIconPath": "/image/homecur.png",
-        "text": "首页"
+        "text": "首页",
+        "islogin":false
       },
       {
         "pagePath": "/pages/school/index",
         "iconPath": "/image/bo.png",
         "selectedIconPath": "/image/bocur.png",
-        "text": "院校"
+        "text": "院校",
+        "islogin":false
       },
       {
         "pagePath": "/pages/my/index",
         "iconPath": "/image/my.png",
         "selectedIconPath": "/image/mycur.png",
-        "text": "我的"
+        "text": "我的",
+        "islogin":true
       }
     ]
   },
@@ -34,9 +38,14 @@ Page({
         currentTab: e.target.dataset.current
       })
       let url = e.currentTarget.dataset.url;  // 点击tabbar时，跳转对应的页面
-      wx.switchTab({
-        url: url,
-      })
+      if(e.currentTarget.dataset.islogin){
+        app.checklogin(url,1);
+      }else{
+        //跳转
+        wx.switchTab({
+          url: url,
+        })
+      }
     }
   },
   

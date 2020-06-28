@@ -28,7 +28,7 @@
 	<view class="home_list">
 		<view class="title">
 			<text >项目院校</text>
-			<view bindtap="gotoschool" >全部院校<image src="../../image/jian.png"></image>
+			<view bindtap="gotoallschool" >全部院校<image src="../../image/jian.png"></image>
 			</view>
 		</view>
 
@@ -44,7 +44,7 @@
 		<!-- 学校列表 -->
     <view class="list_body">
       <view class="list_item" wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
-					<itemschool item="{{schoolItem}}" btnflag="{{true}}"></itemschool>
+					<itemschool imgpath="{{imgpath}}" item="{{schoolItem}}" btnflag="{{true}}"></itemschool>
       </view>
     </view>
 	</view>

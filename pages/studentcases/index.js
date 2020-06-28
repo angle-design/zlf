@@ -7,7 +7,10 @@ Page({
    */
   data: {
     caselist:[],
-    imgpath:null
+    imgpath:null,
+    page:1,
+    loading:false,
+    noMore:false
   },
 
   /**
@@ -20,20 +23,42 @@ Page({
     })
   },
   getlist(){
+    this.setData({
+      loading: false
+    })
     app.post(app.globalData.Apipath+'/lxb-api/minapp/studentcase/list',{
-      "current": 0,
-      "pageSize": 10
+      "current": this.data.page,
+      "pageSize": 6
     },{
       'content-type': 'application/json',
       'token':app.globalData.openid
     })
     .then((res)=>{
-      this.setData({
-        caselist :res
-      })
+      if(this.data.page>1){
+        this.setData({
+          caselist :this.data.caselist.concat(res)
+        })
+      }else{
+        this.setData({
+          caselist :res
+        })
+      }
+      if (res.length == 0) {
+        this.setData({
+          noMore: true
+        })
+      }
     })
   },
-  
+  scrollToLower: function (e) {
+    if (!this.data.loading && !this.data.noMore){
+      this.setData({
+        loading: true,
+        page: this.data.page + 1
+      })
+      this.getlist();
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

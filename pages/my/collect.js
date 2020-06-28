@@ -1,22 +1,65 @@
 // pages/my/collect.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    school:{
-      "logo":'http://pkunews.pku.edu.cn/images/web-v-logo1.png',
-      "name":'清华大学',
-      "province":'北京'
-    }
+    school:null,
+    page:1,
+    loading:false,
+    noMore:false,
+    imgpath:app.globalData.Imgpath
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getlist();
+  },
+  getlist:function(){
+    console.log(app.globalData.openid);
+    this.setData({
+      loading: false
+    })
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/collect/list',{
+      "current": this.data.page,
+      "pageSize": 8
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      if (res.length == 0) {
+        this.setData({
+          noMore: true
+        })
+        return false;
+      }
+      var res_ = [];
+      res.forEach(function(item,index) {
+          res_[index]={
+            'name':item.institutionName,
+            'id':item.modelId,
+            'logo':item.logo,
+            'province':item.province
+          }
+         
+      });
+      if(this.data.page==1){
+        this.setData({
+          school:res_,
+        })
+      }else{
+        //追加
+        this.setData({
+          school :this.data.school.concat(res_)
+        })
+      }
+      
+    })
   },
 
   /**

@@ -1,0 +1,4 @@
+	<view class="loading" wx:if="{{loading}}">
+		<image src="../../image/a.gif"></image>
+		<text>{{msg}}</text>
+	</view>

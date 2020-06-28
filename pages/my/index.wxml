@@ -29,7 +29,7 @@
 			<view class="message_body" wx:if="{{messagelist}}">
 				<!-- 新消息 -->
 				<block wx:for="{{messagelist}}" wx:for-item="item">
-					<view class="message_item">
+					<view class="message_item" bindtap="gotomess">
 						<view class="item_school {{item.isnew?'':'history'}}">
 							<view><text>{{item.school}}</text>
               <!-- 小红点 -->

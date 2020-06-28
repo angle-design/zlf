@@ -2,5 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding:50rpx 0;
+  padding:30rpx 0;
+}
+.collect>view{
+  margin-bottom: 20rpx;
 }

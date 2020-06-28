@@ -9,7 +9,9 @@ Page({
     ],
     newtoplist:[],
     imgpath:null,
-    page:1
+    page:1,
+    loading:false,
+    noMore:false
   },
 
   /**
@@ -28,9 +30,12 @@ Page({
 
   },
   getlist:function(){
+    this.setData({
+      loading: false
+    })
     app.post(app.globalData.Apipath+'/lxb-api/minapp/information/list',{
       "current": this.data.page,
-      "pageSize": 10
+      "pageSize": 4
     },{
       'content-type': 'application/json',
       'token':app.globalData.openid
@@ -43,9 +48,26 @@ Page({
         })
       }else{
         //追加
+        this.setData({
+          newlist :this.data.newlist.concat(res)
+        })
       }
-      
+      if (res.length == 0) {
+        this.setData({
+          noMore: true
+        })
+      }
     })
+  },
+  scrollToLower: function (e) {
+    if (!this.data.loading && !this.data.noMore){
+      alert(1)
+      this.setData({
+        loading: true,
+        page: this.data.page + 1
+      })
+      this.getlist();
+    }
   },
   gotodetail:function(evnet){
     var id = evnet.currentTarget.dataset.id

@@ -8,14 +8,17 @@ Page({
   data: {
     schoollist:[],
     page:1,
-    islogin:false
+    islogin:false,
+    imgpath:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      imgpath:app.globalData.Imgpath
+    })
   },
   
   /**
@@ -35,7 +38,8 @@ Page({
       })
     }
     this.setData({
-      page:1
+      page:1,
+      imgpath:app.globalData.Imgpath
     })
     this.getinstitutionlist();
     

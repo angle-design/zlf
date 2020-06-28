@@ -69,11 +69,75 @@ App({
   });
   return promise;
 },
-  globalData: {
+checklogin:function(url,type){
+   if(this.globalData.openid){
+      this.getuserinfo();
+      if(type==1){
+         wx.switchTab({
+            url: url,
+          })
+      }else{
+         wx.navigateTo({
+            url: url,
+         })
+      }
+     
+    }else{
+      //授权登录
+      wx.login({
+        complete: (res) => {
+          //请求登录接口
+          this.post(this.globalData.Apipath+'/lxb-api/wx/login',{
+            js_code: res.code
+          })
+          .then((result)=>{            
+            this.globalData.openid = result.token;
+              if(result.authorize==1){
+                //需要授权手机号
+                wx.navigateTo({
+                  url: '/pages/login/index'
+                })
+              }else{
+                //不需要授权手机号
+                this.getuserinfo();
+                if(type==1){
+                  wx.switchTab({
+                     url: url,
+                   })
+               }else{
+                  wx.navigateTo({
+                     url: url,
+                  })
+               }
+              }
+          })
+        },
+      })
+    }
+    return false;
+},
+getuserinfo:function(){
+   if(!this.globalData.openid){
+      return false;
+   }
+   this.post(this.globalData.Apipath+'lxb-api/minapp/user',{
+      
+    },{
+      'content-type': 'application/json',
+      'token':this.globalData.openid
+    })
+    .then((res)=>{
+      this.globalData.uinfo = res;
+    })
+},
+globalData: {
     userInfo: null,
+    uinfo:null,
     list:[],
     host:'http://59.110.242.178/lxb-image/',
     Apipath:'http://59.110.242.178/',
-    Imgpath:'http://59.110.242.178//lxb-api/file/showImg/'
+    Imgpath:'http://59.110.242.178//lxb-api/file/showImg/',
+    videopath:'http://59.110.242.178/lxb-api/file/ios/video/',
+    wsspath:'ws://59.110.242.178/lxb-api/imserver/'
   }
 })

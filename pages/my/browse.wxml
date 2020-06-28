@@ -1,18 +1,46 @@
 <!-- 我的浏览记录 -->
 <view class="browse">
-  <!-- 学校的 -->
-  <view class="browse_school"  btnflag="{{false}}">
-    <itemschool item="{{school}}" ></itemschool>
-    <text class="browse_time">刚刚</text>
-  </view>
-   <!-- 咨询 -->
-  <view class="browse_new">
-    <view><itemnew item="{{new}}"></itemnew></view>
-    <text class="browse_time">五分钟前</text>
-  </view>
-    <!-- 案例的 -->
-  <view class="browse_case">
-   <view> <itemcase item="{{case}}"></itemcase></view>
-    <text class="browse_time">半小时前</text>
-  </view>
+	<block wx:for="{{browlist}}" wx:for-item="item">
+		<view wx:if="{{item.modelType==3}}">
+			<!-- 学校的 -->
+			<view class="browse_school" btnflag="{{false}}">
+				<itemschool item="{{item}}" imgpath="{{imgpath}}"></itemschool> 
+				<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
+			</view>
+		</view>
+		<view wx:elif="{{item.modelType==2}}">
+			<!-- 咨询 -->
+			<view class="browse_new" data-id="{{item.modelId}}" bindtap="gotonews">
+				<!-- 带图片的 -->
+				<view class="new_item {{!item.img?'new_noimg_item':''}}">
+					<image wx:if="{{item.img}}" src="{{imgpath+item.img}}"></image>
+					<view class="new_con">
+						<text>{{item.title}}</text>
+						<text>{{item.content}}</text>
+					</view>
+				</view>
+
+				<!-- <view><itemnew item="{{item}}"></itemnew></view> -->
+				<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
+			</view>
+		</view>
+		<view wx:else="{{}}">
+			<!-- 案例的 -->
+			<view class="browse_case">
+				<!-- <view> <itemcase item="{{item}}"></itemcase></view> -->
+				<view class="caseitem"  data-id="{{item.modelId}}" bindtap="gotocase">
+					<image src="{{imgpath+item.img}}"></image>
+					<view>
+						<text class="name">{{item.studentName}}</text>
+						<text class="text">{{item.title}}</text>
+						<text class="school"><text>{{item.institutionName}}</text></text>
+					</view>
+				</view>
+				<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
+			</view>
+		</view>
+	</block>
 </view>

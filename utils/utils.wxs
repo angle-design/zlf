@@ -1,0 +1,53 @@
+function parse(fmt) {
+  fmt1 = fmt.substring(0, 19);
+  var reg = getRegExp("-", "g");
+  fmt2 = fmt1.replace(reg, '/');
+  var timestamp = getDate(fmt2).getTime();
+  return timestamp;
+};
+function formtime(value){
+    value = value.replace(".000+0000","Z");
+    var time = getDate(value);
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var date = time.getDate();
+    var hour = time.getHours();
+    var minute = time.getMinutes();
+    var second = time.getSeconds();
+    month = month < 10 ? "0" + month : month;
+    date = date < 10 ? "0" + date : date;
+    hour = hour < 10 ? "0" + hour : hour;
+    minute = minute < 10 ? "0" + minute : minute;
+    second = second < 10 ? "0" + second : second;
+    return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+};
+function changetime(value){
+  var newtime = getDate().getTime();
+  var oldtime =  parse(formtime(value));
+  
+  var diffValue = parseInt((newtime-oldtime)/1000);   // 获取此时 秒数 与 要处理的日期秒数 之间的差值
+  var diff_days = parseInt(diffValue / 86400);   // 一天86400秒 获取相差的天数 取整
+  var diff_hours = parseInt(diffValue / 3600);    // 一时3600秒
+  var diff_minutes = parseInt(diffValue / 60);
+  var diff_secodes = parseInt(diffValue);
+        if (diff_days > 0 ) {  //相差天数 0 < diff_days < 3 时, 直接返出
+             return diff_days + "天前";
+         } else if (diff_days <= 0 && diff_hours > 0) {
+             return diff_hours + "小时前";
+         } else if (diff_hours <= 0 && diff_minutes > 0) {
+             return diff_minutes + "分钟前";
+         } else if (diff_secodes < 60) {
+             if (diff_secodes <= 0) {
+                 return "刚刚";
+             } else {
+                 return diff_secodes + "秒前";
+             }
+         } else if (diff_days >= 3 && diff_days < 30) {
+             return formtime(value);
+         } else if (diff_days >= 30) {
+             return formtime(value);
+         }
+}
+module.exports = {
+  formtime:changetime
+}

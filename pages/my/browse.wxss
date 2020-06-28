@@ -1,3 +1,6 @@
+@import '../components/itemcase/index.wxss';
+@import '../components/itemnew/index.wxss';
+@import '../components/itemschool/index.wxss';
 page{
   background:#f8f8f8;
 }
@@ -31,5 +34,11 @@ page{
 }
 .browse_case>view{
   height:225rpx;
+}
+.caseitem{
+  margin-bottom:0;
+}
+.caseitem .name{
+  margin-top:30rpx;
 }
 

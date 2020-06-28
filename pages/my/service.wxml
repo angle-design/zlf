@@ -1,0 +1,29 @@
+<view class="zicun_con">
+ <view>
+        <text><text>*</text>咨询类别</text>
+        <view class="leibie" bindtap="toleibie">
+          <text>{{servicebie}}</text>
+          <image src="../../image/jian.png"></image>
+        </view> 
+    </view>
+    <view>
+        <text><text>*</text>姓名</text>
+        <input type="text"></input>  
+    </view>
+     <view>
+        <text><text>*</text>邮箱</text>
+        <input type="text"></input>  
+    </view>
+     <view>
+        <text><text>*</text>咨询内容</text>
+        <textarea bindinput="inputText"></textarea> 
+        <view class="msg_con"><text class="error">请完整、正确的填写信息</text><text class="word_no">{{number}}/500</text></view>
+    </view>
+    <button>确定</button>
+  </view>
+  <!-- 类别弹窗 -->
+  <view class="leibie_pup" wx:if="{{leibieflag}}">
+    <block wx:for="{{leibielist}}" wx:for-item="item">
+      <text data-name="{{item.name}}" data-id="{{item.id}}" bindtap="toselect">{{item.name}}</text>
+    </block>
+  </view>

@@ -1,10 +1,13 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/my/service",
+    "pages/news/index",
+    "pages/school/contact",
     "pages/my/collect",
     "pages/my/browse",
     "pages/my/index",
-    "pages/news/index",
     "pages/news/details",
     "pages/login/index",
     "pages/studentcases/index",
@@ -14,7 +17,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#2D69DF",
+    "navigationBarBackgroundColor": "#2d69df",
     "navigationBarTitleText": "中留服",
     "navigationBarTextStyle": "white"
   },

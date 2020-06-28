@@ -7,11 +7,46 @@
   position:relative;
   z-index:1;
 }
-.school_video>image{
+.swiper_body{
   height:350rpx;
   width:750rpx;
 }
-.school_video view{
+.school_video .u-img-slide{
+  height:350rpx;
+  width:750rpx;
+}
+.video_bo video,.video_feng{
+  height:350rpx;
+  width:750rpx;
+}
+.video_feng{
+  position: relative;
+}
+.dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dots .dot {
+  margin: 0 5rpx;
+  width: 9rpx;
+  height: 5rpx;
+  background: #fff;
+  opacity: 0.4;
+  border-radius: 2.5rpx;
+  transition: all .6s;
+}
+
+.dots .dot.active {
+  width: 30rpx;
+  opacity: 1;
+}
+
+.video_bo .video_feng view{
   width:120rpx;
   height:120rpx;
   position:absolute;
@@ -22,7 +57,7 @@
   padding:15rpx;
   box-sizing: border-box;
 }
-.school_video view image{
+.video_bo .video_feng view image{
   width:90rpx;
   height:90rpx;
 }
@@ -36,9 +71,10 @@
 .school_content .school_top{
   display: flex;
   justify-content: space-between;
-  margin:48rpx 40rpx 10rpx 24rpx;
+  margin:0 40rpx 10rpx 24rpx;
   align-items: center;
   height:112rpx;
+  padding-top:20rpx;
 }
 .school_content .school_top view{
   display: flex;
@@ -81,16 +117,16 @@
   text-align:center;
   display: block;
 }
-.school_introduce view>text,.school_team view>text{
+.school_introduce view>.text-hidden,.school_team view>.text-hidden{
   display: -webkit-box;
   -webkit-box-orient:vertical;
   text-overflow: ellipsis;
   overflow:hidden;
 }
-.school_introduce view>text.text-hidden,.school_team view>text.text-hidden{
+.school_introduce view>.text-hidden,.school_team view>.text-hidden{
   -webkit-line-clamp:4; 
 }
-.school_introduce view>text.text-show,.school_team view>text.text-hidden{
+.school_introduce view>.text-show,.school_team view>.text-hidden{
  -webkit-line-clamp:0; 
 }
 .school_introduce view,.school_team view,.school_notice view,.school_phone view{

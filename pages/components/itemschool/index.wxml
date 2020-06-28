@@ -1,10 +1,10 @@
-<view class="itemschool" data-id="" bindtap="gotodetail">
-      <image src="{{item.logo}}"></image>
+<view class="itemschool" data-id="{{item.id}}" bindtap="gotodetail">
+      <image src="{{imgpath+item.logo}}"></image>
         <view class="list_content">
           <text>{{item.name}}</text>
           <text>院校城市：{{item.province}}</text>
           <view class="list_button" wx:if="{{btnflag}}">
-              <button>咨询</button>
+              <button hover-stop-propagation catchtap="gotoask" data-id="{{item.id}}" data-name="{{item.name}}" data-img="{{imgpath+item.logo}}">咨询</button>
               <button>详情</button>
           </view>
           </view>

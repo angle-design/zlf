@@ -37,11 +37,17 @@ Page({
       url:"/pages/my/browse"
     })
   },
+  gotomess:function(){
+    wx.navigateTo({
+      url:"/pages/school/contact?id=tbufhgQv&touid=88bf6cf71f944133823397d7cfe7a4eb"
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    ///lxb-api/minapp/user
+   
   },
 
   /**

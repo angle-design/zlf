@@ -34,6 +34,7 @@ Page({
       'token':app.globalData.openid
     })
     .then((res)=>{
+      res.content = res.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
       this.setData({
         infodata :res
       })

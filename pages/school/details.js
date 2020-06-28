@@ -8,7 +8,13 @@ Page({
     videoflag:true,
     host:app.globalData.host,
     txtHidden: true,
-    teamHidden:true
+    teamHidden:true,
+    id:null,
+    imgpath:null,
+    infodata:null,
+    iscollect:0,
+    swiperCurrent:0,
+    videopath:null
   },
   // 院校展开收起
   txtToggle: function() {
@@ -29,8 +35,84 @@ Page({
    */
   onLoad: function (options) {
 
+    this.setData({
+      id:options.id,
+      imgpath:app.globalData.Imgpath,
+      videopath:app.globalData.videopath
+    })
+    if(!this.data.id){
+      wx.navigateTo({
+        url:"/pages/school/index"
+      })
+    }
+    this.getinfo();
   },
-
+  // 点击播放按钮视频播放
+  playvideo(){
+    this.setData({
+      videoflag:false
+    })
+  },
+  //轮播切换
+  swiperChange(e) {
+    let current = e.detail.current;
+    // console.log(current, '轮播图')
+    let that = this;
+    that.setData({
+      swiperCurrent: current,
+      videoflag:true
+    })
+  },
+  getinfo:function(){
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/institution/details/',{
+      "areaId": "",
+      "content": "",
+      "countryId": "",
+      "current": 0,
+      "id":this.data.id,
+      "pageSize": 0,
+      "schoolLevelId": ""
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      this.setData({
+        infodata:res,
+        iscollect:res.ifCollect
+      })
+      
+      console.log(res)
+    })
+  },
+  collect:function(e){
+    var id = e.currentTarget.dataset.id;
+    var type= 0;
+    if(this.data.iscollect>0){
+      type =1;
+    }
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/collect/add',{
+      "id": id,
+      "status":type,
+      "type": 3
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      if(this.data.iscollect<1){
+        this.setData({
+          iscollect:1
+        })
+      }else{
+        this.setData({
+          iscollect:0
+        })
+      }
+      
+    })
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,5 +1,6 @@
 <view class="caseitem" bindtap="gotodetail" data-id="{{item.id}}">
-    <image src="{{imgpath+item.img}}"></image>
+    <image wx:if="{{item.img}}" src="{{imgpath+item.img}}"></image>
+    <image wx:else src="../../../image/limoren.png"></image>
     <view>
       <text class="name">{{item.studentName}}</text>
       <text class="text">{{item.title}}</text>

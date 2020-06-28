@@ -15,8 +15,8 @@ Page({
     {img:'lei_04.png',name:'项目层次',url:'',islog:false},
     {img:'lei_05.png',name:'项目资讯',url:'/pages/news/index',islog:true},
     {img:'lei_06.png',name:'学生案例',url:'/pages/studentcases/index',islog:true},
-    {img:'lei_07.png',name:'咨询留服',url:'',islog:false},
-    {img:'lei_08.png',name:'浏览记录',url:'',islog:false}
+    {img:'lei_07.png',name:'咨询留服',url:'/pages/my/service',islog:true},
+    {img:'lei_08.png',name:'浏览记录',url:'/pages/my/browse',islog:true}
   ],
   swiperCurrent:0,//轮播图选中索引
   currentTab: 0,
@@ -66,41 +66,7 @@ gotopage(event){
 
   
   if(islogin_){
-    if(this.data.islogin){
-      console.log(app.globalData.userInfo)
-      //跳转
-      wx.navigateTo({
-        url: url
-      })
-    }else{
-     
-      //授权登录
-      wx.login({
-        complete: (res) => {
-          
-          //请求登录接口
-          app.post(app.globalData.Apipath+'/lxb-api/wx/login',{
-            js_code: res.code
-          })
-          .then((result)=>{            
-              app.globalData.openid = result.token;
-              if(result.authorize==1){
-                //需要授权手机号
-                wx.navigateTo({
-                  url: '/pages/login/index'
-                })
-              }else{
-                //不需要授权手机号
-                //需要授权手机号
-                wx.navigateTo({
-                  url: url
-                })
-              }
-              
-          })
-        },
-      })
-    }
+    app.checklogin(url,2);
   }else{
     //跳转
     wx.navigateTo({
@@ -109,9 +75,9 @@ gotopage(event){
   }
 },
 gotoschool(){
-
+  var id = evnet.currentTarget.dataset.id
   wx.switchTab({
-    url: '/pages/school/index'
+    url: '/pages/school/index?id='+id
   })
 },
 getarealist(){//获取首页院校地区
@@ -123,6 +89,11 @@ getarealist(){//获取首页院校地区
     })
     this.getinstitutionlist()
   })       
+},
+gotoallschool(){
+  wx.switchTab({
+    url: '/pages/school/index'
+  })
 },
 gettbannerlist(){//获取首页轮播图
   app.post(app.globalData.Apipath+'/lxb-api/tbanner/list',{
