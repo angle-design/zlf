@@ -1,0 +1,16 @@
+<!-- 授权弹窗 -->
+<view class="empower_pup" >
+	<view class="empower_con">
+		<text>为了更好的为您提供服务
+		请您先授权并登陆</text>
+		<view class="empower_img">
+			<image src="{{host}}wei.png"></image>
+			<image src="{{host}}lian.png"></image>
+			<image src="{{host}}logo.png"></image>
+		</view>
+		<view class="empower_btn">
+			<button bindtap="showempower_">暂不授权</button>
+			<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo" >去授权</button>
+		</view>
+	</view>
+</view>

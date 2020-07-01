@@ -20,7 +20,7 @@ Page({
     this.getlist();
   },
   getlist:function(){
-    console.log(app.globalData.openid);
+    
     this.setData({
       loading: false
     })
@@ -61,7 +61,17 @@ Page({
       
     })
   },
+  scrollToLower: function (e) {
+    console.log(1);
+    if (!this.data.loading && !this.data.noMore){
+      this.setData({
+        loading: true,
+        page: this.data.page + 1
+      })
 
+      this.getlist();
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

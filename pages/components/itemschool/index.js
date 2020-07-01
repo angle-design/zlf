@@ -17,14 +17,20 @@ Component({
   methods:{
     gotodetail:function(evnet){
       var id = evnet.currentTarget.dataset.id
-      wx.navigateTo({
-        url:"/pages/school/details?id="+id
-      })
+      var url = "/pages/school/details?id="+id;
+      var isshow = app.checklogin(url,2);
+      if(isshow){
+        console.log(isshow)
+        this.triggerEvent('showempower')
+      }
     },
     gotoask:function(evnet){
       var id = evnet.currentTarget.dataset.id
       var url = "/pages/school/contact?id="+id;
-      app.checklogin(url,2);
+      var isshow = app.checklogin(url,2);
+      if(isshow){
+        this.triggerEvent('showempower')
+      }
     }
   },
 })

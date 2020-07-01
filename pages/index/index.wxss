@@ -1,9 +1,9 @@
 /**index.wxss**/
 @import '../components/itemschool/index.wxss';
-
+@import '../components/empower/empower.wxss';
 page {
   background: #f8f8f8;
-  padding-bottom: 150rpx;
+  padding-bottom: 180rpx;
 }
 
 /* 头部轮播图 */

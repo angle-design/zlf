@@ -2,8 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding:30rpx 0;
+  padding:20rpx 0;
 }
-.collect>view{
-  margin-bottom: 20rpx;
+.collect .collectlist{
+  margin-bottom: 30rpx;
+}
+page{
+  background: #F8F8F8;
+}
+.browse_time{
+  color:#B2B2B2;
+  display: block;
+  font-size:13px;
+  text-align: right;
+  margin-top:10rpx;
 }

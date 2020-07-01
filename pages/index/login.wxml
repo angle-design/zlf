@@ -1,0 +1,11 @@
+<view class="login">
+	<view class="lohgin_logo">
+		<image src="{{host}}logo.png"></image>
+		<text>出国留学培训项目线上平台</text>
+	</view>
+		<button open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="onGotPhone">微信手机号授权登录</button>
+    <view class="agree">
+      <image src="{{host}}a.png"></image>
+      <text>阅读并同意<text>《用户注册协议、隐私条款》</text></text>
+    </view>
+</view>

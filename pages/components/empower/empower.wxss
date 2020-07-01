@@ -1,0 +1,61 @@
+/* pages/components/empower.wxss */
+/* 授权弹窗 */
+.empower_pup{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.6);
+  z-index:10;
+  bottom:-1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.empower_con{
+  background:#fff;
+  width:100%;
+  height:640rpx;
+  border-radius:20px 20px 0 0 ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.empower_con>text{
+  margin:40rpx 0 80rpx;
+  text-align: center;
+}
+.empower_img{
+  display: flex;
+  align-items: center;
+}
+.empower_img image{
+  width:140rpx;
+  height:140rpx;
+}
+.empower_img image:nth-child(2){
+  width:36rpx;
+  height:36rpx;
+  margin:0 40rpx;
+}
+.empower_btn{
+  display: flex;
+  width:650rpx;
+  margin:80rpx auto;
+  justify-content: space-between;
+}
+.empower_btn button{
+  width:300rpx;
+  height:80rpx;
+  border-radius:5px;
+  background:#EEEEED;
+  font-size:14px;
+  line-height:80rpx;
+  box-sizing: border-box;
+}
+.empower_btn button:nth-child(2){
+  background: #06C15F;
+  color:#fff;
+}
+

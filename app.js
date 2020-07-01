@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-   
+   wx.hideTabBar()
   },
   /** 
     * 自定义post函数，返回Promise
@@ -81,40 +81,62 @@ checklogin:function(url,type){
             url: url,
          })
       }
-     
+     return false;
     }else{
-      //授权登录
-      wx.login({
-        complete: (res) => {
-          //请求登录接口
-          this.post(this.globalData.Apipath+'/lxb-api/wx/login',{
-            js_code: res.code
-          })
-          .then((result)=>{            
-            this.globalData.openid = result.token;
-              if(result.authorize==1){
-                //需要授权手机号
-                wx.navigateTo({
-                  url: '/pages/login/index'
-                })
-              }else{
-                //不需要授权手机号
-                this.getuserinfo();
-                if(type==1){
-                  wx.switchTab({
-                     url: url,
-                   })
-               }else{
-                  wx.navigateTo({
-                     url: url,
-                  })
-               }
-              }
-          })
-        },
-      })
+       this.globalData.return_url = url;
+      this.globalData.reutrn_type = type;
+      return true;
+      
     }
-    return false;
+},
+wxgetuserinfo:function(e){
+   
+      if (!e.detail.userInfo) {
+          wx.showToast({
+            title: '拒绝授权后无法使用小程序',
+              icon: "none"
+          });
+      } else {
+         
+          this.login()
+      }
+},
+login:function(){
+   //授权登录
+   wx.login({
+      complete: (res) => {
+        //请求登录接口
+        this.post(this.globalData.Apipath+'/lxb-api/wx/login',{
+          js_code: res.code
+        })
+        .then((result)=>{            
+          this.globalData.openid = result.token;
+            if(result.authorize==1){
+               wx.getUserInfo({
+                  success: res => {
+                    this.globalData.userInfo = res
+                  }
+                })
+              //需要授权手机号
+              wx.navigateTo({
+                url: '/pages/index/login'
+              })
+            }else{
+              //不需要授权手机号
+              this.getuserinfo();
+              if(this.globalData.reutrn_type==1){
+                wx.switchTab({
+                   url: this.globalData.return_url,
+                 })
+             }else{
+                wx.navigateTo({
+                   url: this.globalData.return_url,
+                })
+             }
+            }
+        })
+      },
+    })
 },
 getuserinfo:function(){
    if(!this.globalData.openid){
@@ -138,6 +160,9 @@ globalData: {
     Apipath:'http://59.110.242.178/',
     Imgpath:'http://59.110.242.178//lxb-api/file/showImg/',
     videopath:'http://59.110.242.178/lxb-api/file/ios/video/',
-    wsspath:'ws://59.110.242.178/lxb-api/imserver/'
+    wsspath:'ws://59.110.242.178/lxb-api/imserver/',
+    return_url:null,
+    reutrn_type:1,
+    showlogin:true
   }
 })

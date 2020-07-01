@@ -14,7 +14,8 @@ Page({
     infodata:null,
     iscollect:0,
     swiperCurrent:0,
-    videopath:null
+    videopath:null,
+    height:'220rpx'
   },
   // 院校展开收起
   txtToggle: function() {
@@ -112,6 +113,11 @@ Page({
       
     })
     
+  },
+  gotoask:function(evnet){
+    var id = evnet.currentTarget.dataset.id
+    var url = "/pages/school/contact?id="+id;
+    app.checklogin(url,2);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

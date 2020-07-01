@@ -1,4 +1,5 @@
 // pages/contact/contact.js
+import websocket from '../../utils/wechat-websocket.js'
 const app = getApp();
 var inputValue = '';
 var msgList = [];
@@ -8,6 +9,7 @@ var keyHeight = 0;
 var socketOpen = false;
 var wxss = app.globalData.wsspath;
 var SocketTask;
+var count = 0;//记录加载的次数来判定开始的条数 msglist.length+1-count
 
 /**
  * 初始化数据
@@ -15,11 +17,7 @@ var SocketTask;
 function initData(that) {
   inputValue = '';
   //聊天记录
-  msgList = [{
-      speaker: 'server',
-      contentType: 'text',
-      content: '欢迎咨询'
-    }
+  msgList = [
   ];
   that.setData({
     msgList,
@@ -42,7 +40,13 @@ Page({
     zixunflag:false,//咨询弹窗
     url:null,
     user_input_text: '',//用户输入文字
-    imgpath:null
+    imgpath:null,
+    servername:null,
+    serverimg:null,
+    username:null,
+    userimg:null,
+    websocket:websocket,
+    ScrollLoading:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -52,19 +56,21 @@ Page({
       //管理员进入
       this.setData({
         url : wxss+'INSTMIN_'+this.options.id+'_'+this.options.touid
-      })
+      })    
     }else{
       this.setData({
         url : wxss+'GENEMIN_'+app.globalData.uinfo.id+'_'+this.options.id
       })
     }
-    
+    this.getusername();
+    this.getservername();
     this.setData({
       imgpath:app.globalData.Imgpath
     })
     initData(this);
+    // this.getservername();
     this.bottom();
-    
+    this.gethistory();
   },
   bottom: function() {
     this.setData({
@@ -75,66 +81,235 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function(e) {
-    if (!socketOpen) {
-      this.webSocket()
+    // 程序从后台到前台的操作--建立连接
+    if(this.websocket){
+      this.linkWebsocket();
     }
   },
   // 页面加载完成
   onReady: function () {
-    var that = this;
-    
-    SocketTask.onOpen(res => {
-      socketOpen = true;
-      console.log('监听 WebSocket 连接打开事件。', res)
+    let _this = this;
+    // 创建websocket对象
+    this.websocket = new websocket({
+      // true代表启用心跳检测和断线重连
+      heartCheck: true,
+      isReconnection: true
+    });
+    // 建立连接
+    this.websocket.initWebSocket({
+      url: _this.data.url,
+      success(res) { console.log(res) },
+      fail(err) { console.log(err) }
     })
-    SocketTask.onClose(onClose => {
-      console.log('监听 WebSocket 连接关闭事件。', onClose)
-      socketOpen = false;
-      this.webSocket()
+    // 监听websocket状态
+    this.websocket.onSocketClosed({
+      url: this.data.url,
+      success(res) { console.log(res) },
+      fail(err) { console.log(err) }
     })
-    SocketTask.onError(onError => {
-      console.log('监听 WebSocket 错误。错误信息', onError)
-      socketOpen = false
+    // 监听网络变化
+    this.websocket.onNetworkChange({
+      url: this.data.url,
+      success(res) { console.log(res) },
+      fail(err) { console.log(err) }
     })
-    SocketTask.onMessage(onMessage => {
-      console.log(onMessage);
-      if(onMessage.data=='连接成功'){
+    // 监听服务器返回
+    this.websocket.onReceivedMsg(result => {
+      console.log(result);
+      if(result.data=='连接成功' || result.data=='pong'){
         return false;
       }
-      // console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息', JSON.parse(onMessage.data))
-      var onMessage_data = JSON.parse(onMessage.data)
-      msgList.push({
-        speaker: 'server',
-        contentType: 'text',
-        content: onMessage_data.content
-      })
-        that.setData({
-          msgList
+      console.log('rs==='+result);
+      var onMessage_data = JSON.parse(result.data)
+      if(onMessage_data.type==1){
+        msgList.push({
+          speaker: 'server',
+          contentType: 'text',
+          content: onMessage_data.content,
+          uname:_this.data.servername,
+          uimg:_this.data.serverimg
         })
-        that.bottom()
+      }else{
+        msgList.push({
+          speaker: 'server',
+          contentType: 'text',
+          content: onMessage_data.content,
+          uname:_this.data.username,
+          uimg:_this.data.userimg
+        })
+      }
+      
+      _this.setData({
+          msgList
+      })
+      _this.bottom()
+    })
+  },
+  //获取学校姓名
+  getservername:function(){
+    var sid = this.options.id;
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/getinstitution',{
+      id:sid
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+        this.setData({
+          servername:res.name,
+          serverimg:app.globalData.Imgpath+res.logo
+        })
       
     })
   },
-  webSocket: function () {
-    console.log(this.data.url)
-    // 创建Socket
-    SocketTask = wx.connectSocket({
-      url: this.data.url,
-      data: 'data',
-      header: {
-        'content-type': 'application/json'
-      },
-      method: 'post',
-      success: function (res) {
-        console.log('WebSocket连接创建', res)
-      },
-      fail: function (err) {
-        wx.showToast({
-          title: '网络异常！',
+  //获取用户姓名
+  getusername:function(){
+    var sid = this.options.touid;
+    if(!sid){
+        this.setData({
+          username:app.globalData.uinfo.username,
+          userimg:app.globalData.uinfo.headimg
         })
-        console.log(err)
-      },
+        return false;
+    }
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/getuser',{
+      id:sid
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
     })
+    .then((res)=>{
+     
+        this.setData({
+          username:res.name,
+          userimg:res.logo
+        })
+      
+    })
+  },
+  //获取聊天记录
+  gethistory:function(){
+    if(this.options.touid){
+      var id = this.options.touid;
+    }else{
+      var id = this.options.id;
+    }
+    var _this = this;
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/chat/list',{
+      "id": id,
+	    "since": msgList.length-count,
+	    "size": 11
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      if(res.length<1){
+        _this.data.ScrollLoading=1;
+        return false;
+      }
+      count++;//
+      if(msgList.length<1){
+        res.reverse();
+        var isf = 1;//记录是否是第一次
+      }else{
+       var  isf =0;
+      }
+      //从首页进入
+      //左侧是学校，右侧是用户
+      if(!_this.options.touid ){
+        var speaker =  'server';
+        var speaker_ = 'customer';
+      }else{
+        var speaker =  'customer';
+        var speaker_ = 'server';
+      }
+      const list = msgList;
+      var lasttime;//记录最后一次时间
+      res.forEach(function(item,index) {
+        // console.log(item)
+          if(item.userType>0){
+            if(isf){
+               //管理员消息
+               list.push({
+                speaker: speaker,
+                contentType: 'text',
+                content: item.content,
+                uname:_this.data.servername,
+                uimg:_this.data.serverimg
+              })
+            }else{
+              list.unshift({
+                speaker: speaker,
+                contentType: 'text',
+                content: item.content,
+                uname:_this.data.servername,
+                uimg:_this.data.serverimg
+              })
+            }
+          }else{
+            if(isf){
+              //用户消息
+              list.push({
+                speaker: speaker_,
+                contentType: 'text',
+                content: item.content,
+                uname:_this.data.username,
+                uimg:_this.data.userimg
+              })
+            }else{
+              //用户消息
+              list.unshift({
+                speaker: speaker_,
+                contentType: 'text',
+                content: item.content,
+                uname:_this.data.username,
+                uimg:_this.data.userimg
+              })
+            }
+
+          }
+          lasttime = item.chatTime;
+      });
+      list.unshift({
+        speaker: 'time',
+        contentType: 'text',
+        content:lasttime
+      })
+    _this.setData({
+        msgList:list
+    })
+    if(isf){ //如果第一次加载跳转到底部
+      _this.bottom();
+    }
+    else{
+      _this.setData({
+        toView: 'msg-'  + (res.length - 1)
+      })
+    }
+    //打开下拉加载历史
+    _this.data.ScrollLoading  = 0;
+    })
+  },
+  scroll_scroll:function(e){
+    var that = this
+    if (that.data.ScrollLoading == 1){ //防止多次触发
+      return false
+    }
+    // console.log(e.detail.scrollTop)
+    // if (e.detail.scrollTop < 10) { //触发触顶事件
+          that.data.ScrollLoading  = 1 
+          console.log('触发顶部事件')
+          that.gethistory();
+
+    // }
+  },
+  onHide(){
+    // 程序后台后的操作--关闭websocket连接
+    this.websocket.closeWebSocket();
+  },
+  onUnload(){
+    this.websocket.closeWebSocket();
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -149,7 +324,15 @@ Page({
   onReachBottom: function() {
 
   },
-
+  linkWebsocket() {
+    // 建立连接
+    var _this = this;
+    this.websocket.initWebSocket({
+      url: _this.data.url,
+      success(res) { console.log(res) },
+      fail(err) { console.log(err) }
+    })
+  },
   /**
    * 获取聚焦
    */
@@ -162,9 +345,6 @@ Page({
       toView: 'msg-' + (msgList.length - 1),
       inputBottom: keyHeight + 'px'
     })
-    //计算msg高度
-    // calScrollHeight(this, keyHeight);
-
   },
 
   //失去聚焦(软键盘消失)
@@ -188,12 +368,15 @@ Page({
   //发送点击监听
   submitTo: function (e) {
     let that = this;
-    
+    if(!that.data.inputValue){
+      return false;
+    }
+   
     if(that.options.touid){
       var data = {
         fromuser:that.options.id,
         touser:that.options.touid,
-        userId:'1111111',
+        userId:app.globalData.uinfo.id,
         content: that.data.inputValue,
         type:1
       }
@@ -205,27 +388,31 @@ Page({
         type:0
       }
     }
-    console.log(socketOpen)
-    if (socketOpen) {
       // 如果打开了socket就发送数据给服务器
       that.sendSocketMessage(data)
-      msgList.push({
-        speaker: 'customer',
-        contentType: 'text',
-        content: that.data.inputValue,
-        uname:app.globalData.uinfo.username,
-        uimg:app.globalData.uinfo.headimg
-      })
+      if(that.options.touid){
+        msgList.push({
+          speaker: 'customer',
+          contentType: 'text',
+          content: that.data.inputValue,
+          uname:that.data.servername,
+          uimg:that.data.serverimg
+        })
+      }else{
+        msgList.push({
+          speaker: 'customer',
+          contentType: 'text',
+          content: that.data.inputValue,
+          uname:that.data.username,
+          uimg:that.data.userimg
+        })
+      }
       inputValue = '';
       this.setData({
         msgList,
         inputValue
       });
-      
       that.bottom()
-    }else{
-      console.log('连接失败')
-    }
   },
   // 判断剩余字数
   inputText: function (e) { //监听输入，实时改变已输入字数
@@ -264,7 +451,7 @@ Page({
   sendSocketMessage:function (msg) {
     var that = this;
     console.log('通过 WebSocket 连接发送数据', JSON.stringify(msg))
-    SocketTask.send({
+    that.websocket.sendWebSocketMsg({
       data: JSON.stringify(msg)
     }, function (res) {
       console.log('已发送', res)

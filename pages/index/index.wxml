@@ -1,6 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-
 	<view class="home_top" 
 	style="background:#2D69DF url({{host}}bottom_02.jpg) no-repeat center bottom">
 		<!-- 轮播图 -->
@@ -31,7 +30,6 @@
 			<view bindtap="gotoallschool" >全部院校<image src="../../image/jian.png"></image>
 			</view>
 		</view>
-
 		<!-- 左右滑动导航 -->
 		<view class="list_tab">
 		  <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="true">
@@ -44,8 +42,12 @@
 		<!-- 学校列表 -->
     <view class="list_body">
       <view class="list_item" wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
-					<itemschool imgpath="{{imgpath}}" item="{{schoolItem}}" btnflag="{{true}}"></itemschool>
+					<itemschool imgpath="{{imgpath}}" item="{{schoolItem}}" btnflag="{{true}}" bindhideempower="hideempower" bindshowempower="showempower"></itemschool>
       </view>
     </view>
 	</view>
 </view>
+<view hidden="{{showgetuser}}" >
+<empower host="{{host}}" bindhideempower="hideempower" bindshowempower="showempower"></empower>	
+</view>
+<tabbar activeIdx='0'></tabbar>

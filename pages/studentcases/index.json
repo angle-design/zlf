@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "学生案例",
-  "usingComponents": {"itemcase": "../components/itemcase/index"}
+  "usingComponents": {
+    "itemcase": "../components/itemcase/index",
+    "loading":"../components/loading/index"
+  }
 }

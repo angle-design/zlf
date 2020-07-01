@@ -68,8 +68,6 @@ Page({
         }else{
           res_[index] = item;
         }
-          
-         
       });
       if(this.data.page==1){
         this.setData({
@@ -84,6 +82,17 @@ Page({
       console.log(this.data.browlist);
     })
     
+  },
+  scrollToLower: function (e) {
+    console.log(1);
+    if (!this.data.loading && !this.data.noMore){
+      this.setData({
+        loading: true,
+        page: this.data.page + 1
+      })
+
+      this.getlist();
+    }
   },
   gotocase:function(event){
     var id =  event.currentTarget.dataset.id;

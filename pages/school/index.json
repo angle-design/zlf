@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "全部院校",
-  "usingComponents": {"itemschool": "../components/itemschool/index"}
+  "usingComponents": {
+    "itemschool": "../components/itemschool/index",
+    "empower": "../components/empower/empower",
+    "tabbar":"../components/tabbar/index"
+  }
 }

@@ -1,11 +1,13 @@
 <!-- 学生案例 -->
 <view class="studentcases">
-<scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
+<scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;padding:20rpx 30rpx 0;box-sizing: border-box;">
 <block wx:for="{{caselist}}" wx:for-index="index" wx:for-item="item">
     <view class="cases">
       <itemcase item="{{item}}" imgpath="{{imgpath}}"></itemcase>
     </view>
-
   </block>
+  
 </scroll-view>
+<view> <loading></loading></view>
+
 </view>

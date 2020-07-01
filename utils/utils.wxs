@@ -30,7 +30,7 @@ function changetime(value){
   var diff_hours = parseInt(diffValue / 3600);    // 一时3600秒
   var diff_minutes = parseInt(diffValue / 60);
   var diff_secodes = parseInt(diffValue);
-        if (diff_days > 0 ) {  //相差天数 0 < diff_days < 3 时, 直接返出
+        if (diff_days > 0 && diff_day<3 ) {  //相差天数 0 < diff_days < 3 时, 直接返出
              return diff_days + "天前";
          } else if (diff_days <= 0 && diff_hours > 0) {
              return diff_hours + "小时前";
@@ -48,6 +48,27 @@ function changetime(value){
              return formtime(value);
          }
 }
+function ctime(value){
+    var stime = formtime(value);
+    var htime = stime.substring(10, 16)
+    var newtime = getDate().getTime();
+    var oldtime =  parse(stime);
+    
+    var diffValue = parseInt((newtime-oldtime)/1000);   // 获取此时 秒数 与 要处理的日期秒数 之间的差值
+    var diff_days = parseInt(diffValue / 86400);   // 一天86400秒 获取相差的天数 取整
+    var diff_hours = parseInt(diffValue / 3600);    // 一时3600秒
+    var diff_minutes = parseInt(diffValue / 60);
+    var diff_secodes = parseInt(diffValue);
+    /////////////// 小于1 返回十分秒  大于1 小于2 返回 昨天十分秒 
+    if(diff_days<=0 ){
+        return htime;
+    }else if(diff_days>0 && diff_days<=1){
+        return "昨天"+htime;
+    }else{
+        return stime;
+    }
+  }
 module.exports = {
-  formtime:changetime
+  formtime:changetime,
+  fftime:ctime
 }

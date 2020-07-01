@@ -25,7 +25,8 @@ Page({
   page:1,
   host:app.globalData.host,
   islogin:false,
-  imgpath:null
+  imgpath:null,
+  showgetuser:true
   },
 
   swiperChange(e) {
@@ -63,16 +64,39 @@ Page({
 gotopage(event){
   var islogin_ = event.target.dataset.islog;
   var url = event.target.dataset.url;
-
-  
   if(islogin_){
-    app.checklogin(url,2);
+    var isshow = app.checklogin(url,2);
+    if(isshow){
+      wx.getSetting({
+        success: res => {
+           // 已经授权
+           if (res.authSetting['scope.userInfo']) {
+              app.login();
+              
+           }else{
+              this.setData({
+                showgetuser:false
+              })
+           }
+        }
+     })
+    }
   }else{
     //跳转
     wx.navigateTo({
       url: url
     })
   }
+},
+showempower(){
+  this.setData({
+    showgetuser:false
+  })
+},
+hideempower(){
+  this.setData({
+    showgetuser:true
+  })
 },
 gotoschool(){
   var id = evnet.currentTarget.dataset.id
@@ -141,39 +165,39 @@ switchNav(event){
   })      
   if (this.data.currentTab == cur) {
       return false;
-  } else {
+      } else {
       this.setData({
           currentTab: cur
       })
     }
   this.getinstitutionlist();
-  },
-  bindSolarChange:function(e){
+},
+bindSolarChange:function(e){
     this.setData({
       datepicker:e.detail.value
     })
-  },
-  getUserInfo: function(e) {
+},
+getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  },
-  switchTab(event){
+},
+switchTab(event){
     var cur = event.detail.current;
     var singleNavWidth = this.data.windowWidth / 5;
       this.setData({
         currentTab: cur,
         navScrollLeft: (cur - 2) * singleNavWidth
     })
-  },
-  onShow: function () {
+},
+onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         currentTab: 0
       })
     }
-  },
+},
 })

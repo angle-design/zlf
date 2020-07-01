@@ -47,9 +47,9 @@
 		<view class="school_introduce">
 			<text>院校介绍</text>
 			<view>
-				<rich-text class="{{txtHidden?'text-hidden':'text-show'}}" nodes="{{infodata.information}}"></rich-text>
+				<rich-text class="{{txtHidden?'text-hidden':'text-show'}}" nodes="{{infodata.information}}" ></rich-text>
 				<!-- <text class="{{txtHidden?'text-hidden':'text-show'}}">{{infodata.information}}</text> -->
-				<view class="all {{!txtHidden?'active':''}}" bindtap="txtToggle">
+				<view class="all {{!txtHidden?'active':''}}" bindtap="txtToggle" >
 					<image src="{{host}}quanbu.png"></image>{{txtHidden?'查看全部':'收起内容'}}
 				</view>
 			</view>
@@ -91,6 +91,6 @@
 			<image wx:else src="{{host}}collectcur.png" data-id="{{infodata.id}}" bindtap="collect"></image>
 			<text>收藏</text>
 		</view>
-		<button>立即咨询</button>
+		<button bindtap="gotoask" data-id="{{infodata.id}}" >立即咨询</button>
 	</view>
 </view>

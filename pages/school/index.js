@@ -9,7 +9,9 @@ Page({
     schoollist:[],
     page:1,
     islogin:false,
-    imgpath:null
+    imgpath:null,
+    showgetuser:true,
+    host:app.globalData.host,
   },
 
   /**
@@ -59,6 +61,16 @@ Page({
         page:this.data.page+1,
         schoollist:res
       })
+    })
+  },
+  showempower(){
+    this.setData({
+      showgetuser:false
+    })
+  },
+  hideempower(){
+    this.setData({
+      showgetuser:true
     })
   },
   /**

@@ -6,26 +6,10 @@ Page({
    */
   data: {
     host:app.globalData.host,
-    messagelist:[
-      {
-        "isnew":1,
-        "school":'北京大学1',
-        "time":'12:50',
-        content:'我问我我哦我我我我我我觉得考试科目三顺利'
-      },
-      {
-        "isnew":0,
-        "school":'北京大学2',
-        "time":'12:50',
-        content:'我问我我哦我我我我我我觉得考试科目三顺利'
-      },
-      {
-        "isnew":0,
-        "school":'北京大学3',
-        "time":'12:50',
-        content:'我问我我哦我我我我我我觉得考试科目三顺利'
-      }
-    ]
+    messagelist:null,
+    nickname:null,
+    logo:null,
+    islogin:app.globalData.openid
   },
   gotocollect:function(){
     wx.navigateTo({
@@ -37,17 +21,48 @@ Page({
       url:"/pages/my/browse"
     })
   },
-  gotomess:function(){
-    wx.navigateTo({
-      url:"/pages/school/contact?id=tbufhgQv&touid=88bf6cf71f944133823397d7cfe7a4eb"
+  gotomess:function(e){
+    var sid = e.currentTarget.dataset.id;
+    var uuid = e.currentTarget.dataset.uuid;
+    var type = e.currentTarget.dataset.type;
+    if(type<1){
+      wx.navigateTo({
+        url:"/pages/school/contact?id="+sid+"&touid="+uuid
+      })
+    }else{
+      wx.navigateTo({
+        url:"/pages/school/contact?id="+sid
+      })
+    }
+    
+  },
+  getmesslist:function(){
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/onlineadvisory/list',{
+      "current": 1,
+      "pageSize": 800
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
     })
+    .then((res)=>{
+      this.setData({
+        messagelist:res
+      })
+    })
+    .catch((err)=>{
+
+    })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     ///lxb-api/minapp/user
-   
+    this.setData({
+      nickname:app.globalData.uinfo.nickname,
+      logo:app.globalData.uinfo.headimg
+    })
   },
 
   /**
@@ -66,6 +81,7 @@ Page({
         currentTab: 2 
       })
     }
+    this.getmesslist();
   },
   /**
    * 生命周期函数--监听页面隐藏

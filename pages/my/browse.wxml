@@ -1,7 +1,8 @@
 <!-- 我的浏览记录 -->
 <view class="browse">
+<scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;padding:20rpx 0 30rpx;box-sizing: border-box;">
 	<block wx:for="{{browlist}}" wx:for-item="item">
-		<view wx:if="{{item.modelType==3}}">
+		<view wx:if="{{item.modelType==3}}" class="browselist">
 			<!-- 学校的 -->
 			<view class="browse_school" btnflag="{{false}}">
 				<itemschool item="{{item}}" imgpath="{{imgpath}}"></itemschool> 
@@ -9,7 +10,7 @@
 				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
 			</view>
 		</view>
-		<view wx:elif="{{item.modelType==2}}">
+		<view wx:elif="{{item.modelType==2}}" class="browselist">
 			<!-- 咨询 -->
 			<view class="browse_new" data-id="{{item.modelId}}" bindtap="gotonews">
 				<!-- 带图片的 -->
@@ -26,7 +27,7 @@
 				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
 			</view>
 		</view>
-		<view wx:else="{{}}">
+		<view wx:else="{{}}" class="browselist">
 			<!-- 案例的 -->
 			<view class="browse_case">
 				<!-- <view> <itemcase item="{{item}}"></itemcase></view> -->
@@ -43,4 +44,5 @@
 			</view>
 		</view>
 	</block>
+	</scroll-view>
 </view>

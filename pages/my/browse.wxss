@@ -5,14 +5,17 @@ page{
   background:#f8f8f8;
 }
 .browse{
-  padding:50rpx 0 30rpx;
+  padding:20rpx 0 30rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.browse>view{
+.browse .browselist{
   margin-bottom:35rpx;
+  display: flex;
+  justify-content: center;
+  width:100%;
 }
 .browse_time{
   color:#B2B2B2;
@@ -39,6 +42,6 @@ page{
   margin-bottom:0;
 }
 .caseitem .name{
-  margin-top:30rpx;
+  margin-top:20rpx;
 }
 

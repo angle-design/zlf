@@ -84,7 +84,7 @@
 .school_content .school_top image{
   width:36rpx;
   height:36rpx;
-  /* padding:10rpx; */
+  padding:10rpx;
 }
 .school_content .school_top view view{
   display: flex;
@@ -118,16 +118,14 @@
   display: block;
 }
 .school_introduce view>.text-hidden,.school_team view>.text-hidden{
-  display: -webkit-box;
-  -webkit-box-orient:vertical;
-  text-overflow: ellipsis;
+  display: block;
   overflow:hidden;
 }
 .school_introduce view>.text-hidden,.school_team view>.text-hidden{
-  -webkit-line-clamp:4; 
+  height:180rpx; 
 }
-.school_introduce view>.text-show,.school_team view>.text-hidden{
- -webkit-line-clamp:0; 
+.school_introduce view>.text-show,.school_team view>.text-show{
+height:auto;
 }
 .school_introduce view,.school_team view,.school_notice view,.school_phone view{
   line-height:45rpx;
@@ -185,10 +183,12 @@
   width:29rpx;
   height:32rpx;
   margin-bottom:5rpx;
+  padding:10rpx 10rpx 5rpx;
 }
 .fixed_con view:nth-child(2) image{
   width:36rpx;
   height:36rpx;
+  padding:10rpx 10rpx 5rpx;
 }
 .fixed_con button{
   flex:2;
@@ -197,4 +197,7 @@
   font-size:15px;
   border-radius:0;
   height:100rpx;
+}
+.collect_p image{
+  padding:10rpx;
 }

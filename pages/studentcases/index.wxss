@@ -1,9 +1,11 @@
+@import '../components/loading/index.wxss';
 .studentcases {
-  padding: 45rpx 30rpx 0;
+  
 }
 .cases{
   width:690rpx;
   background: #e7f2ff;
+  border-radius:10px;
 }
 .cases:nth-child(even){
   background:#fff3e7;
