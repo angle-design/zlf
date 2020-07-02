@@ -101,7 +101,7 @@ wxgetuserinfo:function(e){
           this.login()
       }
 },
-login:function(){
+login:function(obj){
    //授权登录
    wx.login({
       complete: (res) => {
@@ -124,15 +124,33 @@ login:function(){
             }else{
               //不需要授权手机号
               this.getuserinfo();
-              if(this.globalData.reutrn_type==1){
-                wx.switchTab({
-                   url: this.globalData.return_url,
-                 })
-             }else{
-                wx.navigateTo({
-                   url: this.globalData.return_url,
-                })
-             }
+              this.post(this.globalData.Apipath+'lxb-api/minapp/user',{
+      
+               },{
+               'content-type': 'application/json',
+               'token':this.globalData.openid
+               })
+               .then((res)=>{
+                  this.globalData.uinfo = res;
+                  if(this.globalData.reutrn_type==1){
+                     wx.switchTab({
+                        url: this.globalData.return_url,
+                      })
+                  }else if(this.globalData.reutrn_type==3){
+                     wx.switchTab({
+                        url: this.globalData.return_url,
+                        success:function(e){
+                           var page = getCurrentPages().pop(); 
+                           page.onLoad();
+                         }
+                      })
+                    
+                  }else{
+                     wx.navigateTo({
+                        url: this.globalData.return_url,
+                     })
+                  }
+               })
             }
         })
       },

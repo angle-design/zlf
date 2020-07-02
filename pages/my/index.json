@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "tabbar":"../components/tabbar/index"
+    "tabbar":"../components/tabbar/index",
+    "empower": "../components/empower/empower"
   },
   "navigationStyle": "custom"
 }

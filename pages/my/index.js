@@ -9,16 +9,25 @@ Page({
     messagelist:null,
     nickname:null,
     logo:null,
-    islogin:app.globalData.openid
+    islogin:app.globalData.openid,
+    showgetuser:true
   },
   gotocollect:function(){
+    var url = "/pages/my/collect";
+    if(!this.checklogin(url)){
+      return false;
+    }
     wx.navigateTo({
-      url:"/pages/my/collect"
+      url:url
     })
   },
   gotobrowse:function(){
+    var url = "/pages/my/browse";
+    if(!this.checklogin(url)){
+      return false;
+    }
     wx.navigateTo({
-      url:"/pages/my/browse"
+      url:url
     })
   },
   gotomess:function(e){
@@ -59,10 +68,14 @@ Page({
    */
   onLoad: function (options) {
     ///lxb-api/minapp/user
-    this.setData({
-      nickname:app.globalData.uinfo.nickname,
-      logo:app.globalData.uinfo.headimg
-    })
+    if(app.globalData.openid){
+      this.setData({
+        nickname:app.globalData.uinfo.nickname,
+        logo:app.globalData.uinfo.headimg,
+        islogin:app.globalData.openid
+      })
+      this.getmesslist();
+    }
   },
 
   /**
@@ -81,7 +94,16 @@ Page({
         currentTab: 2 
       })
     }
-    this.getmesslist();
+    // this.login();
+    
+    if(app.globalData.openid){
+      this.setData({
+        nickname:app.globalData.uinfo.nickname,
+        logo:app.globalData.uinfo.headimg,
+        islogin:app.globalData.openid
+      })
+      this.getmesslist();
+    }
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -116,5 +138,55 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  checklogin:function(url){
+    if(!url){
+      var isshow= app.checklogin("/pages/my/index",1)
+    }else{
+      var isshow = app.checklogin(url,2);
+    }
+    if(isshow){
+      wx.getSetting({
+        success: res => {
+           // 已经授权
+           if (res.authSetting['scope.userInfo']) {
+              app.login();
+              
+           }else{
+              this.setData({
+                showgetuser:false
+              })
+           }
+        }
+     })
+     return false;
+    }
+  },
+  login:function(){
+    var this_ = this;
+    app.checklogin("/pages/my/index",3)
+    wx.getSetting({
+      success: res => {
+         // 已经授权
+         if (res.authSetting['scope.userInfo']) {
+            app.login(this_);
+            // this.onShow();
+         }else{
+          this.setData({
+            showgetuser:false
+          })
+        }
+      }
+    })
+  },
+  showempower(){
+    this.setData({
+      showgetuser:false
+    })
+  },
+  hideempower(){
+    this.setData({
+      showgetuser:true
+    })
+  },
 })

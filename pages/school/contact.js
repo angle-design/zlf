@@ -70,6 +70,7 @@ Page({
     initData(this);
     // this.getservername();
     this.bottom();
+    count =0;
     this.gethistory();
   },
   bottom: function() {
@@ -85,6 +86,7 @@ Page({
     if(this.websocket){
       this.linkWebsocket();
     }
+    
   },
   // 页面加载完成
   onReady: function () {

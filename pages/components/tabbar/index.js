@@ -41,6 +41,7 @@ Component({
 
       wx.switchTab({
         url: `/${path}`,
+       
       })
     }
   }
