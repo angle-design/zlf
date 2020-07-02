@@ -1,7 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/arrangement/schoolresult",
+    "pages/arrangement/index",
+    "pages/aboutcenter/index",
     "pages/index/login",
+    "pages/login/index",
     "pages/my/service",
     "pages/news/index",
     "pages/school/contact",
@@ -9,17 +13,20 @@
     "pages/my/browse",
     "pages/my/index",
     "pages/news/details",
-    "pages/login/index",
     "pages/studentcases/index",
     "pages/studentcases/casedetail",
     "pages/school/index",
     "pages/school/details"
   ],
   "window": {
+    "navigationStyle": "custom",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#2d69df",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "中留服",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "navigationBar": "/pages/components/navigationBar/index"
   },
   "tabBar": {
     "custom": true,
@@ -41,6 +48,5 @@
       "selectedIconPath":"/image/mycur.png"
     }]
   },
-  "usingComponents": {},
   "sitemapLocation": "sitemap.json"
 }

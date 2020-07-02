@@ -4,6 +4,7 @@
 }
 .cases{
   width:690rpx;
+  margin:0 auto;
   background: #e7f2ff;
   border-radius:10px;
 }

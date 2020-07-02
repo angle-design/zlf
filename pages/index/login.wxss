@@ -1,17 +1,16 @@
-/* pages/index/login.wxss */
 .lohgin_logo{
-  margin-top:15vh;
+  margin-top:3vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width:100%;
   align-items: center;
   font-size:17px;
-  margin-bottom:30vh
+  margin-bottom:10vh;
 }
 .lohgin_logo image{
-  width:190rpx;
-  height:190rpx;
+  width:750rpx;
+  height:578rpx;
   margin-bottom:70rpx;
 }
 button{
@@ -20,20 +19,22 @@ button{
   background:#06C15F;
   border-radius: 4px;
   color:#fff;
+  font-size: 14px;
+  line-height: 80rpx;
 }
 .agree{
   display: flex;
- width:100%;
- justify-content: center;
- align-items: center;
- font-size:12px;
- padding-top:50rpx;
- color:#666;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  font-size:12px;
+  padding-top:50rpx;
+  color:#666;
 }
 .agree image{
   width:26rpx;
   height:26rpx;
-  margin-right:5rpx;
+  margin-right:10rpx;
 }
 .agree text text{
   color:#4189F4

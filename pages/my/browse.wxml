@@ -1,5 +1,7 @@
 <!-- 我的浏览记录 -->
 <view class="browse">
+<!-- 头部 -->
+		<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="浏览记录" is-show-back="true"></navigationBar>
 <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;padding:20rpx 0 30rpx;box-sizing: border-box;">
 	<block wx:for="{{browlist}}" wx:for-item="item">
 		<view wx:if="{{item.modelType==3}}" class="browselist">

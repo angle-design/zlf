@@ -1,14 +1,19 @@
 // pages/index/login.js
 const app=getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    isagree:true,
     host:app.globalData.host,
   },
-
+  agreeToggle: function() {
+    　let that = this;
+    　that.setData({
+      isagree:!that.data.isagree
+    　})
+  },
   /**
    * 生命周期函数--监听页面加载
    */

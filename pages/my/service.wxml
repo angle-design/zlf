@@ -1,4 +1,7 @@
+<!-- 头部 -->
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="业务咨询" is-show-back="true"></navigationBar>
 <view class="zicun_con">
+
  <view>
         <text><text>*</text>咨询类别</text>
         <view class="leibie" bindtap="toleibie">

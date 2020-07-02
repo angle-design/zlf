@@ -27,3 +27,13 @@ button:after{
   height: 0;
   color: transparent
 }
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  border-top: 0.5px solid #EEEEEE;
+  font-size: 0;
+  background: #fff;
+}

@@ -1,5 +1,6 @@
 <!-- 院校详情 -->
 <view class="school_details">
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="北京大学" is-show-back="true"></navigationBar>
 	<!-- 院校视频 -->
 	<view class="school_video">
 		<!-- 轮播 -->

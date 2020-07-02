@@ -60,4 +60,6 @@
 <view hidden="{{showgetuser}}" >
 <empower host="{{host}}" bindhideempower="hideempower" bindshowempower="showempower"></empower>	
 </view>
-<tabbar activeIdx='2'></tabbar>
+<view class='tabbar' style="padding-bottom: {{isIphoneX ? '68rpx' : '0rpx'}}">
+<tabbar activeIdx='2' ></tabbar>
+</view>

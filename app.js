@@ -1,7 +1,32 @@
 //app.js
 App({
   onLaunch: function () {
-   wx.hideTabBar()
+     let a= wx.getMenuButtonBoundingClientRect() ;
+   //   console.log(a)
+   wx.hideTabBar();
+   var that = this
+   wx.getSystemInfo({
+     success: function (res) {
+       that.globalData.platform = res.platform
+       let totalTopHeight = 68;
+       let modelmes = res.model;
+       if (modelmes.search('iPhone X') != -1 || modelmes.search('iPhone 11') != -1) {
+         that.globalData.isIphoneX = true
+       }
+       wx.setStorageSync('modelmes', modelmes)
+       if (res.model.indexOf('iPhone X') !== -1 || modelmes.search('iPhone 11') != -1) {
+         totalTopHeight = 88
+       } else if (res.model.indexOf('iPhone') !== -1) {
+         totalTopHeight = 64
+       }
+       that.globalData.statusBarHeight = res.statusBarHeight
+       that.globalData.titleBarHeight = totalTopHeight - res.statusBarHeight
+     },
+     failure() {
+       that.globalData.statusBarHeight = 0
+       that.globalData.titleBarHeight = 0
+     }
+   })
   },
   /** 
     * 自定义post函数，返回Promise

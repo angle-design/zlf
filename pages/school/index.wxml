@@ -1,4 +1,6 @@
 <view class="school">
+<!-- 头部 -->
+		<navigationBar toptextcolor="#fff" topbackground="#2D69DF" inner-title="院校" is-show-back="false"></navigationBar>
 	<view class="school_con">
 		<text class="tit">以下院校以名称首字母进行排序</text>
 		<view wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
@@ -9,4 +11,6 @@
 <view hidden="{{showgetuser}}" >
 <empower host="{{host}}" bindhideempower="hideempower" bindshowempower="showempower"></empower>	
 </view>
-<tabbar activeIdx='1'></tabbar>
+<view class='tabbar' style="padding-bottom: {{isIphoneX ? '68rpx' : '0rpx'}}">
+<tabbar activeIdx='1' ></tabbar>
+</view>

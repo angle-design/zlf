@@ -1,5 +1,6 @@
 <!-- 项目咨询 -->
 <view class="news">
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="项目资讯" is-show-back="true"></navigationBar>
 <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
 	<!-- 第一条 -->
 	<view class="new_main" bindtap="gotodetail" data-id="{{newtoplist.id}}">

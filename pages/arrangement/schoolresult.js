@@ -1,57 +1,23 @@
-// pages/school/index.js
-const app = getApp()
+// pages/aboutcenter/index.js
+const app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    schoollist:[],
-    page:1,
-    islogin:false,
     imgpath:null,
-    showgetuser:true,
     host:app.globalData.host,
-    isIphoneX:false
+    schoollist:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 适配底部
-  let modelmes = wx.getStorageSync('modelmes');
-  let isIphoneX = app.globalData.isIphoneX;
-  this.setData({
-    isIphoneX: isIphoneX
-  })
     this.setData({
       imgpath:app.globalData.Imgpath
     })
-  },
-  
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        currentTab: 1 
-      })
-    }
-    this.setData({
-      page:1,
-      imgpath:app.globalData.Imgpath
-    })
-    this.getinstitutionlist();
-    
   },
   getinstitutionlist(){
     app.post(app.globalData.Apipath+'/lxb-api/institution/list',{
@@ -70,16 +36,20 @@ Page({
       })
     })
   },
-  showempower(){
-    this.setData({
-      showgetuser:false
-    })
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
-  hideempower(){
-    this.setData({
-      showgetuser:true
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+this.getinstitutionlist()
   },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

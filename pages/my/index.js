@@ -10,7 +10,8 @@ Page({
     nickname:null,
     logo:null,
     islogin:app.globalData.openid,
-    showgetuser:true
+    showgetuser:true,
+    isIphoneX:false
   },
   gotocollect:function(){
     var url = "/pages/my/collect";
@@ -67,6 +68,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 适配底部
+  let modelmes = wx.getStorageSync('modelmes');
+  let isIphoneX = app.globalData.isIphoneX;
+  this.setData({
+    isIphoneX: isIphoneX
+  })
     ///lxb-api/minapp/user
     if(app.globalData.openid){
       this.setData({

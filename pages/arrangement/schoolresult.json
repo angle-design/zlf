@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "itemschool": "../components/itemschool/index"
+  },
+  "navigationStyle": "custom"
+}

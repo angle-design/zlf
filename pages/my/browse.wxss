@@ -9,7 +9,6 @@ page{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 .browse .browselist{
   margin-bottom:35rpx;

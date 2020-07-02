@@ -1,5 +1,6 @@
 <!-- 学生案例详情 -->
 <view class="casedetail">
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="案例详情" is-show-back="true"></navigationBar>
     <text class="case_title">{{infodata.title}}</text>
     <text class="school"><text>{{infodata.name}}</text></text>
     <view class="student_img">

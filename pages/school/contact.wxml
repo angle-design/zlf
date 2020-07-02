@@ -1,5 +1,7 @@
 <!--pages/contact/contact.wxml-->
-<view>
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="北京大学" is-show-back="true"></navigationBar>
+<view style="position:relative">
+
   <view class="cantact_top">
     <view bindtap="towei"><image src="{{host}}xi_03.png"></image><text>加微信</text></view>
     <view bindtap="freeTell"><image src="{{host}}xi_01.png"></image><text>打电话</text></view>

@@ -1,14 +1,7 @@
-.tabbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100rpx;
-  border-top: 0.5px solid #EEEEEE;
+.tabbarlist {
   display: flex;
   font-size: 0;
-  background: #fff;
-  padding-bottom:10rpx;
+  width:100%;
 }
 .tabbar-item {
   flex: 1;

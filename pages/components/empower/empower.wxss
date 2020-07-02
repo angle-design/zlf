@@ -16,15 +16,16 @@
 .empower_con{
   background:#fff;
   width:100%;
-  height:640rpx;
+  height:480rpx;
   border-radius:20px 20px 0 0 ;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .empower_con>text{
-  margin:40rpx 0 80rpx;
+  margin:90rpx 0 80rpx;
   text-align: center;
+  line-height:40rpx;
 }
 .empower_img{
   display: flex;
@@ -42,7 +43,7 @@
 .empower_btn{
   display: flex;
   width:650rpx;
-  margin:80rpx auto;
+  margin:0 auto;
   justify-content: space-between;
 }
 .empower_btn button{
@@ -53,6 +54,7 @@
   font-size:14px;
   line-height:80rpx;
   box-sizing: border-box;
+  margin:0 25rpx;
 }
 .empower_btn button:nth-child(2){
   background: #06C15F;

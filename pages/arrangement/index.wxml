@@ -1,0 +1,8 @@
+<view class="about_body">
+  <navigationBar toptextcolor="#fff" topbackground="none" inner-title="项目层次" is-show-back="true"></navigationBar>
+  <scroll-view scroll-y="true" class="about_text"> 
+      <view  bindtap="toresult">
+        <image src="{{host}}yan.jpg"></image>
+      </view>
+	</scroll-view>
+</view>

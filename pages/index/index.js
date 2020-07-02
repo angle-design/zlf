@@ -9,10 +9,10 @@ Page({
     navData:[],
   // 分类
   list:[
-    {img:'lei_01.png',name:'中心介绍',url:'',islog:false},
+    {img:'lei_01.png',name:'中心介绍',url:'/pages/aboutcenter/index',islog:false},
     {img:'lei_02.png',name:'项目介绍',url:'',islog:false},
     {img:'lei_03.png',name:'留学国别',url:'',islog:false},
-    {img:'lei_04.png',name:'项目层次',url:'',islog:false},
+    {img:'lei_04.png',name:'项目层次',url:'/pages/arrangement/index',islog:false},
     {img:'lei_05.png',name:'项目资讯',url:'/pages/news/index',islog:true},
     {img:'lei_06.png',name:'学生案例',url:'/pages/studentcases/index',islog:true},
     {img:'lei_07.png',name:'咨询留服',url:'/pages/my/service',islog:true},
@@ -26,7 +26,8 @@ Page({
   host:app.globalData.host,
   islogin:false,
   imgpath:null,
-  showgetuser:true
+  showgetuser:true,
+  isIphoneX:false,
   },
 
   swiperChange(e) {
@@ -38,6 +39,12 @@ Page({
     })
   },
  onLoad: function () {
+// 适配底部
+  let modelmes = wx.getStorageSync('modelmes');
+  let isIphoneX = app.globalData.isIphoneX;
+  this.setData({
+    isIphoneX: isIphoneX
+  })
   wx.getSystemInfo({
       success: (res) => {
           this.setData({

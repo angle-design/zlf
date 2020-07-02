@@ -1,4 +1,4 @@
-<view class='tabbar'>
+<view class="tabbarlist">
   <view class='tabbar-item {{activeIdx === index ? "active" : ""}}' wx:for='{{tabbarList}}' wx:key='{{item.pagePath}}' bindtap='handleItemTap' data-path='{{item.pagePath}}' data-idx='{{index}}'>
     <view class='tabbar-item-icon'>
       <image src='{{activeIdx === index ? item.selectedIconPath : item.iconPath}}'></image>

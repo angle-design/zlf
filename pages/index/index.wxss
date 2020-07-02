@@ -2,19 +2,35 @@
 @import '../components/itemschool/index.wxss';
 @import '../components/empower/empower.wxss';
 page {
-  background: #f8f8f8;
-  padding-bottom: 180rpx;
+ background: #f8f8f8;
+   padding-bottom: 180rpx;
 }
-
+.container{
+  height:100%;
+}
 /* 头部轮播图 */
 .home_top {
-  padding-top: 30rpx;
   background: #fff;
   position: relative;
+  padding-top:35rpx;
   height: 300rpx;
   background-size: 750rpx 95rpx;
 }
-
+.container>.title {
+  padding-top:40rpx;
+  background: #2D69DF;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  display: block;
+  line-height: 75rpx;
+  height:75rpx;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:2;
+}
 .swiper_body {
   width:750rpx;
   height: 300rpx;
@@ -124,7 +140,7 @@ page {
   background: #fff;
 }
 
-.title {
+.home_list .title {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -193,3 +209,4 @@ page {
   margin: 20rpx auto 0;
 
 }
+
