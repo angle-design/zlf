@@ -1,3 +1,5 @@
+
+  <canvas canvas-id='share' style='top:{{ctop}}px;left:{{cleft}}px;width:{{cw}}px;height:{{ch}}px;padding-bottom:100px'  hidden='{{canvasHidden}}'></canvas>
 <!-- 院校详情 -->
 <view class="school_details">
 <navigationBar toptextcolor="#333" topbackground="#fff" inner-title="北京大学" is-show-back="true"></navigationBar>
@@ -84,7 +86,7 @@
 	</view>
 	<!-- 浮底 -->
 	<view class="fixed_con">
-		<view>
+		<view bindtap="share">
 			<image src="{{host}}zhuanfa.png"></image><text>转发</text>
 		</view>
 		<view>

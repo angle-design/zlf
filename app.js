@@ -206,6 +206,7 @@ globalData: {
     wsspath:'ws://59.110.242.178/lxb-api/imserver/',
     return_url:null,
     reutrn_type:1,
-    showlogin:true
+    showlogin:true,
+    shareimg:"/image/share1.png"
   }
 })

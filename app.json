@@ -16,7 +16,9 @@
     "pages/studentcases/index",
     "pages/studentcases/casedetail",
     "pages/school/index",
-    "pages/school/details"
+    "pages/school/details",
+    "pages/school/share.wxml",
+    "pages/school/share"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -32,21 +34,24 @@
     "custom": true,
     "list": [
       {
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath":"/image/home.png",
-      "selectedIconPath":"/image/homecur.png"
-    }, {
-      "pagePath": "pages/school/index",
-      "text": "院校",
-      "iconPath":"/image/bo.png",
-      "selectedIconPath":"/image/bocur.png"
-    },{
-      "pagePath": "pages/my/index",
-      "text": "我的",
-      "iconPath":"/image/my.png",
-      "selectedIconPath":"/image/mycur.png"
-    }]
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/image/home.png",
+        "selectedIconPath": "/image/homecur.png"
+      },
+      {
+        "pagePath": "pages/school/index",
+        "text": "院校",
+        "iconPath": "/image/bo.png",
+        "selectedIconPath": "/image/bocur.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "/image/my.png",
+        "selectedIconPath": "/image/mycur.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

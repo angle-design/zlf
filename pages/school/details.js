@@ -1,5 +1,6 @@
 // pages/school/details.js
-const app = getApp()
+const promisify = require('../../utils/promisify.js');
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -15,7 +16,14 @@ Page({
     iscollect:0,
     swiperCurrent:0,
     videopath:null,
-    height:'220rpx'
+    height:'220rpx',
+    shareImgSrc:app.globalData.shareimg,
+    sharelogo:null,
+    canvasHidden:false,
+    cw:0,
+    ch:0,
+    ctop:0,
+    cleft:0
   },
   // 院校展开收起
   txtToggle: function() {
@@ -47,6 +55,20 @@ Page({
       })
     }
     this.getinfo();
+    /////////////////////////
+    wx.getSystemInfo({
+      success: res => {
+        //初始化画布的宽高 lef top 
+
+        this.setData({
+          cw: res.screenHeight*0.7*0.56,
+          ch:res.screenHeight*0.7,
+          ctop:res.screenHeight*0.1,
+          cleft:res.screenWidth*0.1
+        })
+      }
+    })
+    // this.share();
   },
   // 点击播放按钮视频播放
   playvideo(){
@@ -80,10 +102,9 @@ Page({
     .then((res)=>{
       this.setData({
         infodata:res,
-        iscollect:res.ifCollect
+        iscollect:res.ifCollect,
+        sharelogo:this.data.imgpath+res.logo
       })
-      
-      console.log(res)
     })
   },
   collect:function(e){
@@ -166,5 +187,61 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  /**
+   * 分享图片
+   */
+  share:function(){
+    var that = this;
+    const ctx = wx.createCanvasContext('share');//绘制画布
+    var bgImgPath = that.data.shareImgSrc;//背景图
+    //获取logo图片
+    const wxGetImageInfo = promisify(wx.getImageInfo);
+    console.log(that.data.sharelogo)
+    Promise.all([
+      wxGetImageInfo({
+          src: that.data.sharelogo
+      })
+    ]).then(res => {
+      console.log(res[0]);
+      console.log(bgImgPath)
+      ctx.drawImage(bgImgPath, 0, 0,that.data.cw, that.data.ch);//绘制背景图
+      //绘制logo
+      ctx.save();
+      ctx.beginPath();
+      //(圆心)X轴,Y轴,半径,起始,结束
+      var r = that.data.cw*0.105;
+      var dx = that.data.cw*0.07;
+      var dy = that.data.ch*0.11;
+      console.log(dy);
+      ctx.arc((r+dx), (r+dy), r, 0, 2 * Math.PI);
+      ctx.clip();
+      ctx.drawImage(res[0].path, 29,10,130,130,dx, dy, r*2, r*2);
+      ctx.stroke();
+      ctx.draw();
+    }).then((err)=>{
+      console.log(err)
+    })
+},
+
+  drawText: function (ctx, str, leftWidth, initHeight, titleHeight, canvasWidth) {
+    var lineWidth = 0;
+    var lastSubStrIndex = 0; //每次开始截取的字符串的索引
+    for (let i = 0; i < str.length; i++) {
+      lineWidth += ctx.measureText(str[i]).width;
+      if (lineWidth > canvasWidth) {
+        ctx.fillText(str.substring(lastSubStrIndex, i), leftWidth, initHeight); //绘制截取部分
+        initHeight += 16; //16为字体的高度
+        lineWidth = 0;
+        lastSubStrIndex = i;
+        titleHeight += 30;
+      }
+      if (i == str.length - 1) { //绘制剩余部分
+        ctx.fillText(str.substring(lastSubStrIndex, i + 1), leftWidth, initHeight);
+      }
+    }
+    // 标题border-bottom 线距顶部距离
+    titleHeight = titleHeight + 10;
+    return titleHeight
+  },
 })
