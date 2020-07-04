@@ -1,8 +1,10 @@
-
-  <canvas canvas-id='share' style='top:{{ctop}}px;left:{{cleft}}px;width:{{cw}}px;height:{{ch}}px;padding-bottom:100px'  hidden='{{canvasHidden}}'></canvas>
+<!-- <view style="position:fixed;top:0rpx;"> -->
+<canvas canvas-id='share' style='top:{{ctop}}px;left:{{cleft}}px;width:{{cw}}px;height:{{ch}}px;'  hidden='{{canvasHidden}}'></canvas>
+<!-- </view> -->
+<button bindtap='saveImageToPhotosAlbum'>保存图片</button>
 <!-- 院校详情 -->
 <view class="school_details">
-<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="北京大学" is-show-back="true"></navigationBar>
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="{{infodata.name}}" is-show-back="true"></navigationBar>
 	<!-- 院校视频 -->
 	<view class="school_video">
 		<!-- 轮播 -->
@@ -35,6 +37,7 @@
 	<!-- 院校内容 -->
 	<view class="school_content">
 		<!-- 院校名称 -->
+		<button bindtap='saveImageToPhotosAlbum'>保存图片</button>
 		<view class="school_top">
 			<view>
 				<image src="{{imgpath+infodata.logo}}"></image>

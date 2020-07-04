@@ -27,7 +27,7 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.1",
+	"libVersion": "2.10.4",
 	"appid": "wx613f779225be36b2",
 	"projectname": "zlf",
 	"debugOptions": {

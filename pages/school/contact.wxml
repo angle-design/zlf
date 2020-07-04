@@ -7,7 +7,7 @@
     <view bindtap="freeTell"><image src="{{host}}xi_01.png"></image><text>打电话</text></view>
     <view bindtap="tozixun"><image src="{{host}}xi_02.png"></image><text>联系我</text></view>
   </view>
-	<scroll-view scroll-y  bindscrolltoupper="scroll_scroll" scroll-into-view='{{toView}}' style='height: {{scrollHeight}};padding-top:15vh;box-sizing:border-box;'>
+	<scroll-view scroll-y scroll-with-animation="{{scrollAnimation}}"  bindscrolltoupper="scroll_scroll" scroll-into-view='{{toView}}' style='height: {{scrollHeight}};padding-top:15vh;box-sizing:border-box;'>
      
   	<!-- <view class='scrollMsg'> -->
 		<block wx:key wx:for='{{msgList}}' wx:for-index="index">

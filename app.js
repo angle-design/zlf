@@ -207,6 +207,7 @@ globalData: {
     return_url:null,
     reutrn_type:1,
     showlogin:true,
-    shareimg:"/image/share1.png"
+    shareimg:"/image/share3.png",
+    shareerweima:"/image/sharerweima.png"    
   }
 })

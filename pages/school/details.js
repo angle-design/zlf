@@ -18,7 +18,10 @@ Page({
     videopath:null,
     height:'220rpx',
     shareImgSrc:app.globalData.shareimg,
+    shareerweima:app.globalData.shareerweima,
     sharelogo:null,
+    sharename:null,
+    sharecontent:null,
     canvasHidden:false,
     cw:0,
     ch:0,
@@ -61,10 +64,10 @@ Page({
         //初始化画布的宽高 lef top 
 
         this.setData({
-          cw: res.screenHeight*0.7*0.56,
-          ch:res.screenHeight*0.7,
-          ctop:res.screenHeight*0.1,
-          cleft:res.screenWidth*0.1
+          cw: 750,//res.screenWidth,
+          ch:1334,//res.screenWidth/0.56,
+          ctop:0,
+          cleft:0
         })
       }
     })
@@ -103,7 +106,9 @@ Page({
       this.setData({
         infodata:res,
         iscollect:res.ifCollect,
-        sharelogo:this.data.imgpath+res.logo
+        sharelogo:this.data.imgpath+res.logo,
+        sharename:res.name,
+        sharecontent:res.information
       })
     })
   },
@@ -192,56 +197,147 @@ Page({
    * 分享图片
    */
   share:function(){
+    // var context = wx.createCanvasContext('share')
+
+    // context.setStrokeStyle("#00ff00")
+    // context.setLineWidth(5)
+    // context.rect(0, 0, 200, 200)
+    // context.stroke()
+    // context.setStrokeStyle("#ff0000")
+    // context.setLineWidth(0.1)
+    // context.moveTo(160, 100)
+    // context.arc(100, 100, 60, 0, 2 * Math.PI, true)
+    // context.moveTo(140, 100)
+    // context.arc(100, 100, 40, 0, Math.PI, false)
+    // context.moveTo(85, 80)
+    // context.arc(80, 80, 5, 0, 2 * Math.PI, true)
+    // context.moveTo(125, 80)
+    // context.arc(120, 80, 5, 0, 2 * Math.PI, true)
+    // context.stroke()
+    // context.draw()
+    // return false;
+    wx.showLoading({
+      title: '正在生成图片...',
+      mask: true,
+    });
     var that = this;
     const ctx = wx.createCanvasContext('share');//绘制画布
     var bgImgPath = that.data.shareImgSrc;//背景图
     //获取logo图片
     const wxGetImageInfo = promisify(wx.getImageInfo);
-    console.log(that.data.sharelogo)
     Promise.all([
       wxGetImageInfo({
           src: that.data.sharelogo
+      }),
+      wxGetImageInfo({
+          src: that.data.shareerweima
       })
     ]).then(res => {
-      console.log(res[0]);
-      console.log(bgImgPath)
-      ctx.drawImage(bgImgPath, 0, 0,that.data.cw, that.data.ch);//绘制背景图
-      //绘制logo
-      ctx.save();
+      ctx.drawImage(bgImgPath, 0, 0,that.data.cw, that.data.ch);//绘制背景图    
       ctx.beginPath();
       //(圆心)X轴,Y轴,半径,起始,结束
       var r = that.data.cw*0.105;
       var dx = that.data.cw*0.07;
       var dy = that.data.ch*0.11;
-      console.log(dy);
+      
+      
+      //绘制学校名字
+      var nx = that.data.cw*0.31;
+      var ny = that.data.ch*0.18;
+      // console.log(nx,ny);
+      ctx.setFillStyle('#ffffff');  // 文字颜色：白色
+      ctx.setLineWidth(1)
+      ctx.setFontSize(40);       // 文字字号：20px
+      ctx.fillText(that.data.sharename, nx, ny);
+      ctx.stroke();
+      //绘制院校简介
+      that.drawText(ctx,that.data.sharecontent,that.data.cw*0.13,that.data.ch*0.38,that.data.ch*0.67,that.data.cw*0.7)
+      ctx.stroke();
+      //绘制logo
+      ctx.setStrokeStyle("#ffffff")
+      ctx.setLineWidth(0.0001)
       ctx.arc((r+dx), (r+dy), r, 0, 2 * Math.PI);
       ctx.clip();
-      ctx.drawImage(res[0].path, 29,10,130,130,dx, dy, r*2, r*2);
+      ctx.drawImage(res[0].path, 30,12,131,131,dx, dy, r*2, r*2);
       ctx.stroke();
-      ctx.draw();
+
+      ctx.draw(false,function() {
+        // 3. canvas画布转成图片
+        wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: that.data.cw,
+          height: that.data.cy,
+          canvasId: 'share',
+          success: function (res) {
+            
+            that.setData({
+              shareImgSrc: res.tempFilePath
+            })
+            wx.hideLoading();
+          },
+          fail: function (res) {
+            console.log(res)
+          }
+        })
+      })
     }).then((err)=>{
       console.log(err)
     })
-},
-
-  drawText: function (ctx, str, leftWidth, initHeight, titleHeight, canvasWidth) {
+  },
+  saveImageToPhotosAlbum:function(){
+    var that =this;
+    //当用户点击分享到朋友圈时，将图片保存到相册
+    wx.saveImageToPhotosAlbum({
+      filePath: that.data.shareImgSrc,
+      success(res) {
+        console.log(res);
+        wx.showModal({
+          title: '图片保存成功',
+          content: '图片成功保存到相册了，去发圈噻~',
+          showCancel: false,
+          confirmText: '好哒',
+          confirmColor: '#72B9C3',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定');
+            }
+            that.setData({
+              canvasHidden: true
+            })
+          }
+        })
+      }
+    })
+  },
+  drawText: function (ctx, str, leftWidth, initHeight,contentheight, canvasWidth) {
+    str = str.replace(/<(p|div)[^>]*>(<br\/?>|&nbsp;)<\/\1>/gi, '\n').replace(/<br\/?>/gi, '\n').replace(/<[^>/]+>/g, '').replace(/(\n)?<\/([^>]+)>/g, '').replace(/\u00a0/g, ' ').replace(/&nbsp;/g, ' ').replace(/<\/?(img)[^>]*>/gi, '').replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&#39;/g,"\'").replace(/&quot;/g,"\"").replace(/<\/?.+?>/g,"")
+    str = str.slice(0,200);
+    ctx.setFillStyle('#333333');  // 文字颜色：黑色
+    ctx.setFontSize(28);  
     var lineWidth = 0;
     var lastSubStrIndex = 0; //每次开始截取的字符串的索引
+    var islastlin = false;
     for (let i = 0; i < str.length; i++) {
-      lineWidth += ctx.measureText(str[i]).width;
-      if (lineWidth > canvasWidth) {
-        ctx.fillText(str.substring(lastSubStrIndex, i), leftWidth, initHeight); //绘制截取部分
-        initHeight += 16; //16为字体的高度
-        lineWidth = 0;
-        lastSubStrIndex = i;
-        titleHeight += 30;
-      }
-      if (i == str.length - 1) { //绘制剩余部分
-        ctx.fillText(str.substring(lastSubStrIndex, i + 1), leftWidth, initHeight);
+
+      lineWidth += ctx.measureText(str[i]).width;//每一个字的宽度相加
+
+      if (lineWidth > canvasWidth) {//大于宽度开始渲染
+        if(!islastlin){
+          ctx.fillText(str.substring(lastSubStrIndex, i), leftWidth, initHeight); //绘制截取部分
+          initHeight += 42; //32为字体的高度
+          lineWidth = 0;
+          lastSubStrIndex = i;    
+          if((initHeight+42)>(contentheight)){
+            islastlin = true;
+          }
+        }else{ //最后一行替换... 然后退出
+          var laststr = str.substring(lastSubStrIndex, i-4);
+          laststr = laststr + '...';
+          ctx.fillText(laststr, leftWidth, initHeight); //绘制截取部分
+          return false;
+        }
       }
     }
-    // 标题border-bottom 线距顶部距离
-    titleHeight = titleHeight + 10;
-    return titleHeight
   },
 })

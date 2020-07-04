@@ -46,7 +46,8 @@ Page({
     username:null,
     userimg:null,
     websocket:websocket,
-    ScrollLoading:0
+    ScrollLoading:0,
+    scrollAnimation:true
   },
   /**
    * 生命周期函数--监听页面加载
@@ -288,6 +289,7 @@ Page({
       _this.setData({
         toView: 'msg-'  + (res.length - 1)
       })
+      _this.data.scrollAnimation =true;
     }
     //打开下拉加载历史
     _this.data.ScrollLoading  = 0;
@@ -302,6 +304,7 @@ Page({
     // if (e.detail.scrollTop < 10) { //触发触顶事件
           that.data.ScrollLoading  = 1 
           console.log('触发顶部事件')
+          that.data.scrollAnimation = false;
           that.gethistory();
 
     // }

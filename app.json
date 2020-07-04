@@ -16,9 +16,7 @@
     "pages/studentcases/index",
     "pages/studentcases/casedetail",
     "pages/school/index",
-    "pages/school/details",
-    "pages/school/share.wxml",
-    "pages/school/share"
+    "pages/school/details"
   ],
   "window": {
     "navigationStyle": "custom",
