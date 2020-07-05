@@ -1,5 +1,5 @@
 <view class="about_body">
-  <navigationBar toptextcolor="#fff" topbackground="none" inner-title="中心介绍" is-show-back="true"></navigationBar>
+  <navigationBar toptextcolor="#fff" topbackground="none" inner-title="中心介绍" is-show-back="true" imgsrc="{{host}}bai.png"></navigationBar>
   <scroll-view scroll-y="true" class="about_text"> 
 		<text>中国（教育部）留学服务中心成立于1989年，是教育部直属事业单位，为留学人员和国内外机构提供出国留学、留学回国、来华留学、国际教育交流与合作和教育外事服务等多领域、全方位、一站式服务。</text>
 		<text>中国（教育部）留学服务中心的业务涉及公派留学、留学行前培训、驻外使（领）馆教育处（组）宣传

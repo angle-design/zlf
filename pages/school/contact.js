@@ -70,13 +70,14 @@ Page({
     })
     initData(this);
     // this.getservername();
-    this.bottom();
+    // this.bottom();
     count =0;
     this.gethistory();
   },
   bottom: function() {
+    console.log(this.data.msgList.length)
     this.setData({
-      toView: 'msg-' + (msgList.length - 1)
+      toView: 'msg-' + (msgList.length-1)
     })
   },
   /**
@@ -208,6 +209,7 @@ Page({
     })
     .then((res)=>{
       if(res.length<1){
+        wx.hideLoading();
         _this.data.ScrollLoading=1;
         return false;
       }
@@ -282,7 +284,7 @@ Page({
     _this.setData({
         msgList:list
     })
-    if(isf){ //如果第一次加载跳转到底部
+    if(isf){ //如果第一次加载跳转到底部 
       _this.bottom();
     }
     else{
@@ -292,22 +294,27 @@ Page({
       _this.data.scrollAnimation =true;
     }
     //打开下拉加载历史
-    _this.data.ScrollLoading  = 0;
+    
+    setTimeout(() => {
+      wx.hideLoading();
+      _this.data.ScrollLoading  = 0;
+    }, 500);  
+    
     })
   },
   scroll_scroll:function(e){
-    var that = this
-    if (that.data.ScrollLoading == 1){ //防止多次触发
-      return false
-    }
-    // console.log(e.detail.scrollTop)
-    // if (e.detail.scrollTop < 10) { //触发触顶事件
-          that.data.ScrollLoading  = 1 
-          console.log('触发顶部事件')
-          that.data.scrollAnimation = false;
-          that.gethistory();
-
-    // }
+     
+      var that = this
+      if (that.data.ScrollLoading == 1){ //防止多次触发
+        return false
+      }
+      wx.showLoading({
+        title: '加载中',
+      })
+      that.data.ScrollLoading  = 1 
+      console.log('触发顶部事件')
+      that.data.scrollAnimation = false;
+      that.gethistory();
   },
   onHide(){
     // 程序后台后的操作--关闭websocket连接

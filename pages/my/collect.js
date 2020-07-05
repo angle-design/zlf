@@ -10,7 +10,8 @@ Page({
     page:1,
     loading:false,
     noMore:false,
-    imgpath:app.globalData.Imgpath
+    imgpath:app.globalData.Imgpath,
+    host:app.globalData.host
   },
 
   /**

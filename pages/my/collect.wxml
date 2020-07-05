@@ -1,7 +1,7 @@
 <!-- 我的收藏 -->
 <view class="collect">
 <!-- 头部 -->
-		<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="我的收藏" is-show-back="true"></navigationBar>
+		<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="我的收藏" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
 <scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;padding:20rpx 30rpx 30rpx;box-sizing: border-box;">
   <!-- 循环 -->
   <block wx:for="{{school}}" wx:for-index="index" wx:for-item="item">

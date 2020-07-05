@@ -8,7 +8,8 @@ Page({
   data: {
     id:null,
     infodata:null,
-    imgpath:null
+    imgpath:null,
+    host:app.globalData.host,
   },
 
   /**

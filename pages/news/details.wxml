@@ -1,5 +1,5 @@
 <!-- 咨询详情 -->
-<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="资讯详情" is-show-back="true"></navigationBar>
+<navigationBar toptextcolor="#333" topbackground="#fff" imgsrc="{{host}}hei.png" inner-title="资讯详情" is-show-back="true"></navigationBar>
 <view class="new_detail">
   <text>{{infodata.title}}</text>
   <view class="new_con">

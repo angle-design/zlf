@@ -1,50 +1,50 @@
 <!-- 我的浏览记录 -->
 <view class="browse">
-<!-- 头部 -->
-		<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="浏览记录" is-show-back="true"></navigationBar>
-<scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;padding:20rpx 0 30rpx;box-sizing: border-box;">
-	<block wx:for="{{browlist}}" wx:for-item="item">
-		<view wx:if="{{item.modelType==3}}" class="browselist">
-			<!-- 学校的 -->
-			<view class="browse_school" btnflag="{{false}}">
-				<itemschool item="{{item}}" imgpath="{{imgpath}}"></itemschool> 
-				<wxs module="utils" src="../../utils/utils.wxs"></wxs>
-				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
-			</view>
-		</view>
-		<view wx:elif="{{item.modelType==2}}" class="browselist">
-			<!-- 咨询 -->
-			<view class="browse_new" data-id="{{item.modelId}}" bindtap="gotonews">
-				<!-- 带图片的 -->
-				<view class="new_item {{!item.img?'new_noimg_item':''}}">
-					<image wx:if="{{item.img}}" src="{{imgpath+item.img}}"></image>
-					<view class="new_con">
-						<text>{{item.title}}</text>
-						<text>{{item.content}}</text>
-					</view>
+	<!-- 头部 -->
+	<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="浏览记录" imgsrc="{{host}}hei.png" is-show-back="true"></navigationBar>
+	<scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;padding:20rpx 0 30rpx;box-sizing: border-box;">
+		<block wx:for="{{browlist}}" wx:for-item="item">
+			<view wx:if="{{item.modelType==3}}" class="browselist">
+				<!-- 学校的 -->
+				<view class="browse_school" btnflag="{{false}}">
+					<itemschool item="{{item}}" imgpath="{{imgpath}}"></itemschool>
+					<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+					<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
 				</view>
+			</view>
+			<view wx:elif="{{item.modelType==2}}" class="browselist">
+				<!-- 咨询 -->
+				<view class="browse_new" data-id="{{item.modelId}}" bindtap="gotonews">
+					<!-- 带图片的 -->
+					<view class="new_item {{!item.img?'new_noimg_item':''}}">
+						<image wx:if="{{item.img}}" src="{{imgpath+item.img}}"></image>
+						<view class="new_con">
+							<text>{{item.title}}</text>
+							<text>{{item.content}}</text>
+						</view>
+					</view>
 
-				<!-- <view><itemnew item="{{item}}"></itemnew></view> -->
-				<wxs module="utils" src="../../utils/utils.wxs"></wxs>
-				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
-			</view>
-		</view>
-		<view wx:else="{{}}" class="browselist">
-			<!-- 案例的 -->
-			<view class="browse_case">
-				<!-- <view> <itemcase item="{{item}}"></itemcase></view> -->
-				<view class="caseitem"  data-id="{{item.modelId}}" bindtap="gotocase">
-					<image src="{{imgpath+item.img}}"></image>
-					<view>
-						<text class="name">{{item.studentName}}</text>
-						<text class="text">{{item.title}}</text>
-						<text class="school"><text>{{item.institutionName}}</text></text>
-					</view>
+					<!-- <view><itemnew item="{{item}}"></itemnew></view> -->
+					<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+					<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
 				</view>
-				<wxs module="utils" src="../../utils/utils.wxs"></wxs>
-				<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
 			</view>
-		</view>
-	</block>
+			<view wx:else="{{}}" class="browselist">
+				<!-- 案例的 -->
+				<view class="browse_case">
+					<!-- <view> <itemcase item="{{item}}"></itemcase></view> -->
+					<view class="caseitem" data-id="{{item.modelId}}" bindtap="gotocase">
+						<image src="{{imgpath+item.img}}"></image>
+						<view>
+							<text class="name">{{item.studentName}}</text>
+							<text class="text">{{item.title}}</text>
+							<text class="school"><text>{{item.institutionName}}</text></text>
+						</view>
+					</view>
+					<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+					<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
+				</view>
+			</view>
+		</block>
 	</scroll-view>
 </view>

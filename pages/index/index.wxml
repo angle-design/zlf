@@ -1,10 +1,8 @@
 <!--index.wxml-->
 <view class="container">
 <!-- 头部 -->
-		<navigationBar toptextcolor="#fff" topbackground="#2D69DF" inner-title="出国留学培训项目线上平台" is-show-back="false"></navigationBar>
-
+	<navigationBar toptextcolor="#fff" topbackground="#2D69DF" inner-title="出国留学培训项目线上平台" is-show-back="false"></navigationBar>
 	<view class="home_top" style="background:#2D69DF url({{host}}bottom_02.jpg) no-repeat center bottom">
-
 		<!-- 轮播图 -->
 		<swiper class='swiper_body' bindchange="swiperChange" autoplay='true' interval='3000' duration='200' circular='true'>
 			<block wx:for="{{bnrUrl}}" wx:for-index="index">

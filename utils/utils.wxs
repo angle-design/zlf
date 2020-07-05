@@ -30,7 +30,7 @@ function changetime(value){
   var diff_hours = parseInt(diffValue / 3600);    // 一时3600秒
   var diff_minutes = parseInt(diffValue / 60);
   var diff_secodes = parseInt(diffValue);
-        if (diff_days > 0 && diff_day<3 ) {  //相差天数 0 < diff_days < 3 时, 直接返出
+        if (diff_days > 0 && diff_days<3 ) {  //相差天数 0 < diff_days < 3 时, 直接返出
              return diff_days + "天前";
          } else if (diff_days <= 0 && diff_hours > 0) {
              return diff_hours + "小时前";

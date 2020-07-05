@@ -1,10 +1,9 @@
-<!-- <view style="position:fixed;top:0rpx;"> -->
+<view style="position:fixed;top:1000%;">
 <canvas canvas-id='share' style='top:{{ctop}}px;left:{{cleft}}px;width:{{cw}}px;height:{{ch}}px;'  hidden='{{canvasHidden}}'></canvas>
-<!-- </view> -->
-<button bindtap='saveImageToPhotosAlbum'>保存图片</button>
+</view>
 <!-- 院校详情 -->
-<view class="school_details">
-<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="{{infodata.name}}" is-show-back="true"></navigationBar>
+<view class="school_details" style="padding-bottom: {{isIphoneX ? '168rpx' : '100rpx'}}">
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="{{infodata.name}}" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
 	<!-- 院校视频 -->
 	<view class="school_video">
 		<!-- 轮播 -->
@@ -37,7 +36,6 @@
 	<!-- 院校内容 -->
 	<view class="school_content">
 		<!-- 院校名称 -->
-		<button bindtap='saveImageToPhotosAlbum'>保存图片</button>
 		<view class="school_top">
 			<view>
 				<image src="{{imgpath+infodata.logo}}"></image>
@@ -88,8 +86,8 @@
 		</view>
 	</view>
 	<!-- 浮底 -->
-	<view class="fixed_con">
-		<view bindtap="share">
+	<view class="fixed_con" style="padding-bottom: {{isIphoneX ? '68rpx' : '0rpx'}}">
+		<view bindtap="sharetan">
 			<image src="{{host}}zhuanfa.png"></image><text>转发</text>
 		</view>
 		<view>
@@ -99,4 +97,19 @@
 		</view>
 		<button bindtap="gotoask" data-id="{{infodata.id}}" >立即咨询</button>
 	</view>
+</view>
+<!-- 分享弹窗 -->
+<view class="share_pup" catchtap="closeshare" wx:if="{{shareflag}}">
+<view class="share_pupcon">
+	<text>分享</text>
+	<view>
+		<view><image src="{{host}}wei.png"></image><text>分享好友</text></view>
+		<view bindtap="share"><image src="{{host}}tupian.png"></image><text>生成图片</text></view>
+	</view>
+	</view>
+</view>
+<!-- 保存图片 -->
+<view class="reset_pup" hidden="{{!resetflag}}" catchtap="closereset">
+	<image src="{{shareImgSrc_}}" bindload="imageload"></image>
+	<button bindtap='saveImageToPhotosAlbum'>保存图片</button>
 </view>

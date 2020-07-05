@@ -17,6 +17,10 @@ Component({
     toptextcolor:{
       type: String,
       value: "文字颜色"
+    },
+    imgsrc:{
+      type: String,
+      value: "返回"
     }
   },
   data: {

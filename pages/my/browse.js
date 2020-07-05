@@ -27,7 +27,8 @@ Page({
     page:1,
     loading:false,
     noMore:false,
-    imgpath:app.globalData.Imgpath
+    imgpath:app.globalData.Imgpath,
+    host:app.globalData.host
   },
 
   /**
@@ -79,7 +80,7 @@ Page({
           browlist :this.data.browlist.concat(res_)
         })
       }
-      console.log(this.data.browlist);
+      // console.log(this.data.browlist);
     })
     
   },

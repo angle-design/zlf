@@ -1,0 +1,76 @@
+<!-- 头部 -->
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="常见问题" imgsrc="{{host}}hei.png" is-show-back="true"></navigationBar>
+<!-- 学位认证 -->
+<view class="question">
+	<image src="{{host}}ti1.png" style="width:407rpx;height:63rpx;"></image>
+	<block wx:for="{{onelist}}" wx:for-item="item" wx:for-index="index">
+		<view class="question_list">
+			<view class="question_item" bindtap="toToggle" data-index="{{index}}">
+				<view class="question_tit" style="background:url({{host}}tit1.png) no-repeat center center;background-size:44rpx 38rpx;">{{item.xu}}</view>
+				<text>{{item.text}}</text>
+				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
+			</view>
+			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+		</view>
+	</block>
+	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
+  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
+	进行查阅。
+	</text>
+</view>
+<!-- 就业报道 -->
+<view class="question">
+	<image src="{{host}}ti2.png" style="width:145rpx;height:62rpx;"></image>
+	<block wx:for="{{twolist}}" wx:for-item="item" wx:for-index="index">
+		<view class="question_list">
+			<view class="question_item" bindtap="toToggletwo" data-index="{{index}}">
+				<view class="question_tit" style="background:url({{host}}tit1.png) no-repeat center center;background-size:44rpx 38rpx;">{{item.xu}}</view>
+				<text>{{item.text}}</text>
+				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
+			</view>
+			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+		</view>
+	</block>
+	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
+  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
+	进行查阅。
+	</text>
+</view>
+<!-- 留学存档 -->
+<view class="question">
+	<image src="{{host}}ti3.png" style="width:145rpx;height:62rpx;"></image>
+	<block wx:for="{{threelist}}" wx:for-item="item" wx:for-index="index">
+		<view class="question_list">
+			<view class="question_item" bindtap="toTogglethree" data-index="{{index}}">
+				<view class="question_tit" style="background:url({{host}}tit1.png) no-repeat center center;background-size:44rpx 38rpx;">{{item.xu}}</view>
+				<text>{{item.text}}</text>
+				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
+			</view>
+			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+		</view>
+	</block>
+	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
+  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
+	进行查阅。
+	</text>
+</view>
+<!-- 公派留学 -->
+<view class="question">
+	<image src="{{host}}ti5.png" style="width:145rpx;height:62rpx;"></image>
+	<block wx:for="{{fourlist}}" wx:for-item="item" wx:for-index="index">
+		<view class="question_list">
+			<view class="question_item" bindtap="toTogglefour" data-index="{{index}}">
+				<view class="question_tit" style="background:url({{host}}tit1.png) no-repeat center center;background-size:44rpx 38rpx;">{{item.xu}}</view>
+				<text>{{item.text}}</text>
+				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
+			</view>
+			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+		</view>
+	</block>
+	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
+  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
+	进行查阅。
+	</text>
+</view>
+<!-- 浮窗 -->
+<view class="zixun" bindtap="toservice"><image src="{{host}}zixunfu.png" mode="widthFix"></image></view>

@@ -18,6 +18,7 @@ Page({
     videopath:null,
     height:'220rpx',
     shareImgSrc:app.globalData.shareimg,
+    shareImgSrc_:null,
     shareerweima:app.globalData.shareerweima,
     sharelogo:null,
     sharename:null,
@@ -26,7 +27,10 @@ Page({
     cw:0,
     ch:0,
     ctop:0,
-    cleft:0
+    cleft:0,
+    shareflag:false,
+    resetflag:false,
+isIphoneX:false
   },
   // 院校展开收起
   txtToggle: function() {
@@ -46,7 +50,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  // 适配底部
+  let modelmes = wx.getStorageSync('modelmes');
+  let isIphoneX = app.globalData.isIphoneX;
+  this.setData({
+    isIphoneX: isIphoneX
+  })
     this.setData({
       id:options.id,
       imgpath:app.globalData.Imgpath,
@@ -77,6 +86,16 @@ Page({
   playvideo(){
     this.setData({
       videoflag:false
+    })
+  },
+  closeshare:function(){
+    this.setData({
+      shareflag:false
+    })
+  },
+  closereset:function(){
+    this.setData({
+      resetflag:false
     })
   },
   //轮播切换
@@ -193,34 +212,31 @@ Page({
   onShareAppMessage: function () {
 
   },
+  sharetan:function(){
+    this.setData({
+      shareflag:true
+    })
+  },
   /**
    * 分享图片
    */
   share:function(){
-    // var context = wx.createCanvasContext('share')
-
-    // context.setStrokeStyle("#00ff00")
-    // context.setLineWidth(5)
-    // context.rect(0, 0, 200, 200)
-    // context.stroke()
-    // context.setStrokeStyle("#ff0000")
-    // context.setLineWidth(0.1)
-    // context.moveTo(160, 100)
-    // context.arc(100, 100, 60, 0, 2 * Math.PI, true)
-    // context.moveTo(140, 100)
-    // context.arc(100, 100, 40, 0, Math.PI, false)
-    // context.moveTo(85, 80)
-    // context.arc(80, 80, 5, 0, 2 * Math.PI, true)
-    // context.moveTo(125, 80)
-    // context.arc(120, 80, 5, 0, 2 * Math.PI, true)
-    // context.stroke()
-    // context.draw()
-    // return false;
+    var that = this;
+    if(that.data.shareImgSrc_){
+      that.setData({
+        resetflag:true
+      })
+      return false;
+    }
+    that.setData({
+      shareflag:false
+    })
     wx.showLoading({
       title: '正在生成图片...',
       mask: true,
     });
-    var that = this;
+    
+  
     const ctx = wx.createCanvasContext('share');//绘制画布
     var bgImgPath = that.data.shareImgSrc;//背景图
     //获取logo图片
@@ -270,11 +286,9 @@ Page({
           height: that.data.cy,
           canvasId: 'share',
           success: function (res) {
-            
             that.setData({
-              shareImgSrc: res.tempFilePath
+              shareImgSrc_: res.tempFilePath
             })
-            wx.hideLoading();
           },
           fail: function (res) {
             console.log(res)
@@ -285,11 +299,22 @@ Page({
       console.log(err)
     })
   },
+  imageload:function(){
+      if(this.data.shareImgSrc_){
+        wx.hideLoading();
+        this.setData({
+          resetflag:true
+        })
+      }
+      
+    
+    // 监控图片是否加载完成
+  },
   saveImageToPhotosAlbum:function(){
     var that =this;
     //当用户点击分享到朋友圈时，将图片保存到相册
     wx.saveImageToPhotosAlbum({
-      filePath: that.data.shareImgSrc,
+      filePath: that.data.shareImgSrc_,
       success(res) {
         console.log(res);
         wx.showModal({
@@ -303,6 +328,7 @@ Page({
               console.log('用户点击确定');
             }
             that.setData({
+              resetflag:false,
               canvasHidden: true
             })
           }

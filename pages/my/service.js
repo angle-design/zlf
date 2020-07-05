@@ -14,7 +14,8 @@ Page({
     leibielist:[{name:'国（境）外学历学位认证',id:'1'},{name:'留学存档',id:'2'},{name:'就业报到',id:'3'},{name:'公派留学',id:'4'}],
     name:'',
     email:'',
-    content:''
+    content:'',
+    host:app.globalData.host
   },
 // 判断剩余字数
   inputText: function (e) { //监听输入，实时改变已输入字数

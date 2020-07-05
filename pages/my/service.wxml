@@ -1,5 +1,5 @@
 <!-- 头部 -->
-<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="业务咨询" is-show-back="true"></navigationBar>
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="业务咨询" imgsrc="{{host}}hei.png" is-show-back="true"></navigationBar>
 <view class="zicun_con">
 
  <view>

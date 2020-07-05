@@ -15,7 +15,7 @@ Page({
     {img:'lei_04.png',name:'项目层次',url:'/pages/arrangement/index',islog:false},
     {img:'lei_05.png',name:'项目资讯',url:'/pages/news/index',islog:true},
     {img:'lei_06.png',name:'学生案例',url:'/pages/studentcases/index',islog:true},
-    {img:'lei_07.png',name:'咨询留服',url:'/pages/my/service',islog:true},
+    {img:'lei_07.png',name:'咨询留服',url:'/pages/my/question',islog:true},
     {img:'lei_08.png',name:'浏览记录',url:'/pages/my/browse',islog:true}
   ],
   swiperCurrent:0,//轮播图选中索引
@@ -79,7 +79,6 @@ gotopage(event){
            // 已经授权
            if (res.authSetting['scope.userInfo']) {
               app.login();
-              
            }else{
               this.setData({
                 showgetuser:false

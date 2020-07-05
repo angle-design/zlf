@@ -31,7 +31,7 @@ page {
 
 .inputRoom {
   width: 100vw;
-  height: 16vw;
+  height: 8vh;
   background-color: #eaeaea;
   position: fixed;
   bottom: 0;

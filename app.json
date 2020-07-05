@@ -1,6 +1,9 @@
 {
   "pages": [
+   
     "pages/index/index",
+    "pages/my/question",
+    "pages/school/details",
     "pages/arrangement/schoolresult",
     "pages/arrangement/index",
     "pages/aboutcenter/index",
@@ -15,8 +18,7 @@
     "pages/news/details",
     "pages/studentcases/index",
     "pages/studentcases/casedetail",
-    "pages/school/index",
-    "pages/school/details"
+    "pages/school/index"
   ],
   "window": {
     "navigationStyle": "custom",

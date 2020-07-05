@@ -1,5 +1,5 @@
 <view class="about_body">
-  <navigationBar toptextcolor="#fff" topbackground="none" inner-title="项目层次" is-show-back="true"></navigationBar>
+  <navigationBar toptextcolor="#fff" topbackground="none" inner-title="项目层次" imgsrc="{{host}}bai.png" is-show-back="true"></navigationBar>
   <scroll-view scroll-y="true" class="about_text"> 
   <block wx:for="{{infolist}}" wx:for-index="index" wx:for-item="Item" >
       <view  bindtap="toresult" data-id="{{Item.id}}">
