@@ -6,19 +6,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    host:app.globalData.host
+    host:app.globalData.host,
+    imgpath:app.globalData.Imgpath,
+    infolist:[]
   },
-// 进入层级结果
-toresult:function(){
-  wx.navigateTo({
-    url: '/pages/arrangement/schoolresult',
-  })
-},
+  // 进入层级结果
+  toresult:function(e){
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/arrangement/schoolresult?LevelId='+id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getinfo();
   },
 
   /**
@@ -62,7 +65,17 @@ toresult:function(){
   onReachBottom: function () {
 
   },
-
+  getinfo:function(){
+    app.get(app.globalData.Apipath+'/lxb-api/school/list',{
+      
+    })
+    .then((res)=>{
+      console.log(res);
+      this.setData({
+        infolist:res
+      })
+    })
+  },
   /**
    * 用户点击右上角分享
    */

@@ -8,3 +8,6 @@
 		</block>
 	</scroll-view>
 </view>
+<view hidden="{{showgetuser}}" >
+<empower host="{{host}}" bindhideempower="hideempower" bindshowempower="showempower"></empower>	
+</view>

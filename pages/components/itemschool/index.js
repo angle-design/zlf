@@ -20,8 +20,17 @@ Component({
       var url = "/pages/school/details?id="+id;
       var isshow = app.checklogin(url,2);
       if(isshow){
-        console.log(isshow)
-        this.triggerEvent('showempower')
+        wx.getSetting({
+          success: res => {
+             // 已经授权
+             if (res.authSetting['scope.userInfo']) {
+                app.login(); 
+             }else{
+              this.triggerEvent('showempower')
+             }
+          }
+        })
+        
       }
     },
     gotoask:function(evnet){
@@ -29,7 +38,16 @@ Component({
       var url = "/pages/school/contact?id="+id;
       var isshow = app.checklogin(url,2);
       if(isshow){
-        this.triggerEvent('showempower')
+        wx.getSetting({
+          success: res => {
+             // 已经授权
+             if (res.authSetting['scope.userInfo']) {
+                app.login(); 
+             }else{
+              this.triggerEvent('showempower')
+             }
+          }
+        })
       }
     }
   },

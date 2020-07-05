@@ -9,14 +9,17 @@ Page({
     imgpath:null,
     host:app.globalData.host,
     schoollist:[],
+    LevelId:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
-      imgpath:app.globalData.Imgpath
+      imgpath:app.globalData.Imgpath,
+      LevelId:options.LevelId
     })
   },
   getinstitutionlist(){
@@ -26,7 +29,7 @@ Page({
       countryId: "",
       current:this.data.page,
       pageSize: 10,
-      schoolLevelId: ""
+      schoolLevelId: this.data.LevelId
     })
     .then((res)=>{
       console.log(res);
@@ -34,6 +37,16 @@ Page({
         page:this.data.page+1,
         schoollist:res
       })
+    })
+  },
+  showempower(){
+    this.setData({
+      showgetuser:false
+    })
+  },
+  hideempower(){
+    this.setData({
+      showgetuser:true
     })
   },
   /**
