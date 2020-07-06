@@ -237,12 +237,14 @@ height:auto;
   margin-bottom:20rpx;
 }
 .share_pupcon>view view,.share_pupcon>view button{
-  width:110rpx;
   justify-content: center;
-  margin:0 100rpx;
   display: flex;
   flex-direction: column;
   text-align: center;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+  line-height:26rpx;
 }
 .share_pupcon>view button{
   padding:0;
