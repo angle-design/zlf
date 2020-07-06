@@ -24,7 +24,6 @@ Page({
     sharelogo:null,
     sharename:null,
     sharepImgSrc_:null,
-
     sharecontent:null,
     canvasHidden:false,
     cw:750,
@@ -34,6 +33,7 @@ Page({
     shareflag:false,
     resetflag:false,
     isIphoneX:false,
+    isOverShare:true
   },
   // 院校展开收起
   txtToggle: function() {

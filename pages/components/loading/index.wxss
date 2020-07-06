@@ -3,7 +3,7 @@
   display: block;
   text-align: center;
   width: 100%;
-  font-size: 28rpx;
+  font-size: 22rpx;
   height:60rpx;
   padding-top: 26rpx;
 }
@@ -12,7 +12,7 @@
   color: #888888;
   text-align: center;
   width: 100%;
-  font-size: 24rpx;
+  font-size: 22rpx;
   height:60rpx;
   padding-top: 26rpx;
   display: flex;

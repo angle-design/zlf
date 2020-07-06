@@ -60,7 +60,7 @@ align-items: flex-start;
   line-height: 50rpx;
 }
 .link{
-  font-size:13px;
+  font-size:26rpx;
   color:#666;
   display: block;
   width:670rpx;
