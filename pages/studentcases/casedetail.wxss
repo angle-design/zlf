@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 .casedetail .case_title{
-  font-size:19px;
+  font-size:38rpx;
   display: flex;
 }
 .casedetail .school {
@@ -16,7 +16,7 @@ justify-content: flex-end;
   padding:3rpx 10rpx;
   color:#4189f4;
   border-radius:10rpx;
-  font-size:13px;
+  font-size:26rpx;
 }
 .casedetail .student_img{
   display: flex;
@@ -33,11 +33,11 @@ justify-content: flex-end;
   background:#f6f6f6;
 }
 .casedetail .student_img text{
-  font-size:15px;
+  font-size:30rpx;
   margin:10rpx 0 30rpx;
 }
 .case_con{
-  font-size:14px;
+  font-size:28rpx;
   color:#666;
   line-height:45rpx;
 }

@@ -1,12 +1,13 @@
 {
   "pages": [
-   
     "pages/index/index",
+    "pages/project/index",
+    "pages/aboutcenter/index",
+   
     "pages/my/question",
     "pages/school/details",
     "pages/arrangement/schoolresult",
     "pages/arrangement/index",
-    "pages/aboutcenter/index",
     "pages/index/login",
     "pages/login/index",
     "pages/my/service",

@@ -1,4 +1,13 @@
-	<view class="loading" wx:if="{{loading}}">
-		<image src="../../image/a.gif"></image>
-		<text>{{msg}}</text>
-	</view>
+<block>
+    <view class="listFooterLoading" wx:if="{{loadStatus==1}}">
+    <!-- 转圈圈 -->
+      <view class="m-load2">
+        <view class="line"><view></view><view></view><view></view><view></view><view></view><view></view></view>
+        <view class="circlebg"></view>
+      </view>
+      <view class='load-word'>加载中</view>
+    </view>
+    <text class="listFooter" wx:elif="{{loadStatus==2}}">没有更多数据了！</text>
+    <text class="listFooter" wx:elif="{{loadStatus==-1}}">数据加载失败，请检查网络</text>
+    <text class="listFooter" wx:elif="{{loadStatus==-2}}" >没有任何数据！</text>
+</block>

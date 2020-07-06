@@ -12,6 +12,7 @@ Page({
     loading:false,
     noMore:false,
     host:app.globalData.host,
+    loadStatus:1,//状态
   },
 
   /**
@@ -29,26 +30,33 @@ Page({
     })
     app.post(app.globalData.Apipath+'/lxb-api/minapp/studentcase/list',{
       "current": this.data.page,
-      "pageSize": 6
+      "pageSize": 10
     },{
       'content-type': 'application/json',
       'token':app.globalData.openid
     })
     .then((res)=>{
-      if(this.data.page>1){
-        this.setData({
-          caselist :this.data.caselist.concat(res)
-        })
-      }else{
-        this.setData({
-          caselist :res
-        })
-      }
-      if (res.length == 0) {
-        this.setData({
-          noMore: true
-        })
-      }
+      console.log(res)
+      if(res){
+        if(this.data.page==1){
+          this.setData({
+            caselist :res
+          })
+        }else{
+          this.setData({
+            caselist :this.data.caselist.concat(res)
+          })
+          if (res.length == 0) {
+            this.setData({
+              loadStatus: 2
+            })
+          }
+        }
+    }else{
+      this.setData({
+        loadStatus: 2
+      })
+    }
     })
   },
   scrollToLower: function (e) {
@@ -99,7 +107,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    (this.data.page)++;
+    this.getlist();
   },
 
   /**

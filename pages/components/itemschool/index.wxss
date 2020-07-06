@@ -16,13 +16,13 @@
   background-color: #fff;
 }
 .itemschool .list_content{
-  font-size:16px;
+  font-size:32rpx;
   color:#343434;
   display: flex;
   flex-direction: column;
 }
 .itemschool .list_content text:nth-child(2){
-  font-size:13px;
+  font-size:26rpx;
   color:#878787;
   margin-top:5rpx;
 }
@@ -34,7 +34,7 @@
   width:135rpx;
   height:46rpx;
   background:#ff9a2d;
-  font-size:12px;
+  font-size:24rpx;
   color:#fff;
   margin-right:30rpx;
   line-height:46rpx;

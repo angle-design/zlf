@@ -12,7 +12,7 @@ page{
 .browse_time{
   color:#B2B2B2;
   display: block;
-  font-size:13px;
+  font-size:26rpx;
   text-align: right;
   margin-top:10rpx;
 }

@@ -1,0 +1,109 @@
+page{
+  width:100%;
+  height:1800rpx;
+  background: url(http://59.110.242.178/lxb-image/bgxiang.jpg) no-repeat center top;
+  background-size:cover;
+
+  box-sizing: border-box;
+}
+.project{
+margin-top:250rpx
+}
+.video{
+  width:600rpx;
+  height:340rpx;
+  border-radius: 20rpx;
+  overflow:hidden;
+  margin:0 auto 30rpx;
+  position: relative;
+
+}
+.video view{
+  position: absolute;
+  width:100rpx;
+  height:100rpx;
+  top:50%;
+  margin-top:-50rpx;
+  left:50%;
+  margin-left:-50rpx
+}
+.video view image{
+  width:100rpx;
+  height:100rpx;
+}
+.list{
+  width:720rpx;
+  margin:50rpx auto;
+  position:relative;
+  height:1100rpx;
+}
+.list_tab{
+  color:#fff;
+  display: flex;
+  font-size:28rpx;
+  justify-content:space-between;
+}
+.list_tab view{
+  display: flex;
+  margin:0 1rpx;
+  flex: 1;
+  margin-top:10rpx;
+
+}
+.list_tab view.active{
+
+  margin-top:0;
+transition: all 0.2s;
+}
+.list_tab view text{
+  display: flex;
+  flex: 1;
+  background:#ff9a2d;
+  border-radius: 20rpx 20rpx 0 0;
+  height:75rpx;
+  line-height:50rpx;
+  justify-content: center;
+}
+.list_tab view.active text{
+  background: #fff;
+  color:#2c68cc;
+  font-size:32rpx;
+  line-height:68rpx;
+}
+.list_tab text{
+  color:#fff;
+}
+.list_content{
+  position:absolute;
+  top:60rpx;
+  background:#fff;
+  left:0;height:auto;
+  width:100%;
+  padding:60rpx 40rpx;
+  box-sizing: border-box;
+  border-radius:20rpx 20rpx 10rpx 10rpx;
+ height:1050rpx;
+}
+.list_content view{
+  height:100%;
+  overflow-y: scroll;
+}
+.list_content text{
+  display: block;
+  text-indent: 2rem;
+  font-size:28rpx;
+  line-height: 50rpx;
+}
+.project .text_con{
+  display: block;
+  width:630rpx;
+  margin:44rpx auto;
+  color:#fff;
+  font-size:28rpx;
+  line-height:50rpx;
+  padding-bottom:30rpx;
+}
+.project .text_con text{
+  color:#ffc688;
+  text-decoration: underline;
+}

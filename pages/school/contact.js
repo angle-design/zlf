@@ -303,7 +303,6 @@ Page({
     })
   },
   scroll_scroll:function(e){
-     
       var that = this
       if (that.data.ScrollLoading == 1){ //防止多次触发
         return false

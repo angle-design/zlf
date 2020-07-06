@@ -51,7 +51,7 @@
   height:80rpx;
   border-radius:5px;
   background:#EEEEED;
-  font-size:14px;
+  font-size:28rpx;
   line-height:80rpx;
   box-sizing: border-box;
   margin:0 25rpx;

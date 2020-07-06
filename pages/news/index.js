@@ -5,14 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    newlist:[
-    ],
+    newlist:[],
     newtoplist:[],
     imgpath:null,
     page:1,
     loading:false,
     noMore:false,
     host:app.globalData.host,
+    loadStatus:1,
   },
 
   /**
@@ -35,18 +35,18 @@ Page({
       loading: false
     })
     app.post(app.globalData.Apipath+'/lxb-api/minapp/information/list',{
-      "current": this.data.page,
-      "pageSize": 4
+      "current": this.data.page
     },{
       'content-type': 'application/json',
       'token':app.globalData.openid
     })
     .then((res)=>{
-      if(this.data.page==1){
-        this.setData({
-          newtoplist:res[0],
-          newlist :res.slice(1)
-        })
+      if(res){
+        if(this.data.page==1){
+          this.setData({
+            newtoplist:res[0],
+            newlist :res.slice(1)
+          })
       }else{
         //追加
         this.setData({
@@ -54,21 +54,16 @@ Page({
         })
       }
       if (res.length == 0) {
-        this.setData({
-          noMore: true
-        })
+          this.setData({
+            loadStatus:2
+          })
       }
-    })
-  },
-  scrollToLower: function (e) {
-    if (!this.data.loading && !this.data.noMore){
-      alert(1)
+    }else{
       this.setData({
-        loading: true,
-        page: this.data.page + 1
+        loadStatus:2
       })
-      this.getlist();
     }
+    })
   },
   gotodetail:function(evnet){
     var id = evnet.currentTarget.dataset.id
@@ -115,7 +110,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    (this.data.page)++;
+    this.getlist();
   },
 
   /**

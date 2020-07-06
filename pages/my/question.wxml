@@ -10,12 +10,15 @@
 				<text>{{item.text}}</text>
 				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
 			</view>
-			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+					<view wx:if="{{item.showflag}}" class="question_con">
+			<text >{{item.content}}</text>
+			<text wx:if="{{item.content1}}">{{item.content1}}</text>
+			<text  wx:if="{{item.content2}}">{{item.content2}}</text>
+			</view>
 		</view>
 	</block>
-	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
-  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
-	进行查阅。
+	<text class="link">有关国（境）外学历学位认证服务详情，请通过：<text>http://zwfw.cscse.edu.cn/cscse/
+	jylh/397464/index.html</text>，进行查阅。
 	</text>
 </view>
 <!-- 就业报道 -->
@@ -28,12 +31,16 @@
 				<text>{{item.text}}</text>
 				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
 			</view>
-			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+			<view wx:if="{{item.showflag}}"  class="question_con">
+			<text >{{item.content}}</text>
+			<text wx:if="{{item.content1}}">{{item.content1}}</text>
+			<text  wx:if="{{item.content2}}">{{item.content2}}</text>
+			</view>
+			
 		</view>
 	</block>
-	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
-  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
-	进行查阅。
+	<text class="link">有关留学人员就业报到服务详情，请通过：<text>http://zwfw.cscse.edu.cn/cscse/
+	jylh/397464/index.html</text>，进行查阅。
 	</text>
 </view>
 <!-- 留学存档 -->
@@ -46,12 +53,15 @@
 				<text>{{item.text}}</text>
 				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
 			</view>
-			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+					<view wx:if="{{item.showflag}}"  class="question_con">
+			<text >{{item.content}}</text>
+			<text wx:if="{{item.content1}}">{{item.content1}}</text>
+			<text  wx:if="{{item.content2}}">{{item.content2}}</text>
+			</view>
 		</view>
 	</block>
-	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
-  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
-	进行查阅。
+	<text class="link">有关留学存档服务详情，请通过：<text>http://zwfw.cscse.edu.cn/cscse/
+	dajz/390892/index.html</text>,进行查阅。
 	</text>
 </view>
 <!-- 公派留学 -->
@@ -64,12 +74,15 @@
 				<text>{{item.text}}</text>
 				<image class="{{item.showflag?'pullbtn':'pullbtn active'}}" src="{{host}}ti4.png"></image>
 			</view>
-			<text wx:if="{{item.showflag}}">{{item.content}}</text>
+			<view wx:if="{{item.showflag}}"  class="question_con">
+			<text >{{item.content}}</text>
+			<text wx:if="{{item.content1}}">{{item.content1}}</text>
+			<text  wx:if="{{item.content2}}">{{item.content2}}</text>
+			</view>
 		</view>
 	</block>
-	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
-  <text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/index.html</text>
-	进行查阅。
+	<text class="link">有关公派留学服务详情，请通过：<text>http://zwfw.cscse.edu.cn/cscse/
+	xwzx/391656/393781/394603/index.html</text>，进行查阅。
 	</text>
 </view>
 <!-- 浮窗 -->

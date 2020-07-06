@@ -2,7 +2,7 @@
   padding:30rpx;
 }
 .new_detail>text{
-  font-size:19px;
+  font-size:38rpx;
   display: block;
   line-height:55rpx;
   padding-bottom:30rpx;
@@ -11,7 +11,6 @@
 }
 .new_con{
   color:#666;
-  text-indent: 2rem;
   line-height:45rpx;
 }
 .new_con image{

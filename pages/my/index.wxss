@@ -23,7 +23,7 @@ page{
   width: 750rpx;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size:40rpx;
 }
 
 .my_top image {
@@ -45,7 +45,7 @@ page{
   padding:0 26rpx;
   box-sizing: border-box;
   margin:0 auto 30rpx;
-  font-size:15px;
+  font-size:30rpx;
 }
 .look{
   background:#FFF4E8;
@@ -70,13 +70,13 @@ page{
 }
 .message>text{
  margin:20rpx 0 10rpx;
-  font-size:15px;
+  font-size:30rpx;
 }
 .message_item{
   padding:35rpx 0;
   border-bottom:1px solid #EDEDED;
   color:#999;
-  font-size:13px;
+  font-size:26rpx;
 }
 .message_item:last-child{
   border-bottom:none;
@@ -96,7 +96,7 @@ page{
 }
 .item_school view  text{
   font-weight: bold;
-  font-size:15px;
+  font-size:30rpx;
 }
 .item_school>text{
   color:#999;

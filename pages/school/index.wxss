@@ -15,7 +15,7 @@ page{
 }
 .school .tit{
   color:#9a9a9a;
-  font-size:11px;
+  font-size:22rpx;
   margin-bottom:30rpx;
   display: block;
 }

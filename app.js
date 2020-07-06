@@ -1,7 +1,9 @@
 //app.js
 App({
   onLaunch: function () {
+     this.overShare()
      let a= wx.getMenuButtonBoundingClientRect() ;
+     
    //   console.log(a)
    wx.hideTabBar();
    var that = this
@@ -28,6 +30,32 @@ App({
      }
    })
   },
+  //重写分享方法
+  overShare: function () {
+   //监听路由切换
+   //间接实现全局设置分享内容
+   wx.onAppRoute(function (res) {
+       //获取加载的页面
+       let pages = getCurrentPages(),
+           //获取当前页面的对象
+           view = pages[pages.length - 1],
+           data;
+       if (view) {
+           data = view.data;
+           if (!data.isOverShare) {
+               data.isOverShare = true;
+               view.onShareAppMessage = function () {
+                   //你的分享配置
+                   return {
+                       title: '标题',
+                       path: '/pages/index/index',
+                       imageUrl:'http://zwfw.cscse.edu.cn/cscse/resource/cms/2020/04/img_pc_site/2020042101.jpg',
+                   };
+               }
+           }
+       }
+   })
+},
   /** 
     * 自定义post函数，返回Promise
     * +-------------------

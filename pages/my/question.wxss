@@ -7,7 +7,7 @@ page{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size:14px;
+  font-size:28rpx;
   border-bottom:20rpx solid #F8F8F8;
 }
 .question:last-child{
@@ -49,11 +49,15 @@ align-items: flex-start;
   margin:0 15rpx;
   width:560rpx;
 }
-.question_list>text{
+.question_list .question_con{
   width:560rpx;
   display: block;
   margin:20rpx auto 0;
   color:#666;
+}
+.question_list .question_con text{
+  display: block;
+  line-height: 50rpx;
 }
 .link{
   font-size:13px;

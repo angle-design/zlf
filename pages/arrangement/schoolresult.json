@@ -2,5 +2,6 @@
   "usingComponents": {
     "itemschool": "../components/itemschool/index"
   },
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "disableScroll": true
 }

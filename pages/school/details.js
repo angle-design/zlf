@@ -19,9 +19,9 @@ Page({
     height:'220rpx',
     shareImgSrc:app.globalData.shareimg,
     shareImgSrc_:null,
+    shareimg_:null,
     shareerweima:app.globalData.shareerweima,
     sharelogo:null,
-    sharename:null,
     sharecontent:null,
     canvasHidden:false,
     cw:0,
@@ -30,7 +30,7 @@ Page({
     cleft:0,
     shareflag:false,
     resetflag:false,
-isIphoneX:false
+    isIphoneX:false,
   },
   // 院校展开收起
   txtToggle: function() {
@@ -238,9 +238,11 @@ isIphoneX:false
     
   
     const ctx = wx.createCanvasContext('share');//绘制画布
+
     var bgImgPath = that.data.shareImgSrc;//背景图
     //获取logo图片
     const wxGetImageInfo = promisify(wx.getImageInfo);
+
     Promise.all([
       wxGetImageInfo({
           src: that.data.sharelogo
@@ -260,12 +262,17 @@ isIphoneX:false
       //绘制学校名字
       var nx = that.data.cw*0.31;
       var ny = that.data.ch*0.18;
+
+      var nxx = that.data.cxw*0.31;
+      var nxy = that.data.cxh*0.18;
       // console.log(nx,ny);
+      
       ctx.setFillStyle('#ffffff');  // 文字颜色：白色
       ctx.setLineWidth(1)
-      ctx.setFontSize(40);       // 文字字号：20px
+      ctx.setFontSize(40); // 文字字号：20px  
       ctx.fillText(that.data.sharename, nx, ny);
       ctx.stroke();
+
       //绘制院校简介
       that.drawText(ctx,that.data.sharecontent,that.data.cw*0.13,that.data.ch*0.38,that.data.ch*0.67,that.data.cw*0.7)
       ctx.stroke();
@@ -296,7 +303,7 @@ isIphoneX:false
         })
       })
     }).then((err)=>{
-      console.log(err)
+      // console.log(err)
     })
   },
   imageload:function(){
@@ -306,8 +313,6 @@ isIphoneX:false
           resetflag:true
         })
       }
-      
-    
     // 监控图片是否加载完成
   },
   saveImageToPhotosAlbum:function(){

@@ -1,6 +1,7 @@
 @import '../components/itemcase/index.wxss';
 @import '../components/itemnew/index.wxss';
 @import '../components/itemschool/index.wxss';
+@import '../components/loading/index.wxss';
 page{
   background:#f8f8f8;
 }
@@ -19,7 +20,7 @@ page{
 .browse_time{
   color:#B2B2B2;
   display: block;
-  font-size:13px;
+  font-size:26rpx;
   text-align: right;
   margin-top:10rpx;
 }

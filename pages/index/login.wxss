@@ -19,7 +19,7 @@ button{
   background:#06C15F;
   border-radius: 4px;
   color:#fff;
-  font-size: 14px;
+  font-size: 28rpx;
   line-height: 80rpx;
 }
 .agree{
@@ -27,7 +27,7 @@ button{
   width:100%;
   justify-content: center;
   align-items: center;
-  font-size:12px;
+  font-size:24rpx;
   padding-top:50rpx;
   color:#666;
 }

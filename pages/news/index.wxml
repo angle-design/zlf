@@ -1,7 +1,7 @@
 <!-- 项目咨询 -->
 <navigationBar toptextcolor="#333" topbackground="#fff"  inner-title="项目资讯" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
 <view class="news">
-<scroll-view scroll-y lower-threshold="100" bindscrolltolower="scrollToLower" style="height: 100vh;">
+<view class='view-container'> 
 	<!-- 第一条 -->
 	<view class="new_main" bindtap="gotodetail" data-id="{{newtoplist.id}}">
 		<image src="{{imgpath+newtoplist.img}}"></image>
@@ -13,6 +13,6 @@
 	<block wx:for="{{newlist}}" wx:for-item="item">
       <view class="newone"><itemnew item="{{item}}" imgpath="{{imgpath}}"></itemnew></view>
 	</block>
-	<loading loading="{{loading}}"></loading>
-	</scroll-view>
+	</view>
+	<include src="/pages/components/loading/index"/>
 </view>

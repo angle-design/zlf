@@ -1,5 +1,6 @@
 <view style="position:fixed;top:1000%;">
 <canvas canvas-id='share' style='top:{{ctop}}px;left:{{cleft}}px;width:{{cw}}px;height:{{ch}}px;'  hidden='{{canvasHidden}}'></canvas>
+<canvas canvas-id='shareone' style='width:{{cxw}}px;height:{{cxh}}px;'  hidden='{{canvasHidden}}'></canvas>
 </view>
 <!-- 院校详情 -->
 <view class="school_details" style="padding-bottom: {{isIphoneX ? '168rpx' : '100rpx'}}">
