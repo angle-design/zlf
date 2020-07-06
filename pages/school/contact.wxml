@@ -6,24 +6,24 @@
     <view bindtap="freeTell"><image src="{{host}}xi_01.png"></image><text>打电话</text></view>
     <view bindtap="tozixun"><image src="{{host}}xi_02.png"></image><text>联系我</text></view>
   </view>
-	<scroll-view scroll-y   bindscrolltoupper="scroll_scroll" scroll-into-view='{{toView}}' style='height: {{scrollHeight}};padding-top:15vh;padding-bottom:8vh;box-sizing:border-box;'>
+	<scroll-view  scroll-y="{{scrollfalg}}"   bindscrolltoupper="scroll_scroll" scroll-into-view='{{toView}}' style='height: {{scrollHeight}};padding-top:15vh;padding-bottom:8vh;box-sizing:border-box;'>
      
   	<!-- <view class='scrollMsg'> -->
 		<block wx:key wx:for='{{msgList}}' wx:for-index="index">
 			<!-- 单个消息1 客服发出（左） -->
-			<view wx:if='{{item.speaker=="server"}}' id='msg-{{index}}' class="leftview">
+			<view wx:if='{{item.speaker=="server"}}' id='msg-{{item.z}}' class="leftview">
         <text>{{item.uname}}</text>
 				<view class="lefthead" >
 					<image src="{{item.uimg}}"></image>
 				</view>
 				<view class='leftMsg'>{{item.content}}</view>
 			</view>
-      <view wx:elif='{{item.speaker=="time"}}' id='msg-{{index}}' >
+      <view wx:elif='{{item.speaker=="time"}}' id='msg-{{item.z}}' >
       <wxs module="utils" src="../../utils/utils.wxs"></wxs>
       <text class="totime">{{utils.fftime(item.content)}}</text>
       </view>
 			<!-- 单个消息2 用户发出（右） -->
-			<view wx:else id='msg-{{index}}' class="rightview">
+			<view wx:else id='msg-{{item.z}}' class="rightview">
         <text>{{item.uname}}</text> 
 				<view class='rightMsg'>{{item.content}}</view>
 				<view class="righthead">
@@ -46,18 +46,18 @@
     <text class="pup_title">请留下您的信息</text>
     <view>
         <text><text>*</text>姓名</text>
-        <input type="text"></input>  
+        <input type="text" bindinput="getname"></input>  
     </view>
      <view>
         <text><text>*</text>电话</text>
-        <input type="number"></input>  
+        <input type="number" bindinput="getphone"></input>  
     </view>
      <view>
         <text><text>*</text>咨询事宜</text>
         <textarea bindinput="inputText"></textarea> 
-        <view class="msg_con"><text class="error">请完整、正确的填写信息</text><text class="word_no">{{number}}/500</text></view>
+        <view class="msg_con" ><text class="error" hidden="{{msgflag}}">请完整、正确的填写信息</text><text class="word_no">{{number}}/500</text></view>
     </view>
-    <button>确定</button>
+    <button bindtap="dosubmit">确定</button>
   </view>
 </view>
   
@@ -67,8 +67,8 @@
        <image src="{{host}}close.png"  bindtap="closewei"></image>
       <text class="pup_title">请扫描二维码添加微信</text>
       <view>
-        <image src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=810988444,1648289218&fm=111&gp=0.jpg"></image>
-        <text>微信号:wangxiaowen</text>
+        <image src="{{wxcoder}}"></image>
+       
       </view>
       <button bindtap="{{weiflag==false}}">保存图片</button>
     </view>

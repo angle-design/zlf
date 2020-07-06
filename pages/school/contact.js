@@ -11,6 +11,7 @@ var wxss = app.globalData.wsspath;
 var SocketTask;
 var count = 0;//记录加载的次数来判定开始的条数 msglist.length+1-count
 
+
 /**
  * 初始化数据
  */
@@ -47,7 +48,16 @@ Page({
     userimg:null,
     websocket:websocket,
     ScrollLoading:0,
-    scrollAnimation:true
+    scrollAnimation:true,
+    bottomid:0,
+    scrollfalg:true,
+    ////////////
+    wxcoder:null,
+    wxPhone:null,
+    conname:null,
+    conphone:null,
+    concontent:null,
+    msgflag:true
   },
   /**
    * 生命周期函数--监听页面加载
@@ -74,11 +84,75 @@ Page({
     count =0;
     this.gethistory();
   },
-  bottom: function() {
-    console.log(this.data.msgList.length)
-    this.setData({
-      toView: 'msg-' + (msgList.length-1)
+  getschoolinfo:function(){
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/institution/details/',{
+      "areaId": "",
+      "content": "",
+      "countryId": "",
+      "current": 0,
+      "id":this.options.id,
+      "pageSize": 0,
+      "schoolLevelId": ""
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
     })
+    .then((res)=>{
+      this.setData({
+        infodata:res,
+        iscollect:res.ifCollect,
+        wxcoder:this.data.imgpath+res.wxcoder,
+        wxPhone:res.wxPhone
+      })
+    })
+  },
+  bottom: function() {
+    this.setData({
+      toView: 'msg-' + this.data.bottomid
+    })
+  },
+  dosubmit:function(){
+    if(!this.data.conname || !this.data.conphone || !this.data.concontent){
+      this.setData({
+        msgflag:false
+      })
+      return false;
+    }
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/contact/advisory',{
+      "content": this.data.concontent,
+      "createTime": "",
+      "delFlag": 0,
+      "id": 0,
+      "institutionId": this.options.id,
+      "institutionName": "",
+      "phone": "",
+      "updateBy": 0,
+      "updateTime": "",
+      "userId": "",
+      "userName": this.data.conname,
+      "userPhone": this.data.conphone,
+      "wxName": ""
+    },{
+      'content-type': 'application/json',
+      'token':app.globalData.openid
+    })
+    .then((res)=>{
+      this.setData({
+        zixunflag:false
+      })
+      wx.showToast({
+        title: '提交成功',
+          icon: "none"
+      });
+    })
+    .catch(err=>{
+      wx.showToast({
+        title: err.msg,
+        icon: "none"
+      });
+    })
+
+    
   },
   /**
    * 生命周期函数--监听页面显示
@@ -131,7 +205,8 @@ Page({
           contentType: 'text',
           content: onMessage_data.content,
           uname:_this.data.servername,
-          uimg:_this.data.serverimg
+          uimg:_this.data.serverimg,
+          z:onMessage_data.id
         })
       }else{
         msgList.push({
@@ -139,12 +214,14 @@ Page({
           contentType: 'text',
           content: onMessage_data.content,
           uname:_this.data.username,
-          uimg:_this.data.userimg
+          uimg:_this.data.userimg,
+          z:onMessage_data.id
         })
       }
       
       _this.setData({
-          msgList
+          msgList:msgList,
+          bottomid:onMessage_data.id
       })
       _this.bottom()
     })
@@ -193,6 +270,7 @@ Page({
   },
   //获取聊天记录
   gethistory:function(){
+    
     if(this.options.touid){
       var id = this.options.touid;
     }else{
@@ -231,8 +309,16 @@ Page({
       }
       const list = msgList;
       var lasttime;//记录最后一次时间
+      var lastid=0;//记录最后一个id
       res.forEach(function(item,index) {
-        // console.log(item)
+          if(!isf){
+            if(!lastid){
+              lastid = item.id;
+            }
+          }else{
+            lastid = item.id;
+          }
+         
           if(item.userType>0){
             if(isf){
                //管理员消息
@@ -241,7 +327,8 @@ Page({
                 contentType: 'text',
                 content: item.content,
                 uname:_this.data.servername,
-                uimg:_this.data.serverimg
+                uimg:_this.data.serverimg,
+                z:item.id
               })
             }else{
               list.unshift({
@@ -249,7 +336,8 @@ Page({
                 contentType: 'text',
                 content: item.content,
                 uname:_this.data.servername,
-                uimg:_this.data.serverimg
+                uimg:_this.data.serverimg,
+                z:item.id
               })
             }
           }else{
@@ -260,7 +348,8 @@ Page({
                 contentType: 'text',
                 content: item.content,
                 uname:_this.data.username,
-                uimg:_this.data.userimg
+                uimg:_this.data.userimg,
+                z:item.id
               })
             }else{
               //用户消息
@@ -269,37 +358,41 @@ Page({
                 contentType: 'text',
                 content: item.content,
                 uname:_this.data.username,
-                uimg:_this.data.userimg
+                uimg:_this.data.userimg,
+                z:item.id
               })
             }
 
           }
           lasttime = item.chatTime;
+          
       });
+      
       list.unshift({
         speaker: 'time',
         contentType: 'text',
-        content:lasttime
+        content:lasttime,
+        z:lastid+12222
       })
-    _this.setData({
-        msgList:list
-    })
-    if(isf){ //如果第一次加载跳转到底部 
-      _this.bottom();
-    }
-    else{
       _this.setData({
-        toView: 'msg-'  + (res.length - 1)
+        msgList:list
+      },()=>{
+        if(isf){
+          _this.setData({
+            bottomid:lastid
+          })
+        }
+        setTimeout(()=>{
+          _this.setData({
+            toView: 'msg-'  + (lastid),
+          },()=>{
+            _this.data.scrollAnimation =true;
+            wx.hideLoading();
+            _this.data.ScrollLoading  = 0;
+           
+          })
+        },100)
       })
-      _this.data.scrollAnimation =true;
-    }
-    //打开下拉加载历史
-    
-    setTimeout(() => {
-      wx.hideLoading();
-      _this.data.ScrollLoading  = 0;
-    }, 500);  
-    
     })
   },
   scroll_scroll:function(e){
@@ -353,7 +446,7 @@ Page({
       scrollHeight: (windowHeight - keyHeight) + 'px'
     });
     this.setData({
-      toView: 'msg-' + (msgList.length - 1),
+      toView: 'msg-'+this.data.bottomid,
       inputBottom: keyHeight + 'px'
     })
   },
@@ -365,7 +458,7 @@ Page({
       inputBottom: 0
     })
     this.setData({
-      toView: 'msg-' + (msgList.length - 1)
+      toView: 'msg-'+this.data.bottomid
     })
 
   },
@@ -407,7 +500,8 @@ Page({
           contentType: 'text',
           content: that.data.inputValue,
           uname:that.data.servername,
-          uimg:that.data.serverimg
+          uimg:that.data.serverimg,
+          z:msgList.length
         })
       }else{
         msgList.push({
@@ -415,9 +509,13 @@ Page({
           contentType: 'text',
           content: that.data.inputValue,
           uname:that.data.username,
-          uimg:that.data.userimg
+          uimg:that.data.userimg,
+          z:msgList.length
         })
       }
+      this.setData({
+        bottomid:msgList.length-1
+      })
       inputValue = '';
       this.setData({
         msgList,
@@ -430,7 +528,34 @@ Page({
     let value = e.detail.value;//获取textarea的内容，
     let len = value.length;//获取textarea的内容长度
     this.setData({
-      'number': len
+      'number': len,
+      concontent:e.detail.value
+    })
+  },
+  saveImageToPhotosAlbum:function(){
+    var that =this;
+    //当用户点击分享到朋友圈时，将图片保存到相册
+    wx.saveImageToPhotosAlbum({
+      filePath: that.data.imgpath+that.data.wxcoder,
+      success(res) {
+        console.log(res);
+        wx.showModal({
+          title: '图片保存成功',
+          content: '图片成功保存到相册了，去发圈噻~',
+          showCancel: false,
+          confirmText: '好哒',
+          confirmColor: '#72B9C3',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定');
+            }
+            that.setData({
+              resetflag:false,
+              canvasHidden: true
+            })
+          }
+        })
+      }
     })
   },
   towei(){
@@ -456,7 +581,7 @@ Page({
   // 打电话功能
   freeTell: function(){
     wx.makePhoneCall({
-      phoneNumber: '12989789098',
+      phoneNumber: this.data.wxPhone,
     })
   },
   sendSocketMessage:function (msg) {
@@ -467,6 +592,25 @@ Page({
     }, function (res) {
       console.log('已发送', res)
     })
+  },
+  getname:function(e){
+    this.setData({
+      conname:e.detail.value
+    })
+  },
+  getphone:function(e){
+    this.setData({
+      conphone:e.detail.value
+    })
+  },
+  scrolltoa:function(flag){
+  
+      wx.pageScrollTo({
+        duration:2000,
+        selector: "#msg-6" , // #the-id节点的下边界坐标  
+        success:function(res){
+          console.log(res)
+        }
+      })
   }
-
 })

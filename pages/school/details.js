@@ -22,10 +22,13 @@ Page({
     shareimg_:null,
     shareerweima:app.globalData.shareerweima,
     sharelogo:null,
+    sharename:null,
+    sharepImgSrc_:null,
+
     sharecontent:null,
     canvasHidden:false,
-    cw:0,
-    ch:0,
+    cw:750,
+    ch:1334,
     ctop:0,
     cleft:0,
     shareflag:false,
@@ -68,19 +71,7 @@ Page({
     }
     this.getinfo();
     /////////////////////////
-    wx.getSystemInfo({
-      success: res => {
-        //初始化画布的宽高 lef top 
-
-        this.setData({
-          cw: 750,//res.screenWidth,
-          ch:1334,//res.screenWidth/0.56,
-          ctop:0,
-          cleft:0
-        })
-      }
-    })
-    // this.share();
+    
   },
   // 点击播放按钮视频播放
   playvideo(){
@@ -128,6 +119,8 @@ Page({
         sharelogo:this.data.imgpath+res.logo,
         sharename:res.name,
         sharecontent:res.information
+      },()=>{
+        this.sharep();
       })
     })
   },
@@ -175,7 +168,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.sharep();
   },
 
   /**
@@ -246,9 +239,6 @@ Page({
     Promise.all([
       wxGetImageInfo({
           src: that.data.sharelogo
-      }),
-      wxGetImageInfo({
-          src: that.data.shareerweima
       })
     ]).then(res => {
       ctx.drawImage(bgImgPath, 0, 0,that.data.cw, that.data.ch);//绘制背景图    
@@ -302,8 +292,9 @@ Page({
           }
         })
       })
-    }).then((err)=>{
-      // console.log(err)
+    }).catch((err)=>{
+      console.log(err);
+      wx.hideLoading();
     })
   },
   imageload:function(){
@@ -312,7 +303,8 @@ Page({
         this.setData({
           resetflag:true
         })
-      }
+      }    
+
     // 监控图片是否加载完成
   },
   saveImageToPhotosAlbum:function(){
@@ -371,4 +363,90 @@ Page({
       }
     }
   },
+  sharep:function(){
+    console.log(1)
+    var that = this;
+    //生成分享图片
+    const ctx = wx.createCanvasContext('sharep');//绘制画布
+    var bgImgPath = "/image/sharep.jpg";//背景图
+    //获取logo图片
+    const wxGetImageInfo = promisify(wx.getImageInfo);
+    Promise.all([
+      wxGetImageInfo({
+          src: that.data.sharelogo
+      })
+    ]).then(res => {
+      ctx.drawImage(bgImgPath, 0, 0,430,336);//绘制背景图    
+      ctx.beginPath();
+       //绘制学校名字
+       var nx = 133;
+       var ny = 80;
+       // console.log(nx,ny);
+       ctx.setFillStyle('#0C5740');  // 文字颜色：白色
+       ctx.setLineWidth(1)
+       ctx.setFontSize(30);       // 文字字号：20px
+       ctx.fillText(that.data.sharename, nx, ny);
+       ctx.stroke();
+       
+       //绘制logo
+       ctx.setStrokeStyle("#ffffff")
+       ctx.setLineWidth(0.0001)
+      
+       ctx.drawImage(res[0].path, 0,0,150,150,10,30,75,75);
+       ctx.stroke();
+       ctx.draw(false,function() {
+        // 3. canvas画布转成图片
+        wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: 430,
+          height: 336,
+          canvasId: 'sharep',
+          success: function (res) {
+            // console.log(res)
+            that.setData({
+              sharepImgSrc_: res.tempFilePath
+            },()=>{
+              that.upimg();
+            })
+            wx.hideLoading();
+          },
+          fail: function (res) {
+            console.log(2)
+          }
+        })
+      })
+    }).catch((err)=>{
+      console.log(err)
+    })
+  },
+  upimg:function(resolve, reject){
+    console.log(2)
+    wx.uploadFile({
+      url: app.globalData.Apipath+'/lxb-api/file/file/upload',
+      filePath: this.data.sharepImgSrc_,
+      name: 'file',
+      success: (res)=>{
+       var result = (JSON.parse(res.data));
+       this.setData({
+        sharepImgSrc_:app.globalData.Imgpath+result.data
+       })
+
+      }
+    })    
+  },
+  onShareAppMessage:function(res){
+    console.log(this.data.sharepImgSrc_);
+    return {
+            title: '您的好友推荐给您一个学校~',
+            path: '/pages/index/index',
+            imageUrl: this.data.sharepImgSrc_, //不设置则默认为当前页面的截图
+            success: (res) => {
+              wx.showToast({ title: res, icon: 'success', duration: 2000 })
+            },
+            fail: (res) => {
+              wx.showToast({ title: res, icon: 'success', duration: 2000 })
+            }
+          }
+  }
 })
