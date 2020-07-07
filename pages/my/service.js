@@ -49,6 +49,7 @@ Page({
     })
   },
   advisory:function(){
+    console.log(this.data.name)
     if(!this.data.name || !this.data.email || !this.data.content){
       return false;
     }

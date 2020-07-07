@@ -103,7 +103,8 @@ Page({
         iscollect:res.ifCollect,
         wxcoder:this.data.imgpath+res.wxcoder,
         wxPhone:res.wxPhone
-      })
+      });
+     
     })
   },
   bottom: function() {
@@ -240,7 +241,9 @@ Page({
           servername:res.name,
           serverimg:app.globalData.Imgpath+res.logo
         })
-      
+        wx.setNavigationBarTitle({
+          title: res.name    
+        })
     })
   },
   //获取用户姓名

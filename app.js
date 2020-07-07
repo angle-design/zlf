@@ -4,8 +4,7 @@ App({
      this.overShare()
      let a= wx.getMenuButtonBoundingClientRect() ;
      
-   //   console.log(a)
-   wx.hideTabBar();
+   // wx.hideTabBar();
    var that = this
    wx.getSystemInfo({
      success: function (res) {
@@ -40,6 +39,7 @@ App({
            //获取当前页面的对象
            view = pages[pages.length - 1],
            data;
+           console.log(view.data);
        if (view) {
            data = view.data;
            if (!data.isOverShare) {
