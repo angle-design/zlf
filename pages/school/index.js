@@ -59,7 +59,7 @@ Page({
       content: "",
       countryId: "",
       current:this.data.page,
-      pageSize: 10,
+      pageSize: 100,
       schoolLevelId: ""
     })
     .then((res)=>{

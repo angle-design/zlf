@@ -200,7 +200,7 @@ Page({
       }
       console.log('rs==='+result);
       var onMessage_data = JSON.parse(result.data)
-      if(onMessage_data.type==1){
+      if(onMessage_data.type==2){
         msgList.push({
           speaker: 'server',
           contentType: 'text',

@@ -13,6 +13,7 @@
 		<!-- 轮播 -->
 		<!-- 第一帧视频 -->
 		<swiper class='swiper_body' bindchange="swiperChange" interval='40000' duration='0' circular='true'>
+			
 			<swiper-item class="video_bo">
 				<view wx:if="{{videoflag}}" class="video_feng">
 					<image src='{{imgpath+infodata.videoImg}}' class='u-img-slide' mode='aspectFill'></image>

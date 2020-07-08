@@ -243,20 +243,11 @@ Page({
     ]).then(res => {
       ctx.drawImage(bgImgPath, 0, 0,that.data.cw, that.data.ch);//绘制背景图    
       ctx.beginPath();
-      //(圆心)X轴,Y轴,半径,起始,结束
-      var r = that.data.cw*0.105;
-      var dx = that.data.cw*0.07;
-      var dy = that.data.ch*0.11;
-      
-      
+     
       //绘制学校名字
       var nx = that.data.cw*0.31;
       var ny = that.data.ch*0.18;
-
-      var nxx = that.data.cxw*0.31;
-      var nxy = that.data.cxh*0.18;
       // console.log(nx,ny);
-      
       ctx.setFillStyle('#ffffff');  // 文字颜色：白色
       ctx.setLineWidth(1)
       ctx.setFontSize(40); // 文字字号：20px  
@@ -267,11 +258,8 @@ Page({
       that.drawText(ctx,that.data.sharecontent,that.data.cw*0.13,that.data.ch*0.38,that.data.ch*0.67,that.data.cw*0.7)
       ctx.stroke();
       //绘制logo
-      ctx.setStrokeStyle("#ffffff")
-      ctx.setLineWidth(0.0001)
-      ctx.arc((r+dx), (r+dy), r, 0, 2 * Math.PI);
-      ctx.clip();
-      ctx.drawImage(res[0].path, 30,12,131,131,dx, dy, r*2, r*2);
+     
+      ctx.drawImage(res[0].path, 0,0,150,150,58, 163, 130, 130);
       ctx.stroke();
 
       ctx.draw(false,function() {
