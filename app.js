@@ -85,7 +85,7 @@ App({
              if (res.data.code == 10000) {//res.data 为 后台返回数据，格式为{"data":{...}, "info":"成功", "status":1}, 后台规定：如果status为1,既是正确结果。可以根据自己业务逻辑来设定判断条件
                 resolve( res.data.data );
              } else {//返回错误提示信息
-            
+               
                 reject( res.data );
              }
           },
@@ -111,7 +111,7 @@ App({
            if (res.data.code == 10000) {//res.data 为 后台返回数据，格式为{"data":{...}, "info":"成功", "status":1}, 后台规定：如果status为1,既是正确结果。可以根据自己业务逻辑来设定判断条件
               resolve( res.data.data );
            } else {//返回错误提示信息
-            
+              console.log(res)
               reject( res.data );
            }
         },
@@ -204,7 +204,26 @@ login:function(obj){
                      })
                   }
                })
+               .catch((err)=>{
+                  console.log(err)
+                  if(err.msg='账号被禁用'){
+                     wx.showToast({
+                        title: '账号被禁用',
+                          icon: "none"
+                      });
+                    }
+                  this.globalData.openid = null;
+               })
             }
+        })
+        .catch((err)=>{
+           if(err.data.msg='账号被禁用'){
+            wx.showToast({
+               title: '账号被禁用',
+                 icon: "none"
+             });
+           }
+          this.globalData.openid = null;
         })
       },
     })
@@ -221,6 +240,15 @@ getuserinfo:function(){
     })
     .then((res)=>{
       this.globalData.uinfo = res;
+    })
+    .then((err)=>{
+      if(err.data.msg='账号被禁用'){
+         wx.showToast({
+            title: '账号被禁用',
+              icon: "none"
+          });
+        }
+       this.globalData.openid = null;
     })
 },
 globalData: {
