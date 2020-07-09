@@ -217,7 +217,7 @@ login:function(obj){
             }
         })
         .catch((err)=>{
-           if(err.data.msg='账号被禁用'){
+           if(err.msg='账号被禁用'){
             wx.showToast({
                title: '账号被禁用',
                  icon: "none"
@@ -242,7 +242,7 @@ getuserinfo:function(){
       this.globalData.uinfo = res;
     })
     .then((err)=>{
-      if(err.data.msg='账号被禁用'){
+      if(err.msg='账号被禁用'){
          wx.showToast({
             title: '账号被禁用',
               icon: "none"

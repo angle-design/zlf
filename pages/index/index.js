@@ -11,7 +11,7 @@ Page({
   list:[
     {img:'lei_01.png',name:'中心介绍',url:'/pages/aboutcenter/index',islog:false},
     {img:'lei_02.png',name:'项目介绍',url:'/pages/project/index',islog:false},
-    {img:'lei_03.png',name:'留学国别',url:'',islog:false},
+    {img:'lei_03.png',name:'留学国别',url:'/pages/project/countries',islog:false},
     {img:'lei_04.png',name:'项目层次',url:'/pages/arrangement/index',islog:false},
     {img:'lei_05.png',name:'项目资讯',url:'/pages/news/index',islog:true},
     {img:'lei_06.png',name:'学生案例',url:'/pages/studentcases/index',islog:true},
@@ -147,7 +147,7 @@ getinstitutionlist(){
 	  content: "",
 	  countryId: "",
 	  current:this.data.page,
-	  pageSize: 10,
+	  pageSize: 100,
 	  schoolLevelId: ""
   })
   .then((res)=>{
@@ -205,5 +205,8 @@ onShow: function () {
         currentTab: 0
       })
     }
+},
+onShareAppMessage: function () {
+
 }
 })

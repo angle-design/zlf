@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/project/countries",
     "pages/project/index",
     "pages/aboutcenter/index",
-   
     "pages/my/question",
     "pages/school/details",
     "pages/arrangement/schoolresult",

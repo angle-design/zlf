@@ -83,6 +83,7 @@ Page({
     // this.bottom();
     count =0;
     this.gethistory();
+    this.getschoolinfo();
   },
   getschoolinfo:function(){
     app.post(app.globalData.Apipath+'/lxb-api/minapp/institution/details/',{

@@ -1,0 +1,10 @@
+<!--pages/project/countries.wxml-->
+<navigationBar toptextcolor="#333" topbackground="none" inner-title="留学国别" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
+<view class="countries">
+  <view class="content">
+<text>出国留学培训项目采用2+2、1+3、预科形式，涵盖了本科培训、本科预科、硕士研究生培训及硕士研究生预科等，分为国内培训、国外学习两个阶段。 </text>
+<text>截止目前，出国留学培训项目合作院校140余所，遍及美国、英国、澳大利亚、加拿大、新西兰、马来西亚、捷克、泰国等主要留学目的地国和“一带一路”沿线国家。 </text>  
+<text>关于“留学国别”详情，可参考各项目院校招生简章中的国外合作院校有关内容。</text>
+  </view>
+
+</view>
