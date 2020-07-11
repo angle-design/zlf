@@ -8,6 +8,15 @@ Component({
     },
     imgpath:{
       type:String
+    },
+    host:{
+      type:String
+    },
+    arry: { 
+      type:Array
+    },
+    index:{
+      type:Number
     }
   }, 
   methods:{

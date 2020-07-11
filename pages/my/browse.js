@@ -50,6 +50,11 @@ Page({
       });
       if(res){
         if (this.data.page == 1) {
+          if(res.length<8){
+            this.setData({
+              loadStatus:2
+            })
+          }
           this.setData({
             browlist:res_,
           })
@@ -57,7 +62,7 @@ Page({
           this.setData({
             browlist :this.data.browlist.concat(res_)
           })
-          if(res.length==0){
+          if(res.length==0||res.length<8){
             this.setData({
               loadStatus:2
             })

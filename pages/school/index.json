@@ -4,5 +4,6 @@
     "itemschool": "../components/itemschool/index",
     "empower": "../components/empower/empower",
     "tabbar":"../components/tabbar/index"
-  }
+  },
+  "onReachBottomDistance": 50
 }

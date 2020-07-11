@@ -10,5 +10,7 @@
     <text class="browse_time">刚刚</text>
     </view>
   </block>
+   	<include src="/pages/components/loading/index"/>
   </scroll-view>
+ 
 </view>

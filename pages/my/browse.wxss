@@ -44,4 +44,6 @@ page{
 .caseitem .name{
   margin-top:20rpx;
 }
-
+.browse_case .caseitem image{
+  opacity: 1;
+}

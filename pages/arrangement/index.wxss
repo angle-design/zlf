@@ -41,23 +41,9 @@ page {
   position: relative;
 }
 .about_text .item image{
-  width:630rpx;
-  height:322rpx;
-  border:2px solid #fff;
-  border-radius:10px;
-  box-sizing: border-box;
-}
-.about_text .item view{
-  position:absolute;
-  top:40rpx;
-  left:0;
-  border-radius:0 60rpx 60rpx 0;
-  background:#FF9A2D ;
-  color:#fff;
-  text-align: center;
-  width:200rpx;
-  height:80rpx;
-  font-size:40rpx;
-  font-weight: bold;
-  line-height: 80rpx;
+  width:628rpx;
+  height:320rpx;
+  /* border:2px solid #fff; */
+  /* border-radius:10px; */
+  /* box-sizing: border-box; */
 }

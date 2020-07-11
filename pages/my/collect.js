@@ -11,7 +11,8 @@ Page({
     loading:false,
     noMore:false,
     imgpath:app.globalData.Imgpath,
-    host:app.globalData.host
+    host:app.globalData.host,
+    loadStatus:1,//状态
   },
 
   /**
@@ -22,9 +23,6 @@ Page({
   },
   getlist:function(){
     
-    this.setData({
-      loading: false
-    })
     app.post(app.globalData.Apipath+'/lxb-api/minapp/collect/list',{
       "current": this.data.page,
       "pageSize": 8
@@ -33,33 +31,36 @@ Page({
       'token':app.globalData.openid
     })
     .then((res)=>{
-      if (res.length == 0) {
-        this.setData({
-          noMore: true
-        })
-        return false;
-      }
-      var res_ = [];
-      res.forEach(function(item,index) {
-          res_[index]={
-            'name':item.institutionName,
-            'id':item.modelId,
-            'logo':item.logo,
-            'province':item.province
+      if(res){
+        var res_ = [];
+        res.forEach(function(item,index) {
+            res_[index]={
+              'name':item.institutionName,
+              'id':item.modelId,
+              'logo':item.logo,
+              'province':item.province
+            }
+        });
+        if(this.data.page==1){
+          if(res.length<8){
+            this.setData({
+              loadStatus:2
+            })
           }
-         
-      });
-      if(this.data.page==1){
-        this.setData({
-          school:res_,
-        })
+          this.setData({
+            school:res_,
+          })
+        }else{
+          //追加
+          this.setData({
+            school :this.data.school.concat(res_)
+          })
+        }
       }else{
-        //追加
         this.setData({
-          school :this.data.school.concat(res_)
+          loadStatus:2
         })
-      }
-      
+      } 
     })
   },
   scrollToLower: function (e) {

@@ -13,6 +13,8 @@ Page({
     noMore:false,
     host:app.globalData.host,
     loadStatus:1,//状态
+    arry:[],
+    damoHeight:0,
   },
 
   /**
@@ -36,8 +38,9 @@ Page({
       'token':app.globalData.openid
     })
     .then((res)=>{
-      console.log(res)
+      var _this=this;
       if(res){
+           // ========图片懒加载开始========
         if(this.data.page==1){
           this.setData({
             caselist :res
@@ -52,11 +55,36 @@ Page({
             })
           }
         }
+        // 获取每个的高度
+   var query = wx.createSelectorQuery();
+       query.select('.cases').boundingClientRect(function (rect) {
+          _this.setData({
+             damoHeight: rect.height/2
+         })
+        let num = Math.ceil(wx.getSystemInfoSync().windowHeight / (_this.data.damoHeight*2));
+        for (let i = 0; i < num; i++) {
+          _this.data.arry[i] = true;
+        };
+        _this.setData({
+          arry: _this.data.arry
+        })
+       }).exec();
+   
+    // ========图片懒加载结束============
     }else{
       this.setData({
         loadStatus: 2
       })
     }
+    })
+  },
+  // 翻页图片懒加载
+    onPageScroll: function (res) {
+    var _this = this;
+    var str = parseInt(res.scrollTop /(_this.data.damoHeight*2));
+    _this.data.arry[str] = true;
+    _this.setData({
+      arry: _this.data.arry
     })
   },
   scrollToLower: function (e) {

@@ -1,11 +1,18 @@
 <block>
     <view class="listFooterLoading" wx:if="{{loadStatus==1}}">
     <!-- 转圈圈 -->
-      <view class="m-load2">
+      <!-- <view class="m-load2">
         <view class="line"><view></view><view></view><view></view><view></view><view></view><view></view></view>
         <view class="circlebg"></view>
       </view>
-      <view class='load-word'>加载中</view>
+      <view class='load-word'>加载中</view> -->
+         <div class="loader">
+        <div class="loader-inner ball-pulse-sync">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </view>
     <text class="listFooter" wx:elif="{{loadStatus==2}}">没有更多数据了！</text>
     <text class="listFooter" wx:elif="{{loadStatus==-1}}">数据加载失败，请检查网络</text>

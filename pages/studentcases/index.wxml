@@ -4,7 +4,7 @@
 <view>
 <block wx:for="{{caselist}}" wx:for-index="index" wx:for-item="item">
     <view class="cases">
-      <itemcase item="{{item}}" imgpath="{{imgpath}}"></itemcase>
+      <itemcase item="{{item}}" index="{{index}}" imgpath="{{imgpath}}" arry="{{arry}}" host="{{host}}"></itemcase>
     </view>
   </block>
 </view>

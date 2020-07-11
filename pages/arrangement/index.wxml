@@ -4,7 +4,7 @@
   <block wx:for="{{infolist}}" wx:for-index="index" wx:for-item="Item" >
       <view  bindtap="toresult" data-id="{{Item.id}}" class="item">
         <image src="{{imgpath+Item.img}}"></image>
-        <view>{{Item.levelName}}</view>
+        <!-- <view>{{Item.levelName}}</view> -->
       </view>
   </block>
 	</scroll-view>

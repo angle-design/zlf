@@ -6,6 +6,7 @@
 		<view wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
 			<itemschool item="{{schoolItem}}" btnflag="{{true}}" imgpath="{{imgpath}}" bindhideempower="hideempower" bindshowempower="showempower"></itemschool>
 		</view>
+			<include src="/pages/components/loading/index"/>
 	</view>
 </view>
 <view hidden="{{showgetuser}}" >

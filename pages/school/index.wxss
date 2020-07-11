@@ -1,5 +1,6 @@
+@import '../components/loading/index.wxss';
 page{
-  padding-bottom:180rpx;
+  padding-bottom:100rpx;
 }
 
 .school{

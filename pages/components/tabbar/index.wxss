@@ -10,6 +10,7 @@
   box-sizing: border-box;
   padding: 8rpx 10rpx 0;
   font-size:24rpx;
+  height:100rpx;
 }
 .tabbar-item-icon {
   margin-bottom: 6rpx;

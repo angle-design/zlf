@@ -12,13 +12,15 @@ Page({
     imgpath:null,
     showgetuser:true,
     host:app.globalData.host,
-    isIphoneX:false
+    isIphoneX:false,
+    loadStatus:1,//状态
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getlist();
     // 适配底部
   let modelmes = wx.getStorageSync('modelmes');
   let isIphoneX = app.globalData.isIphoneX;
@@ -59,15 +61,35 @@ Page({
       content: "",
       countryId: "",
       current:this.data.page,
-      pageSize: 100,
+      pageSize: 10,
       schoolLevelId: ""
     })
     .then((res)=>{
-      console.log(res);
-      this.setData({
-        page:this.data.page+1,
-        schoollist:res
-      })
+      if(res){
+        if (this.data.page == 1) {
+          if(res.length<8){
+            this.setData({
+              loadStatus:2
+            })
+          }
+          this.setData({
+            schoollist:res,
+          })
+        } else {
+          this.setData({
+            schoollist :this.data.schoollist.concat(res)
+          })
+          if(res.length==0){
+            this.setData({
+              loadStatus:2
+            })
+          }
+        }
+      }else{
+        this.setData({
+          loadStatus:2
+        })
+      }
     })
   },
   showempower(){
@@ -105,7 +127,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    (this.data.page)++;
+    this.getinstitutionlist();
   },
 
   /**

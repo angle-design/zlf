@@ -36,4 +36,9 @@ button:after{
   border-top: 0.5px solid #EEEEEE;
   font-size: 0;
   background: #fff;
+
+}
+table{
+  border-collapse:collapse!important;
+  text-align: center!important;
 }

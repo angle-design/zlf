@@ -113,12 +113,15 @@ Page({
       'token':app.globalData.openid
     })
     .then((res)=>{
+      res.term = res.term.replace(/\<img/gi, '<img style="max-width:100%;height:auto；margin:10rpx 0;"');
+      res.signupMsg = res.signupMsg.replace(/\<img/gi, '<img style="max-width:100%;height:auto；margin:10rpx 0;"')
+      
       this.setData({
         infodata:res,
-        iscollect:res.ifCollect,
+        iscollect:res.ifCollect,　
         sharelogo:this.data.imgpath+res.logo,
         sharename:res.name,
-        sharecontent:res.information
+        sharecontent:res.information,
       },()=>{
         this.sharep();
       })

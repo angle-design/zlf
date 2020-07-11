@@ -1,5 +1,5 @@
 <!--pages/project/countries.wxml-->
-<navigationBar toptextcolor="#333" topbackground="none" inner-title="留学国别" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="留学国别" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
 <view class="pagec">
 <view class="countries">
   <view class="content">
