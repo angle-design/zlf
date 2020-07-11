@@ -1,8 +1,8 @@
-<view style="position:fixed;top:1000%;">
+<view style="position:fixed;top:100000%;">
 <canvas canvas-id='share' style='top:{{ctop}}px;left:{{cleft}}px;width:{{cw}}px;height:{{ch}}px;'  hidden='{{canvasHidden}}'></canvas>
 <canvas canvas-id='shareone' style='width:{{cxw}}px;height:{{cxh}}px;'  hidden='{{canvasHidden}}'></canvas>
 </view>
-<view style="position:fixed;top:1000%;">
+<view style="position:fixed;top:100000%;">
 <canvas canvas-id='sharep' style='width:430px;height:336px;'></canvas>
 </view>
 <!-- 院校详情 -->
@@ -46,7 +46,7 @@
 				<image src="{{imgpath+infodata.logo}}"></image>
 				<view>
 					<text>{{infodata.name}}</text>
-					<text>院校城市：{{infodata.province}}</text>
+					<text>院校城市：{{infodata.city}}</text>
 				</view>
 			</view>
 			<image wx:if="{{!iscollect}}" src="{{host}}collect.png" data-id="{{infodata.id}}" bindtap="collect"></image>

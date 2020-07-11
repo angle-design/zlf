@@ -2,7 +2,7 @@
       <image src="{{imgpath+item.logo}}"></image>
         <view class="list_content">
           <text>{{item.name}}</text>
-          <text>院校城市：{{item.province}}</text>
+          <text>院校城市：{{item.city}}</text>
           <view class="list_button" wx:if="{{btnflag}}">
               <button hover-stop-propagation catchtap="gotoask" data-id="{{item.id}}" data-name="{{item.name}}" data-img="{{imgpath+item.logo}}">咨询</button>
               <button>详情</button>

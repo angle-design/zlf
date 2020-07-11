@@ -103,7 +103,7 @@ Page({
         infodata:res,
         iscollect:res.ifCollect,
         wxcoder:this.data.imgpath+res.wxcoder,
-        wxPhone:res.wxPhone
+        wxPhone:res.contactPhone
       });
      
     })
