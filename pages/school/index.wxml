@@ -1,4 +1,4 @@
-		<navigationBar toptextcolor="#fff" topbackground="#2D69DF" inner-title="院校" is-show-back="false"></navigationBar>
+<navigationBar toptextcolor="#fff" topbackground="#2D69DF" inner-title="院校" is-show-back="false"></navigationBar>
 <view class="school">
 <!-- 头部 -->
 	<view class="school_con">

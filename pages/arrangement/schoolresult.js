@@ -1,7 +1,6 @@
 // pages/aboutcenter/index.js
 const app=getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,7 +8,10 @@ Page({
     imgpath:null,
     host:app.globalData.host,
     schoollist:[],
-    LevelId:null
+    LevelId:null,
+    loadStatus:1,
+    page:1,
+    title:'本科'
   },
 
   /**
@@ -21,6 +23,15 @@ Page({
       imgpath:app.globalData.Imgpath,
       LevelId:options.LevelId
     })
+    if(options.LevelId=='bWuOyYnF'){
+      this.setData({
+        title:'本科'
+      })
+    }else{
+      this.setData({
+        title:'硕士'
+      })
+    }
   },
   getinstitutionlist(){
     app.post(app.globalData.Apipath+'/lxb-api/institution/list',{
@@ -32,11 +43,31 @@ Page({
       schoolLevelId: this.data.LevelId
     })
     .then((res)=>{
-      console.log(res);
-      this.setData({
-        page:this.data.page+1,
-        schoollist:res
-      })
+      if(res){
+        if (this.data.page == 1) {
+          if(res.length<10){
+            this.setData({
+              loadStatus:2
+            })
+          }
+          this.setData({
+            schoollist:res,
+          })
+        } else {
+          this.setData({
+            schoollist :this.data.schoollist.concat(res)
+          })
+          if(res.length==0||res.length<10){
+            this.setData({
+              loadStatus:2
+            })
+          }
+        }
+      }else{
+        this.setData({
+          loadStatus:2
+        })
+      }
     })
   },
   showempower(){
@@ -60,7 +91,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-this.getinstitutionlist()
+    this.getinstitutionlist()
   },
 
   /**
@@ -88,9 +119,11 @@ this.getinstitutionlist()
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log(0)
+    var that = this;
+    (this.data.page)++;
+    this.getinstitutionlist();
   },
-
   /**
    * 用户点击右上角分享
    */

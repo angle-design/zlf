@@ -40,7 +40,7 @@ Page({
             'name':item.institutionName,
             'id':item.modelId,
             'logo':item.logo,
-            'province':item.province,
+            'city':item.city,
             'updateTime':item.updateTime,
             'modelType':item.modelType
           }

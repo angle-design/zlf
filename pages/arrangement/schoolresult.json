@@ -3,5 +3,5 @@
     "itemschool": "../components/itemschool/index"
   },
   "navigationStyle": "custom",
-  "disableScroll": true
+  "onReachBottomDistance": 50
 }

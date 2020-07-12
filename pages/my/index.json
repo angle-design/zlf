@@ -3,5 +3,6 @@
     "tabbar":"../components/tabbar/index",
     "empower": "../components/empower/empower"
   },
-  "navigationStyle": "custom"
+  "navigationStyle": "custom",
+  "disableScroll":true
 }

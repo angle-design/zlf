@@ -67,9 +67,9 @@
        <image src="{{host}}close.png"  bindtap="closewei"></image>
       <text class="pup_title">请扫描二维码添加微信</text>
       <view>
-        <image src="{{wxcoder}}"></image>
+        <image src="{{wxcoder}}" bindtap="saveImageToPhotosAlbum"></image>
        
       </view>
-      <button bindtap="{{weiflag==false}}">保存图片</button>
+      <button bindtap="saveImageToPhotosAlbum">保存图片</button>
     </view>
   </view>

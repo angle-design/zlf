@@ -539,27 +539,45 @@ Page({
   saveImageToPhotosAlbum:function(){
     var that =this;
     //当用户点击分享到朋友圈时，将图片保存到相册
-    wx.saveImageToPhotosAlbum({
-      filePath: that.data.imgpath+that.data.wxcoder,
-      success(res) {
-        console.log(res);
-        wx.showModal({
-          title: '图片保存成功',
-          content: '图片成功保存到相册了，去发圈噻~',
-          showCancel: false,
-          confirmText: '好哒',
-          confirmColor: '#72B9C3',
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定');
+    wx.getImageInfo({
+      src: that.data.wxcoder, //仅为示例，并非真实的资源
+      success: function (res) {
+      wx.saveImageToPhotosAlbum({
+        filePath: res.path,
+        success(res) {
+          wx.showModal({
+            title: '图片保存成功',
+            content: '图片成功保存到相册了，去发圈噻~',
+            showCancel: false,
+            confirmText: '好哒',
+            confirmColor: '#72B9C3',
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定');
+              }
+              app.post(app.globalData.Apipath+'/lxb-api/minapp/wx/save',{
+                "id": that.options.id
+              },{
+                'content-type': 'application/json',
+                'token':app.globalData.openid
+              })
+              .then((res)=>{
+                  
+              })
+              that.setData({
+                weiflag:false
+              })
             }
-            that.setData({
-              resetflag:false,
-              canvasHidden: true
-            })
-          }
-        })
-      }
+          }) 
+        },
+        fail(err){
+          console.log(err)
+        }
+      })
+    },
+    fail(err){
+      console.log(err)
+    }
     })
   },
   towei(){
@@ -586,6 +604,17 @@ Page({
   freeTell: function(){
     wx.makePhoneCall({
       phoneNumber: this.data.wxPhone,
+      success:()=>{
+        app.post(app.globalData.Apipath+'/lxb-api/minapp/contact/phone',{
+          "id": this.options.id
+        },{
+          'content-type': 'application/json',
+          'token':app.globalData.openid
+        })
+        .then((res)=>{
+          
+        })
+      }
     })
   },
   sendSocketMessage:function (msg) {

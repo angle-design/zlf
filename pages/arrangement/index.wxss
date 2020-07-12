@@ -34,6 +34,7 @@ page {
   box-sizing: border-box;
   font-size: 28rpx;
   line-height: 45rpx;
+  padding-top:50rpx;
 }
 .about_text .item {
   width:630rpx;
@@ -44,6 +45,6 @@ page {
   width:628rpx;
   height:320rpx;
   /* border:2px solid #fff; */
-  /* border-radius:10px; */
+  border-radius:10rpx;
   /* box-sizing: border-box; */
 }

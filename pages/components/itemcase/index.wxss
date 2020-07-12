@@ -8,8 +8,8 @@
 }
 
  .caseitem image {
-  width: 157rpx;
-  height: 193rpx;
+  width: 152rpx;
+  height: 192rpx;
   margin-right: 20rpx;
   background: #fff;
   border-radius: 10rpx;

@@ -1,5 +1,5 @@
 <view class="itemschool" data-id="{{item.id}}" bindtap="gotodetail">
-      <image src="{{imgpath+item.logo}}"></image>
+      <image src="{{imgpath+item.logo}}" mode="widthFix"></image>
         <view class="list_content">
           <text>{{item.name}}</text>
           <text>院校城市：{{item.city}}</text>

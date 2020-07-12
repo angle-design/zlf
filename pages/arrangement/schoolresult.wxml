@@ -1,12 +1,13 @@
 <view class="about_body">
-<navigationBar toptextcolor="#fff" topbackground="none" inner-title="本科" is-show-back="true" imgsrc="{{host}}bai.png"></navigationBar>
-	<scroll-view scroll-y="true" class="about_text">
+<navigationBar toptextcolor="#fff" topbackground="#33a8ff" inner-title="{{title}}" is-show-back="true" imgsrc="{{host}}bai.png"></navigationBar>
+	<view class="about_text">
 		<block wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
 			<view class="collectlist">
 				<itemschool item="{{schoolItem}}" btnflag="{{true}}" imgpath="{{imgpath}}"></itemschool>
 			</view>
 		</block>
-	</scroll-view>
+					<include src="/pages/components/loading/index"/>
+	</view>
 </view>
 <view hidden="{{showgetuser}}" >
 <empower host="{{host}}" bindhideempower="hideempower" bindshowempower="showempower"></empower>	

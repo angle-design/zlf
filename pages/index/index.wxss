@@ -2,11 +2,12 @@
 @import '../components/itemschool/index.wxss';
 @import '../components/empower/empower.wxss';
 page {
- background: #f8f8f8;
+ background: #2D69DF;
    padding-bottom: 180rpx;
 }
 .container{
   height:100%;
+  background:#f8f8f8;
 }
 /* 头部轮播图 */
 .home_top {
