@@ -3,11 +3,15 @@
 @import '../components/empower/empower.wxss';
 page {
  background: #2D69DF;
-   padding-bottom: 180rpx;
+  
 }
 .container{
   height:100%;
+
+}
+.cc{
   background:#f8f8f8;
+  padding-bottom: 180rpx;
 }
 /* 头部轮播图 */
 .home_top {

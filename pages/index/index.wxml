@@ -17,6 +17,7 @@
 			</block>
 		</view>
 	</view>
+	<view class="cc">
 	<!-- 分类 -->
 	<view class="home_tab">
 		<view wx:for="{{list}}" wx:for-item="listItem" wx:key-index="index">
@@ -46,6 +47,7 @@
 				<itemschool imgpath="{{imgpath}}" item="{{schoolItem}}" btnflag="{{true}}" bindhideempower="hideempower" bindshowempower="showempower"></itemschool>
 			</view>
 		</view>
+	</view>
 	</view>
 </view>
 <view hidden="{{showgetuser}}">
