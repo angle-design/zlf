@@ -42,7 +42,7 @@
 							<view class="item_school {{!item.chatStatus?'':'history'}}">
 								<view><text>{{item.username}}</text>
 								<!-- 小红点 -->
-									<image  wx:if="{{!item.chatStatus}}" src="{{host}}diandian.png"></image>
+									<image  wx:if="{{item.showh}}" src="{{host}}diandian.png"></image>
 								</view>
 								<wxs module="utils" src="../../utils/utils.wxs"></wxs>
 								<text>{{utils.fftime(item.chatTime)}}</text>

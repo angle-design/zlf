@@ -66,7 +66,7 @@ Page({
       success:(res)=>{
         console.log(res)
         this.setData({
-          page:res.data
+          page:res.data+1
         })
       },
       fail:(err)=>{
@@ -105,9 +105,10 @@ Page({
       schoolLevelId: ""
     })
     .then((res)=>{
+      console.log(res)
       if(res){
         if (this.data.page == 1) {
-          if(res.length<8){
+          if(res.length<10){
             this.setData({
               loadStatus:2
             })

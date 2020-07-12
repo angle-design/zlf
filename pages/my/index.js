@@ -55,9 +55,30 @@ Page({
       'token':app.globalData.openid
     })
     .then((res)=>{
-      this.setData({
+      if(res.length>0){
+       
+        let utype = app.globalData.uinfo.identity;
+
+        for(let i=0;i<res.length;i++){
+          let showh = 0;
+          if(res[i].chatStatus<1){
+            if(utype==1 && res[i].msgType<1){
+              showh =1;
+            }else if(utype<1 && res[i].userIdentity>0){
+              showh =1;
+            }
+            
+          }
+          res[i]['showh'] = showh;
+          
+        }
+       console.log(res)
+       this.setData({
         messagelist:res
       })
+      }
+      
+      
     })
     .catch((err)=>{
 

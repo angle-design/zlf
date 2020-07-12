@@ -72,7 +72,8 @@ Page({
         _this.setData({
           num:num
         })
-        for (let i = 0; i < _this.data.page*10; i++) {
+        let icount = (_this.data.page*10-_this.data.arry.length);
+        for (let i = 0; i < icount; i++) {
           if(_this.data.arry.length>num){
             _this.data.arry.push(false);
           }else{
@@ -97,19 +98,14 @@ Page({
     var _this = this;
     var str = parseInt(res.scrollTop /(_this.data.damoHeight));
     // console.log(str)
-    _this.data.arry[str+_this.data.num] = true;
+    let c =str+_this.data.num;
+    for(let i=0 ;i<=c;i++){
+      _this.data.arry[i] = true;
+    }
+    
     _this.setData({
       arry: _this.data.arry
     })
-  },
-  scrollToLower: function (e) {
-    if (!this.data.loading && !this.data.noMore){
-      this.setData({
-        loading: true,
-        page: this.data.page + 1
-      })
-      this.getlist();
-    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -150,9 +146,20 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    var that = this;
-    (this.data.page)++;
-    this.getlist();
+    // console.log(this.data.loadStatus)
+    if(this.data.loadStatus==1){
+      var that = this;
+      (this.data.page)++;
+      this.getlist();
+    }else{
+      if(!this.data.arry[(this.data.arry.length-1)]){
+        this.data.arry[(this.data.arry.length-1)]=true;
+        this.setData({
+          arry: this.data.arry
+        })
+      }
+    }
+    
   },
 
   /**

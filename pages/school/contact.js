@@ -564,21 +564,20 @@ Page({
               .then((res)=>{
                   
               })
+              
               that.setData({
-                weiflag:false
+                resetflag:false,
+                canvasHidden: true
               })
             }
-          }) 
-        },
-        fail(err){
-          console.log(err)
-        }
-      })
-    },
-    fail(err){
-      console.log(err)
-    }
+          })
+      },
+      fail(err){
+        console.log(err)
+      }
     })
+    }
+  })
   },
   towei(){
     this.setData({
