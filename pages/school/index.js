@@ -20,7 +20,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getlist();
+  wx.clearStorage();
+    // this.getlist();
     // 适配底部
   let modelmes = wx.getStorageSync('modelmes');
   let isIphoneX = app.globalData.isIphoneX;
@@ -48,12 +49,51 @@ Page({
         currentTab: 1 
       })
     }
+    
+    wx.getStorage({
+      key: 'LIST',
+      success:(res)=>{
+        this.setData({
+          schoollist:res.data
+        })
+      },
+      fail:(err)=>{
+        console.log(err)
+      }
+    })
+    wx.getStorage({
+      key: 'PAGE',
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          page:res.data
+        })
+      },
+      fail:(err)=>{
+        console.log(err)
+        this.setData({
+          page:1
+        })
+      }
+    })
+    wx.getStorage({
+      key: 'LOAD',
+      success:(res)=>{
+        this.setData({
+          loadStatus:res.data
+        })
+      },
+      fail:(err)=>{
+        this.setData({
+          loadStatus:1
+        })
+      }
+    })
     this.setData({
-      page:1,
       imgpath:app.globalData.Imgpath
     })
     this.getinstitutionlist();
-    
+    // this.onLoad();
   },
   getinstitutionlist(){
     app.post(app.globalData.Apipath+'/lxb-api/institution/list',{
@@ -85,11 +125,28 @@ Page({
             })
           }
         }
+        if(res.length>0){
+          wx.setStorage({
+            key: 'LIST',
+            data: this.data.schoollist,
+          })
+          wx.setStorage({
+            key: 'PAGE',
+            data: this.data.page,
+          })
+        }
+        
+        
       }else{
         this.setData({
           loadStatus:2
         })
       }
+      wx.setStorage({
+        key: 'LOAD',
+        data: this.data.loadStatus,
+      })
+     
     })
   },
   showempower(){

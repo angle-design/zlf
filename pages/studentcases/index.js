@@ -15,6 +15,7 @@ Page({
     loadStatus:1,//状态
     arry:[],
     damoHeight:0,
+    num:0
   },
 
   /**
@@ -40,6 +41,12 @@ Page({
     .then((res)=>{
       var _this=this;
       if(res){
+        if(res.length<1){
+          this.setData({
+            loadStatus: 2
+          })
+          return false;
+        }
            // ========图片懒加载开始========
         if(this.data.page==1){
           this.setData({
@@ -56,14 +63,21 @@ Page({
           }
         }
         // 获取每个的高度
-   var query = wx.createSelectorQuery();
+       var query = wx.createSelectorQuery();
        query.select('.cases').boundingClientRect(function (rect) {
           _this.setData({
-             damoHeight: rect.height/2
+             damoHeight: rect.height+20
          })
-        let num = Math.ceil(wx.getSystemInfoSync().windowHeight / (_this.data.damoHeight*2));
-        for (let i = 0; i < num; i++) {
-          _this.data.arry[i] = true;
+        let num = Math.ceil(wx.getSystemInfoSync().windowHeight / (_this.data.damoHeight));
+        _this.setData({
+          num:num
+        })
+        for (let i = 0; i < _this.data.page*10; i++) {
+          if(_this.data.arry.length>num){
+            _this.data.arry.push(false);
+          }else{
+            _this.data.arry.push(true);
+          } 
         };
         _this.setData({
           arry: _this.data.arry
@@ -79,10 +93,11 @@ Page({
     })
   },
   // 翻页图片懒加载
-    onPageScroll: function (res) {
+  onPageScroll: function (res) {
     var _this = this;
-    var str = parseInt(res.scrollTop /(_this.data.damoHeight*2));
-    _this.data.arry[str] = true;
+    var str = parseInt(res.scrollTop /(_this.data.damoHeight));
+    // console.log(str)
+    _this.data.arry[str+_this.data.num] = true;
     _this.setData({
       arry: _this.data.arry
     })

@@ -241,7 +241,7 @@ getuserinfo:function(){
     .then((res)=>{
       this.globalData.uinfo = res;
     })
-    .then((err)=>{
+    .catch((err)=>{
       if(err.msg='账号被禁用'){
          wx.showToast({
             title: '账号被禁用',
