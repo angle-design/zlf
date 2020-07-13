@@ -7,7 +7,8 @@
   <block wx:for="{{school}}" wx:for-index="index" wx:for-item="item">
   <view class="collectlist">
     <itemschool item="{{item}}" btnflag="{{false}}" imgpath="{{imgpath}}"></itemschool>
-    <text class="browse_time">刚刚</text>
+    	<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+					<text class="browse_time">{{utils.formtime(item.updateTime)}}</text>
     </view>
   </block>
    	<include src="/pages/components/loading/index"/>

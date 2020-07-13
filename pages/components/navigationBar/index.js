@@ -21,6 +21,16 @@ Component({
     imgsrc:{
       type: String,
       value: "返回"
+    },
+    fontsize:{
+      type:String,
+      value:"32rpx",
+      
+    },
+    bwidth:{
+      type:String,
+      value:"116px",
+      
     }
   },
   data: {

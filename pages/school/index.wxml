@@ -1,8 +1,8 @@
-<navigationBar toptextcolor="#fff" topbackground="#2D69DF" inner-title="院校" is-show-back="false"></navigationBar>
+<navigationBar toptextcolor="#fff" topbackground="#2D69DF" inner-title="全部院校" is-show-back="false"></navigationBar>
 <view class="school">
 <!-- 头部 -->
 	<view class="school_con">
-		<text class="tit">以下院校以名称首字母进行排序</text>
+		<text class="tit">*以下列表顺序按学校名称首字母排序</text>
 		<view wx:for="{{schoollist}}" wx:for-index="index" wx:for-item="schoolItem">
 			<itemschool item="{{schoolItem}}" btnflag="{{true}}" imgpath="{{imgpath}}" bindhideempower="hideempower" bindshowempower="showempower"></itemschool>
 		</view>

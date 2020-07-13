@@ -34,7 +34,9 @@
 				<view class="browse_case">
 					<!-- <view> <itemcase item="{{item}}"></itemcase></view> -->
 					<view class="caseitem" data-id="{{item.modelId}}" bindtap="gotocase">
-						<image src="{{imgpath+item.img}}" mode="widthFix"></image>
+						<image wx:if="{{item.img}}" src="{{imgpath+item.img}}" mode="widthFix"></image>
+						
+      <image wx:else src="/image/limoren.png" mode="widthFix"></image>
 						<view>
 							<text class="name">{{item.studentName}}</text>
 							<text class="text">{{item.title}}</text>

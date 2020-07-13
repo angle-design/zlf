@@ -38,7 +38,8 @@ Page({
               'name':item.institutionName,
               'id':item.modelId,
               'logo':item.logo,
-              'province':item.province
+              'city':item.city,
+              'updateTime':item.updateTime
             }
         });
         if(this.data.page==1){

@@ -121,8 +121,11 @@
   display: block;
   overflow:hidden;
 }
-.school_introduce view>.text-hidden,.school_team view>.text-hidden{
+.school_introduce view>.text-hidden{
   height:180rpx; 
+}
+.school_team view>.text-hidden{
+  height:1000rpx; 
 }
 .school_introduce view>.text-show,.school_team view>.text-show{
 height:auto;

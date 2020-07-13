@@ -4,7 +4,9 @@
     <text class="case_title">{{infodata.title}}</text>
     <text class="school"><text>{{infodata.name}}</text></text>
     <view class="student_img">
-      <image src="{{imgpath+infodata.img}}"></image>
+    
+      <image wx:if="{{infodata.img}}" src="{{imgpath+infodata.img}}"></image>
+      <!-- <image wx:else src="/image/limoren.png" mode="widthFix"></image> -->
       <text>{{infodata.studentName}}</text>
     </view>
     <view class="case_con">

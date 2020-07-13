@@ -6,8 +6,8 @@
       <view wx:if="{{isShowBack=='true'}}" class='hh-nav-back ico-back' bindtap='goback'>
         <image src="{{imgsrc}}"></image>
       </view>
-      <view wx:if="{{isShowBack=='false'}}" class='hh-nav-back'></view>
-      <view class="hh-title" style="color:{{toptextcolor}}">{{innerTitle}}</view>
+      <view wx:if="{{isShowBack=='false'}}" class='hh-nav-back' style="width:{{bwidth}}"></view>
+      <view class="hh-title" style="color:{{toptextcolor}};font-size:{{fontsize}}">{{innerTitle}}</view>
       <view class="hh-nav-right"></view>
     </view>
   </view>

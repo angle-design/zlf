@@ -214,4 +214,15 @@ page {
   margin: 20rpx auto 0;
 
 }
+.list_title{
+  padding: 10rpx 0 0 35rpx;
+  background: #f8f8f8;
+
+
+}
+.list_title .tit{
+  color:#9a9a9a;
+  font-size:22rpx;
+  display: block;
+}
 
