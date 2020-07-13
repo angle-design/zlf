@@ -33,7 +33,8 @@ Page({
     shareflag:false,
     resetflag:false,
     isIphoneX:false,
-    isOverShare:true
+    isOverShare:true,
+    total:0,
   },
   // 院校展开收起
   txtToggle: function() {
@@ -117,7 +118,9 @@ Page({
       res.signupMsg = res.signupMsg.replace(/\<img/gi, '<img style="max-width:100%;height:auto；margin:10rpx 0;"')
       
       this.setData({
+       
         infodata:res,
+        total:res.img.length+1,
         iscollect:res.ifCollect,　
         sharelogo:this.data.imgpath+res.logo,
         sharename:res.name,

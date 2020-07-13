@@ -32,10 +32,11 @@
 			</block>
 		</swiper>
 		<view class="dots">
-			<view class="dot{{swiperCurrent == 0 ? ' active' : ''}}"></view>
+			{{swiperCurrent+1}}/{{total}}
+			<!-- <view class="dot{{swiperCurrent == 0 ? ' active' : ''}}"></view>
 			<block wx:for="{{infodata.img}}" wx:key-index="index">
 				<view class="dot{{index == swiperCurrent-1 ? ' active' : ''}}"></view>
-			</block>
+			</block> -->
 		</view>
 	</view>
 	<!-- 院校内容 -->

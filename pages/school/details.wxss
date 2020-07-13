@@ -24,11 +24,16 @@
 }
 .dots {
   position: absolute;
-  left: 0;
-  right: 0;
+  right:30rpx;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  height:50rpx;
+  line-height:50rpx;
   bottom: 20rpx;
   display: flex;
   justify-content: center;
+  width:100rpx;
+  border-radius:100rpx;
 }
 
 .dots .dot {
