@@ -49,7 +49,7 @@
  .caseitem .school text {
   color: #4189f4;
   border-radius: 10rpx;
-  border: 1px solid #4189f4;
+  border: 1rpx solid #4189f4;
   padding: 3rpx 15rpx;
   margin-bottom: 10rpx;
 }
@@ -57,5 +57,5 @@
  .caseitem.active .school text{
   color: #ff9a2d;
   border-radius: 10rpx;
-  border: 1px solid #ff9a2d;
+  border: 1rpx solid #ff9a2d;
 }

@@ -7,12 +7,25 @@ Page({
   data: {
     isagree:true,
     host:app.globalData.host,
+    xieyiflag:false
   },
   agreeToggle: function() {
     　let that = this;
     　that.setData({
       isagree:!that.data.isagree
     　})
+  },
+  // 关闭新协议弹窗
+  closewei:function(){
+this.setData({
+  xieyiflag:false
+})
+  },
+  // 出新协议弹窗
+  toxieyi:function(){
+    this.setData({
+      xieyiflag:true
+    })
   },
   /**
    * 生命周期函数--监听页面加载
