@@ -31,12 +31,15 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding:0 10rpx;
+  box-sizing: border-box;
 }
 
 .border_new {
   height: 1px;
   background: #e2e2e2;
+  margin-bottom:40rpx;
 }
 .newone{
-  margin-top:40rpx;
+  margin-bottom:40rpx;
 }

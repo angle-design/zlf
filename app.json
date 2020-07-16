@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/project/countries",
+    "pages/studentcases/home",
     "pages/project/index",
+    "pages/project/countries",
     "pages/aboutcenter/index",
     "pages/my/question",
     "pages/school/details",

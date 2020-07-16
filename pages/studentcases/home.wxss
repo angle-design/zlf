@@ -1,0 +1,98 @@
+/* pages/studentcases/home.wxss */@import '../components/loading/index.wxss';
+page{
+  width:100%;
+  height:100vh;
+  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/ESumGUIk_20200716.jpg) no-repeat;
+  background: cover;
+  overflow: hidden;
+  position: relative;
+}
+.studentcases {
+  position: absolute;
+  bottom:0;
+  top:9vh;
+  height:88vh;
+  margin:30rpx 30rpx;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.case_bpdy{
+ 
+}
+.case_item{
+  margin-bottom:40rpx;
+}
+.caseiy{
+  width:690rpx;
+  margin:0 auto;
+  background: #e7f2ff;
+  border-radius:10px;
+}
+.cases:nth-child(even){
+  background:#fff3e7;
+}
+
+.caseitem {
+  margin-bottom: 0.3rem;
+  display: flex;
+  border-radius: 20rpx;
+  padding-top:30rpx;
+  align-items: center;
+}
+
+ .caseitem image {
+  width: 152rpx;
+  height: 192rpx;
+  margin-right: 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  opacity: 0.4;
+  transition: opacity 0.2s linear 0.4s;
+}
+ 
+.caseitem  .Action {
+  opacity: 1;
+}
+ .caseitem view {
+  display: flex;
+  flex-direction: column;
+  width: 400rpx;
+  font-size:26rpx;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+ .caseitem .name {
+  font-size: 30rpx;
+}
+
+ .caseitem .text {
+  margin: 10rpx 0 20rpx;
+  height: 70rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.case_school{
+  color:#fff;
+  font-size:34rpx;
+  padding-left:40rpx;
+  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/LU8lsejv_20200716.png) no-repeat 10rpx center;
+  background-size:10rpx 24rpx;
+  margin:0 30rpx 15rpx;
+
+}
+.caseiy{
+  width:690rpx;
+  background:#fff;
+  border-radius: 10rpx;
+  padding:0 40rpx 20rpx;
+  box-sizing: border-box;
+  margin:0 auto;
+}

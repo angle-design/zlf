@@ -1,6 +1,6 @@
 <!-- 学生案例 -->
 <view class="studentcases">
-<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="师生风采" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
+<navigationBar toptextcolor="#333" topbackground="#fff" inner-title="学生案例" is-show-back="true" imgsrc="{{host}}hei.png"></navigationBar>
 <view>
 <block wx:for="{{caselist}}" wx:for-index="index" wx:for-item="item">
     <view class="cases">

@@ -1,6 +1,6 @@
 	<!-- 带图片的 -->
 		<view class="new_item {{!item.img?'new_noimg_item':''}}" bindtap="gotodetail" data-id="{{item.id}}">
-			<image wx:if="{{item.img}}" src="{{imgpath+item.img}}" mode="widthFix"></image>
+			<image wx:if="{{item.img}}" src="{{imgpath+item.img}}" ></image>
 			<view class="new_con">
 				<text>{{item.title}}</text>
 				<wxs module="utils" src="../../../utils/utils.wxs"></wxs>

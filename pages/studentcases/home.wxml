@@ -1,0 +1,73 @@
+<!-- 学生案例 -->
+	<navigationBar toptextcolor="#fff" topbackground="none" inner-title="学生案例" is-show-back="true" imgsrc="{{host}}bai.png"></navigationBar>
+	<view class="studentcases">
+  <view class="case_body">
+    <block>
+      <view class="case_item">
+        <view class="case_school">中国石油大学（华东）</view>
+        <view class="caseiy">
+           <view class="caseitem">
+          <image src="{{host}}limoren.png" mode="widthFix"></image>
+          <view>
+            <text class="name">莫小贝</text>
+            <text class="text">出国留学项目第一届学生</text>
+          </view>
+        </view>
+              <view class="caseitem">
+          <image src="{{host}}limoren.png" mode="widthFix"></image>
+          <view>
+            <text class="name">莫小贝</text>
+            <text class="text">出国留学项目第一届学生</text>
+          </view>
+        </view>
+        </view>
+     
+      </view>
+  </block>
+    <block>
+      <view class="case_item">
+        <view class="case_school">中国石油大学（华东）</view>
+        <view class="caseiy">
+           <view class="caseitem">
+          <image src="{{host}}limoren.png" mode="widthFix"></image>
+          <view>
+            <text class="name">莫小贝</text>
+            <text class="text">出国留学项目第一届学生</text>
+          </view>
+        </view>
+              <view class="caseitem">
+          <image src="{{host}}limoren.png" mode="widthFix"></image>
+          <view>
+            <text class="name">莫小贝</text>
+            <text class="text">出国留学项目第一届学生</text>
+          </view>
+        </view>
+        </view>
+     
+      </view>
+  </block>  
+    <block>
+      <view class="case_item">
+        <view class="case_school">中国石油大学（华东）</view>
+        <view class="caseiy">
+           <view class="caseitem">
+          <image src="{{host}}limoren.png" mode="widthFix"></image>
+          <view>
+            <text class="name">莫小贝</text>
+            <text class="text">出国留学项目第一届学生</text>
+          </view>
+        </view>
+              <view class="caseitem">
+          <image src="{{host}}limoren.png" mode="widthFix"></image>
+          <view>
+            <text class="name">莫小贝</text>
+            <text class="text">出国留学项目第一届学生</text>
+          </view>
+        </view>
+        </view>
+     
+      </view>
+  </block>  
+	</view>
+	<include src="/pages/components/loading/index" />
+</view>

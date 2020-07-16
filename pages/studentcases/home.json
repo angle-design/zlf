@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "学生案例",
+  "usingComponents": {
+    "itemcase": "../components/itemcase/index",
+    "loading":"../components/loading/index"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

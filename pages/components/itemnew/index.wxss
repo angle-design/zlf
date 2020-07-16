@@ -1,12 +1,11 @@
 .new_item {
   display: flex;
-  align-items: center;
   line-height: 35rpx;
 }
 
 .new_item image {
   width: 212rpx;
-  height: 130rpx;
+  height: 130rpx!important;
   border-radius: 10rpx;
   margin-right: 20rpx;
 }

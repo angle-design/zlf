@@ -7,15 +7,8 @@ Page({
    */
   data: {
   host:app.globalData.host,
-  tit:['项目背景','项目现状','项目性质','项目模式','项目意义'],
-  curindex:0,
   title:'项目介绍'
 
-  },
-  togolle:function(e){
-    this.setData({
-      curindex:e.currentTarget.dataset.index
-    })
   },
   /**
    * 生命周期函数--监听页面加载

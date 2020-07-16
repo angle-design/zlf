@@ -1,10 +1,15 @@
 page{
   width:100%;
-  height:1800rpx;
-  background: url(https://satc.cscse.edu.cn/lxb-image/bgxiang.jpg) no-repeat center top;
-  background-size:cover;
-
+  height:auto;
+  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/qGXApzda_20200716.jpg) no-repeat center top;
+  background-size:750rpx 1414rpx;
   box-sizing: border-box;
+}
+.team_body{
+  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/RFqQ2Kc7_20200716.jpg) no-repeat center bottom;
+  height:auto;
+  background-size:750rpx 4426rpx;
+  padding-bottom:30rpx;
 }
 .project{
 margin-top:250rpx
@@ -31,79 +36,45 @@ margin-top:250rpx
   width:100rpx;
   height:100rpx;
 }
-.list{
-  width:720rpx;
-  margin:50rpx auto;
-  position:relative;
-  height:1100rpx;
-}
-.list_tab{
-  color:#fff;
-  display: flex;
-  font-size:28rpx;
-  justify-content:space-between;
-}
-.list_tab view{
-  display: flex;
-  margin:0 1rpx;
-  flex: 1;
-  margin-top:10rpx;
-
-}
-.list_tab view.active{
-
-  margin-top:0;
-transition: all 0.2s;
-}
-.list_tab view text{
-  display: flex;
-  flex: 1;
-  background:#ff9a2d;
-  border-radius: 20rpx 20rpx 0 0;
-  height:75rpx;
-  line-height:50rpx;
-  justify-content: center;
-}
-.list_tab view.active text{
-  background: #fff;
-  color:#2c68cc;
-  font-size:32rpx;
-  line-height:68rpx;
-}
-.list_tab text{
-  color:#fff;
-}
-.list_content{
-  position:absolute;
-  top:60rpx;
+.project_one{
+  width:674rpx;
+  margin:100rpx auto 0;
   background:#fff;
-  left:0;height:auto;
-  width:100%;
-  padding:60rpx 40rpx;
+  border-radius:10rpx;
+  padding:90rpx 30rpx 30rpx;
   box-sizing: border-box;
-  border-radius:20rpx 20rpx 10rpx 10rpx;
- height:1050rpx;
+  position: relative;
 }
-.list_content view{
-  height:100%;
-  overflow-y: scroll;
-}
-.list_content text{
-  display: block;
-  text-indent: 2rem;
-  font-size:28rpx;
-  line-height: 50rpx;
-}
-.project .text_con{
-  display: block;
-  width:630rpx;
-  margin:44rpx auto;
+.project_one .title{
+  width:334rpx;
+  height:90rpx;
+  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/j7j6AQd0_20200716.png) no-repeat;
+  background-size:334rpx 90rpx;
+  position:absolute;
+  top:-30rpx;
+  left:0;
+  font-size:42rpx;
   color:#fff;
-  font-size:28rpx;
-  line-height:50rpx;
-  padding-bottom:30rpx;
+  font-weight:bold;
+  text-align: center;
+  line-height:84rpx;
+  padding-right:20rpx;
+  box-sizing: border-box;
 }
-.project .text_con text{
-  color:#ffc688;
-  text-decoration: underline;
+.project_one text{
+  font-size:28rpx;
+  color:#333;
+  text-indent:2rem;
+  display: block;
+  line-height:50rpx;
+}
+.text_con{
+  width:674rpx;
+  font-size:28rpx;
+  color:#fff;
+  margin:40rpx auto;
+  line-height:50rpx;
+}
+.text_con text{
+  color:#ffc688
 }
