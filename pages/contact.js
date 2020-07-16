@@ -71,9 +71,12 @@ Page({
     
   },
   bottom: function() {
+    console.log(1)
+    console.log(this.data.toView)
     this.setData({
       toView: 'msg-' + (msgList.length - 1)
     })
+    
   },
   /**
    * 生命周期函数--监听页面显示
@@ -112,10 +115,11 @@ Page({
         contentType: 'text',
         content: onMessage_data.content
       })
-        that.setData({
+        this.setData({
           msgList
         })
-        that.bottom()
+        console.log(1)
+        this.bottom()
       
     })
   },

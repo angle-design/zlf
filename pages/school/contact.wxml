@@ -65,11 +65,13 @@
   <view class="wei_pup" wx:if="{{weiflag}}">
     <view class="wei_con">
        <image src="{{host}}close.png"  bindtap="closewei"></image>
-      <text class="pup_title">请扫描二维码添加微信</text>
+      <text class="pup_title" wx:if="{{wxcoder}}">请扫描二维码添加微信</text>
+      <text class="pup_title" wx:else>院校还没有添加联系方式</text>
+
       <view>
-        <image src="{{wxcoder}}" bindtap="saveImageToPhotosAlbum"></image>
+        <image src="{{wxcoder}}"  wx:if="{{wxcoder}}" bindtap="saveImageToPhotosAlbum"></image>
        
       </view>
-      <button bindtap="saveImageToPhotosAlbum">保存图片</button>
+      <button  wx:if="{{wxcoder}}" bindtap="saveImageToPhotosAlbum">保存图片</button>
     </view>
   </view>

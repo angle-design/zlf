@@ -102,16 +102,20 @@ Page({
       this.setData({
         infodata:res,
         iscollect:res.ifCollect,
-        wxcoder:this.data.imgpath+res.wxcoder,
         wxPhone:res.contactPhone
       });
-     
+     if(res.wxcoder){
+      this.setData({
+        wxcoder:this.data.imgpath+res.wxcoder
+      })
+     }
     })
   },
   bottom: function() {
     this.setData({
       toView: 'msg-' + this.data.bottomid
     })
+    console.log(this.data.bottomid)
   },
   dosubmit:function(){
     if(!this.data.conname || !this.data.conphone || !this.data.concontent){
@@ -208,7 +212,7 @@ Page({
           content: onMessage_data.content,
           uname:_this.data.servername,
           uimg:_this.data.serverimg,
-          z:onMessage_data.id
+          z:onMessage_data.mesId
         })
       }else{
         msgList.push({
@@ -217,13 +221,12 @@ Page({
           content: onMessage_data.content,
           uname:_this.data.username,
           uimg:_this.data.userimg,
-          z:onMessage_data.id
+          z:onMessage_data.mesId
         })
       }
-      
       _this.setData({
           msgList:msgList,
-          bottomid:onMessage_data.id
+          bottomid:onMessage_data.mesId
       },()=>{
         _this.bottom()
       })

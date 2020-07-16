@@ -8,7 +8,7 @@ page{
 .team_body{
   background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/RFqQ2Kc7_20200716.jpg) no-repeat center bottom;
   height:auto;
-  background-size:750rpx 4426rpx;
+  background-size:750rpx 4626rpx;
   padding-bottom:30rpx;
 }
 .project{
