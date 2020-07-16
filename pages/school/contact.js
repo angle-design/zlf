@@ -201,7 +201,7 @@ Page({
       }
       console.log('rs==='+result);
       var onMessage_data = JSON.parse(result.data)
-      if(onMessage_data.type==2){
+      if(onMessage_data.type==1){
         msgList.push({
           speaker: 'server',
           contentType: 'text',
@@ -224,8 +224,10 @@ Page({
       _this.setData({
           msgList:msgList,
           bottomid:onMessage_data.id
+      },()=>{
+        _this.bottom()
       })
-      _this.bottom()
+     
     })
   },
   //获取学校姓名

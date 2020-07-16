@@ -12,7 +12,7 @@ Page({
     loading:false,
     noMore:false,
     host:app.globalData.host,
-    loadStatus:1,
+    loadStatus:2,
   },
 
   /**
@@ -35,7 +35,8 @@ Page({
       loading: false
     })
     app.post(app.globalData.Apipath+'/lxb-api/minapp/information/list',{
-      "current": this.data.page
+      "current": this.data.page,
+      "pageSize":10
     },{
       'content-type': 'application/json',
       'token':app.globalData.openid
@@ -43,6 +44,11 @@ Page({
     .then((res)=>{
       if(res){
         if(this.data.page==1){
+          if(res.length<10){
+            this.setData({
+              loadStatus:2
+            })
+          }
           this.setData({
             newtoplist:res[0],
             newlist :res.slice(1)

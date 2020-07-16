@@ -64,7 +64,7 @@ Page({
           if(res[i].chatStatus<1){
             if(utype==1 && res[i].msgType<1){
               showh =1;
-            }else if(utype<1 && res[i].userIdentity>0){
+            }else if(utype<1 && res[i].msgType>0){
               showh =1;
             }
             

@@ -1,7 +1,7 @@
 page{
   width:100%;
   height:1800rpx;
-  background: url(http://59.110.242.178/lxb-image/bgxiang.jpg) no-repeat center top;
+  background: url(https://satc.cscse.edu.cn/lxb-image/bgxiang.jpg) no-repeat center top;
   background-size:cover;
 
   box-sizing: border-box;

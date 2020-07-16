@@ -3,6 +3,7 @@
 			<image wx:if="{{item.img}}" src="{{imgpath+item.img}}" mode="widthFix"></image>
 			<view class="new_con">
 				<text>{{item.title}}</text>
-				<text>{{item.content}}</text>
+				<wxs module="utils" src="../../../utils/utils.wxs"></wxs>
+				<text>{{utils.fftime(item.createTime)}}</text>
 			</view>
 		</view>

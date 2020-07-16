@@ -49,50 +49,55 @@ Page({
         currentTab: 1 
       })
     }
-    
+    var _this = this;
     wx.getStorage({
       key: 'LIST',
       success:(res)=>{
-        this.setData({
+        _this.setData({
           schoollist:res.data
         })
       },
       fail:(err)=>{
-        console.log(err)
+        // console.log(err)
       }
     })
     wx.getStorage({
       key: 'PAGE',
       success:(res)=>{
-        console.log(res)
-        this.setData({
+        console.log(res.data)
+        _this.setData({
           page:res.data+1
+        },()=>{
+          _this.getinstitutionlist();
         })
       },
       fail:(err)=>{
-        console.log(err)
-        this.setData({
+        // console.log(err)
+        _this.setData({
           page:1
+        },()=>{
+          _this.getinstitutionlist();
         })
       }
     })
     wx.getStorage({
       key: 'LOAD',
       success:(res)=>{
-        this.setData({
+        _this.setData({
           loadStatus:res.data
         })
       },
       fail:(err)=>{
-        this.setData({
+        _this.setData({
           loadStatus:1
         })
       }
     })
-    this.setData({
+    _this.setData({
       imgpath:app.globalData.Imgpath
     })
-    this.getinstitutionlist();
+   
+    
     // this.onLoad();
   },
   getinstitutionlist(){
