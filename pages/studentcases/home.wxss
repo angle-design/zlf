@@ -1,27 +1,26 @@
-/* pages/studentcases/home.wxss */@import '../components/loading/index.wxss';
+/* pages/studentcases/home.wxss */
+@import '../components/loading/index.wxss';
 page{
+ position: relative;
+}
+.fixed_body{
   width:100%;
   height:100vh;
   background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/ESumGUIk_20200716.jpg) no-repeat;
   background: cover;
-  overflow: hidden;
-  position: relative;
+ position: fixed;
+ top:0;
+ left:0;
 }
 .studentcases {
-  position: absolute;
-  bottom:0;
-  top:9vh;
-  height:88vh;
   margin:30rpx 30rpx;
-  box-sizing: border-box;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  z-index: 1;
 }
-.case_bpdy{
- 
-}
+
 .case_item{
-  margin-bottom:40rpx;
+  margin-bottom:34rpx;
+
 }
 .caseiy{
   width:690rpx;
@@ -29,18 +28,16 @@ page{
   background: #e7f2ff;
   border-radius:10px;
 }
-.cases:nth-child(even){
-  background:#fff3e7;
-}
+
 
 .caseitem {
-  margin-bottom: 0.3rem;
-  display: flex;
-  border-radius: 20rpx;
-  padding-top:30rpx;
+  padding:24rpx 0;
   align-items: center;
+  border-bottom:1rpx dashed #D0DBE8;
 }
-
+.caseiy>.caseitem:last-child{
+  border-bottom:none;
+}
  .caseitem image {
   width: 152rpx;
   height: 192rpx;
@@ -54,16 +51,7 @@ page{
 .caseitem  .Action {
   opacity: 1;
 }
- .caseitem view {
-  display: flex;
-  flex-direction: column;
-  width: 400rpx;
-  font-size:26rpx;
-  height: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
+ 
  .caseitem .name {
   font-size: 30rpx;
 }
@@ -82,17 +70,20 @@ page{
 .case_school{
   color:#fff;
   font-size:34rpx;
-  padding-left:40rpx;
-  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/LU8lsejv_20200716.png) no-repeat 10rpx center;
+  padding-left:26rpx;
+  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/LU8lsejv_20200716.png) no-repeat 2rpx center;
   background-size:10rpx 24rpx;
-  margin:0 30rpx 15rpx;
+  margin:0 0 10rpx;
 
 }
 .caseiy{
   width:690rpx;
   background:#fff;
   border-radius: 10rpx;
-  padding:0 40rpx 20rpx;
+  padding:5rpx 40rpx 7rpx;
   box-sizing: border-box;
   margin:0 auto;
+}
+.listFooter{
+  color:#fff!important;
 }

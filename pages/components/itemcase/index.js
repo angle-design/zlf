@@ -17,7 +17,10 @@ Component({
     },
     index:{
       type:Number
-    }
+    },
+    btnflag:{
+      type:Boolean
+    },
   }, 
   methods:{
     gotodetail:function(evnet){

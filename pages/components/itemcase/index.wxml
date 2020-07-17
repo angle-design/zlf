@@ -1,9 +1,9 @@
 <view class=" {{index%2==0?'caseitem':'caseitem active'}}" bindtap="gotodetail" data-id="{{item.id}}">
   <image  wx:if="{{item.img}}" mode="widthFix" src="{{arry[index] ? imgpath+item.img:host+'mo1.jpg'}}" class="{{arry[index] ?'Action':''}}"></image>
     <image wx:else src="../../../image/limoren.png" mode="widthFix"></image>
-    <view>
+    <view >
       <text class="name">{{item.studentName}}</text>
       <text class="text">{{item.title}}</text>
-      <text class="school"><text>{{item.name}}</text></text>
+      <text class="school"  wx:if="{{btnflag}}"><text>{{item.name}}</text></text>
     </view>
   </view>
