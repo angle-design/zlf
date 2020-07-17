@@ -57,7 +57,7 @@
 		<view class="school_introduce">
 			<text>院校介绍</text>
 			<view>
-				<rich-text class="{{txtHidden?'text-hidden':'text-show'}}" nodes="{{infodata.information}}" ></rich-text>
+				<rich-text selectable='true' class="{{txtHidden?'text-hidden':'text-show'}}" nodes="{{infodata.information}}" ></rich-text>
 				<!-- <text class="{{txtHidden?'text-hidden':'text-show'}}">{{infodata.information}}</text> -->
 				<view class="all {{!txtHidden?'active':''}}" bindtap="txtToggle" >
 					<image src="{{host}}quanbu.png"></image>{{txtHidden?'查看全部':'收起内容'}}
@@ -68,7 +68,7 @@
 		<view class="school_team">
 			<text>项目介绍</text>
 			<view>
-				<rich-text class="{{teamHidden?'text-hidden':'text-show'}}" nodes="{{infodata.term}}"></rich-text>
+				<rich-text selectable='true' class="{{teamHidden?'text-hidden':'text-show'}}" nodes="{{infodata.term}}"></rich-text>
 				<!-- <text class="{{teamHidden?'text-hidden':'text-show'}}">{{infodata.term}}</text> -->
 				<view class="all {{!teamHidden?'active':''}}" bindtap="teamToggle">
 					<image src="{{host}}quanbu.png"></image>{{teamHidden?'查看全部':'收起内容'}}
@@ -79,7 +79,7 @@
 		<view class="school_notice">
 			<text>报名须知</text>
 			<view class="notice_text">
-				<rich-text nodes="{{infodata.signupMsg}}"></rich-text>
+				<rich-text selectable='true' nodes="{{infodata.signupMsg}}"></rich-text>
 
 			</view>
 		</view>
@@ -87,7 +87,7 @@
 		<view class="school_phone">
 			<text>联系方式</text>
 			<view class="phone_text">
-				<rich-text nodes="{{infodata.contact}}"></rich-text>
+				<rich-text selectable='true' nodes="{{infodata.contact}}"></rich-text>
 			</view>
 		</view>
 	</view>

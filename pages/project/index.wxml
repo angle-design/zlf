@@ -45,7 +45,7 @@
       </view>
   </view>
     <view class="text_con">
-    关于项目详情请点击：<text>http://www.cscse.edu.cn/
+    关于项目详情请点击：<text selectable='true'>http://www.cscse.edu.cn/
     publish/portal0/tab85/default.htm</text>，进行查阅。
     </view>
   </view>

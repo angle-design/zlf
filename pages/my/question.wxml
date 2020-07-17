@@ -18,7 +18,7 @@
 		</view>
 	</block>
 	<text class="link">有关国（境）外学历学位认证服务详情，请通过：
-	<text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/
+	<text selectable='true'>http://zwfw.cscse.edu.cn/cscse/jylh/397464/
 	index.html</text>，进行查阅。
 	</text>
 </view>
@@ -41,7 +41,7 @@
 		</view>
 	</block>
 	<text class="link">有关留学人员就业报到服务详情，请通过：
-	<text>http://zwfw.cscse.edu.cn/cscse/jylh/397464/
+	<text selectable='true'>http://zwfw.cscse.edu.cn/cscse/jylh/397464/
 	index.html</text>，进行查阅。
 	</text>
 </view>
@@ -63,7 +63,7 @@
 		</view>
 	</block>
 	<text class="link">有关留学存档服务详情，请通过：
-	<text>http://zwfw.cscse.edu.cn/cscse/dajz/390892/
+	<text selectable='true'>http://zwfw.cscse.edu.cn/cscse/dajz/390892/
 	index.html</text>,进行查阅。
 	</text>
 </view>
@@ -85,7 +85,7 @@
 		</view>
 	</block>
 	<text class="link">有关公派留学服务详情，请通过：
-	<text>http://zwfw.cscse.edu.cn/cscse/xwzx/391656/
+	<text selectable='true'>http://zwfw.cscse.edu.cn/cscse/xwzx/391656/
 	393781/394603/index.html</text>，进行查阅。
 	</text>
 </view>

@@ -47,9 +47,9 @@ App({
                view.onShareAppMessage = function () {
                    //你的分享配置
                    return {
-                       title: '标题',
+                       title: '出国留学培训项目云平台',
                        path: '/pages/index/index',
-                       imageUrl:'http://59.110.242.178/lxb-image/share.jpg'
+                       imageUrl:'https://satc.cscse.edu.cn/lxb-image/share.jpg'
                    };
                }
            }
@@ -166,7 +166,9 @@ login:function(obj){
           this.globalData.openid = result.token;
             if(result.authorize==1){
                wx.getUserInfo({
+                  lang: 'zh_CN', 
                   success: res => {
+                     console.log(res)
                     this.globalData.userInfo = res
                   }
                 })
@@ -255,11 +257,17 @@ globalData: {
     userInfo: null,
     uinfo:null,
     list:[],
+   //  host:'https://satc.cscse.edu.cn/lxb-image/',
+   //  Apipath:'https://satc.cscse.edu.cn/',
+   //  Imgpath:'https://satc.cscse.edu.cn/lxb-api/file/showImg/',
+   //  videopath:'https://satc.cscse.edu.cn/lxb-api/file/ios/video/',
+   //  wsspath:'wss://satc.cscse.edu.cn/lxb-api/imserver/',
+    //测试环境
     host:'https://satc.cscse.edu.cn/lxb-image/',
-    Apipath:'https://satc.cscse.edu.cn/',
+    Apipath:'http://59.110.242.178/',
     Imgpath:'https://satc.cscse.edu.cn/lxb-api/file/showImg/',
     videopath:'https://satc.cscse.edu.cn/lxb-api/file/ios/video/',
-    wsspath:'wss://satc.cscse.edu.cn/lxb-api/imserver/',
+    wsspath:'ws://59.110.242.178/lxb-api/imserver/',
     return_url:null,
     reutrn_type:1,
     showlogin:true,

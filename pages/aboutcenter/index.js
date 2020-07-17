@@ -63,5 +63,16 @@ host:app.globalData.host
    */
   onShareAppMessage: function () {
 
+  },
+  previewImage:function(){
+    wx.previewImage({
+      current: 'http://special.meirixue.com/exhibitionlian/images/ma11.png', // 当前显示图片的http链接
+      urls: [
+        "http://special.meirixue.com/exhibitionlian/images/ma11.png",
+        "http://special.meirixue.com/exhibitionlian/images/ma22.png",
+        "http://special.meirixue.com/exhibitionlian/images/ma33.png",
+        "https://satc.cscse.edu.cn/lxb-api/file/showImg/jAiPAmQC_20200716.png"
+      ] // 需要预览的图片http链接列表
+    })
   }
 })
