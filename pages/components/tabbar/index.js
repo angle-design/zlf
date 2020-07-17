@@ -1,4 +1,5 @@
 import tabbarList from 'router.js'
+const app=getApp();
 // components/tabbar/index.js
 Component({
   /**
@@ -21,7 +22,8 @@ Component({
    */
   data: {
     tabbarList: tabbarList,
-    _auth: 0
+    _auth: 0,
+    host:app.globalData.host
   },
 
   /**

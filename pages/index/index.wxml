@@ -20,10 +20,13 @@
 	<view class="cc">
 	<!-- 分类 -->
 	<view class="home_tab">
-		<view wx:for="{{list}}" wx:for-item="listItem" wx:key-index="index">
-			<image src="{{host}}{{listItem.img}}" data-url="{{listItem.url}}" data-islog="{{listItem.islog}}" bindtap="gotopage"></image>
+	<block  wx:for="{{list}}" wx:for-item="listItem"  wx:key-index="index">
+		<view  data-url="{{listItem.url}}" data-islog="{{listItem.islog}}"  bindtap="gotopage">
+			<image src="{{host}}{{listItem.img}}" ></image>
 			<text>{{listItem.name}}</text>
 		</view>
+	</block>
+	
 	</view>
 	<!-- 列表 -->
 	<view class="home_list">

@@ -69,8 +69,8 @@ Page({
   })
 },
 gotopage(event){
-  var islogin_ = event.target.dataset.islog;
-  var url = event.target.dataset.url;
+  var islogin_ = event.currentTarget.dataset.islog;
+  var url = event.currentTarget.dataset.url;
   if(islogin_){
     var isshow = app.checklogin(url,2);
     if(isshow){

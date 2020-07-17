@@ -2,6 +2,9 @@
   <view class='tabbar-item {{activeIdx === index ? "active" : ""}}' wx:for='{{tabbarList}}' wx:key='{{item.pagePath}}' bindtap='handleItemTap' data-path='{{item.pagePath}}' data-idx='{{index}}'>
     <view class='tabbar-item-icon'>
       <image src='{{activeIdx === index ? item.selectedIconPath : item.iconPath}}'></image>
+      	<view class="newmessage" wx:if="{{index==2}}">
+        <image  src="{{host}}diandian.png"></image>
+      </view>
     </view>
     <view class='tabbar-item-text'>{{item.text}}</view>
   </view>
