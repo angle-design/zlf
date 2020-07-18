@@ -4,6 +4,5 @@
     "itemcase": "../components/itemcase/index",
     "loading":"../components/loading/index"
   },
-  "enablePullDownRefresh": true,
   "onReachBottomDistance": 50
 }
