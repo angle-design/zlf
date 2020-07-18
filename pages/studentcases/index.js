@@ -31,7 +31,7 @@ Page({
     this.setData({
       loading: false
     })
-    app.post(app.globalData.Apipath+'/lxb-api/minapp/studentcase/list',{
+    app.post(app.globalData.Apipath+'/lxb-api/minapp/institutioncase/list',{
       "current": this.data.page,
       "pageSize": 10
     },{

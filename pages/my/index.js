@@ -57,14 +57,12 @@ Page({
     .then((res)=>{
       if(res.length>0){
        
-        let utype = app.globalData.uinfo.identity;
+        let uid = app.globalData.uinfo.id;
 
         for(let i=0;i<res.length;i++){
           let showh = 0;
           if(res[i].chatStatus<1){
-            if(utype==1 && res[i].msgType<1){
-              showh =1;
-            }else if(utype<1 && res[i].msgType>0){
+            if(uid!= res[i].userId){
               showh =1;
             }
             
