@@ -4,6 +4,6 @@
 			<view class="new_con">
 				<text>{{item.title}}</text>
 				<wxs module="utils" src="../../../utils/utils.wxs"></wxs>
-				<text>{{utils.fftime(item.createTime)}}</text>
+				<text class="time">{{utils.fftime(item.createTime)}}</text>
 			</view>
 		</view>

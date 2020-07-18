@@ -82,7 +82,8 @@ Page({
     // this.getservername();
     // this.bottom();
     count =0;
-    this.gethistory();
+    // wx.setTimeout(,500);
+    // this.gethistory();
     this.getschoolinfo();
   },
   getschoolinfo:function(){
@@ -246,6 +247,8 @@ Page({
         this.setData({
           servername:res.name,
           serverimg:app.globalData.Imgpath+res.logo
+        },()=>{
+          this.gethistory()
         })
         wx.setNavigationBarTitle({
           title: res.name    
@@ -296,6 +299,17 @@ Page({
     })
     .then((res)=>{
       if(res.length<1){
+        msgList.push({
+          speaker: 'server',
+          contentType: 'text',
+          content: '您好，请问有什么可以帮到您的？',
+          uname:_this.data.servername,
+          uimg:_this.data.serverimg,
+          z:1
+        })
+        _this.setData({
+          msgList:msgList
+        })
         wx.hideLoading();
         _this.data.ScrollLoading=1;
         return false;
