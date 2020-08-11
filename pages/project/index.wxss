@@ -4,22 +4,14 @@ page{
   background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/qGXApzda_20200716.jpg) no-repeat center top;
   background-size:750rpx 1414rpx;
   box-sizing: border-box;
-}
-.team_body{
-  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/RFqQ2Kc7_20200716.jpg) no-repeat center bottom;
-  height:auto;
-  background-size:750rpx 4626rpx;
-  padding-bottom:30rpx;
-}
-.project{
-margin-top:250rpx
+ 
 }
 .video{
   width:600rpx;
   height:340rpx;
   border-radius: 20rpx;
   overflow:hidden;
-  margin:0 auto 30rpx;
+  margin:20rpx auto 0rpx;
   position: relative;
 
 }
@@ -29,19 +21,14 @@ margin-top:250rpx
   border-radius: 20rpx;
   overflow:hidden;
 }
-.video view{
-  position: absolute;
-  width:100rpx;
-  height:100rpx;
-  top:50%;
-  margin-top:-50rpx;
-  left:50%;
-  margin-left:-50rpx
+.team_body{
+  padding-top:200rpx;
+  background:url(https://satc.cscse.edu.cn/lxb-api/file/showImg/RFqQ2Kc7_20200716.jpg) no-repeat center 1414rpx;
+  height:auto;
+  background-size:750rpx 4626rpx;
+  padding-bottom:30rpx;
 }
-.video view image{
-  width:100rpx;
-  height:100rpx;
-}
+
 .project_one{
   width:674rpx;
   margin:100rpx auto 0;

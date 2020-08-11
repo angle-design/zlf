@@ -14,7 +14,7 @@
         <input type="text"  bindinput="getname"></input>  
     </view>
      <view>
-        <text><text>*</text>邮箱</text>
+        <text><text>*</text>邮箱<text style="font-size:24rpx;">(解答内容将发送至您填写的以下邮箱中)</text></text>
         <input type="text" bindinput="getemail"></input>  
     </view>
      <view>

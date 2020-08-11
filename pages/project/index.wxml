@@ -1,12 +1,8 @@
   <view class="team_body">
   <navigationBar toptextcolor="#fff" topbackground="none" inner-title="{{title}}" is-show-back="true" imgsrc="{{host}}bai.png"></navigationBar>
-  <view class="project">
   	<view class="video">
-    <!-- https://satc.cscse.edu.cn/lxb-admin/file/showImg/MWhGirtP_20200718.mp4 -->
-<!-- https://satc.cscse.edu.cn/lxb-api/file/ios/video/5Mwcl30k_20200718.mp4 -->
-  		<video src="https://satc.cscse.edu.cn/lxb-api/file/ios/video/MWhGirtP_20200718.mp4" controls="true"  type=""></video>
-</view>
-  </view>
+				<video src="https://satc.cscse.edu.cn/lxb-api/file/ios/video/Xsh3dahE_20200729.mp4" controls="true" type=""></video>
+			</view>
   <view class="project_one">
     <view class="title">项目背景</view>
      <view>

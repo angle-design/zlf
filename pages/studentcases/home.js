@@ -92,7 +92,6 @@ getlist:function(){
 },
 // 翻页图片懒加载
 onPageScroll: function (res) {
-  console.log(res.scrollTop)
   var _this = this;
   var str = parseInt(res.scrollTop /(_this.data.damoHeight));
   // console.log(str)

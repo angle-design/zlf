@@ -51,6 +51,12 @@ page {
   position: relative;
 
 }
+.video video{
+  width:600rpx;
+  height:340rpx;
+  border-radius: 20rpx;
+  overflow:hidden;
+}
 .video view{
   position: absolute;
   width:100rpx;
